@@ -1,0 +1,324 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>性能优化 | Yangting SONG</title><meta name="author" content="Yangting SONG"><meta name="copyright" content="Yangting SONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="🛠️ 性能优化指南提升Hexo博客的加载速度和性能表现。 🚀 图片优化图片压缩使用工具压缩图片：  TinyPNG ImageOptim Squoosh  图片懒加载在主题配置中启用： 123lazyload:  enable: true  placeholder: &#x2F;img&#x2F;loading.gif  WebP格式转换图片为WebP格式以减小文件大小： 1npm install imagemi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="性能优化">
+<meta property="og:url" content="https://yunyunfanfan.top/docs/advanced/index.html">
+<meta property="og:site_name" content="Yangting SONG">
+<meta property="og:description" content="🛠️ 性能优化指南提升Hexo博客的加载速度和性能表现。 🚀 图片优化图片压缩使用工具压缩图片：  TinyPNG ImageOptim Squoosh  图片懒加载在主题配置中启用： 123lazyload:  enable: true  placeholder: &#x2F;img&#x2F;loading.gif  WebP格式转换图片为WebP格式以减小文件大小： 1npm install imagemi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yunyunfanfan.top/img/avatar.jpg">
+<meta property="article:published_time" content="2025-01-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-07T21:28:14.615Z">
+<meta property="article:author" content="Yangting SONG">
+<meta property="article:tag" content="AI Application, Web Development, Quantitative Trading, Data Analysis, Personal Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yunyunfanfan.top/img/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yunyunfanfan.top/docs/advanced/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '性能优化',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/loading.gif" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-music"></i><span> 音乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-compact-disc"></i><span> 音乐空间</span></a></li><li><a class="site-page child" href="/music-player/"><i class="fa-fw fas fa-play-circle"></i><span> 音乐播放器</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/docs/quick-start/"><i class="fa-fw fas fa-rocket"></i><span> 快速开始</span></a></li><li><a class="site-page child" href="/docs/pages/"><i class="fa-fw fas fa-file-alt"></i><span> 主题页面</span></a></li><li><a class="site-page child" href="/docs/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签外挂</span></a></li><li><a class="site-page child" href="/docs/faq/"><i class="fa-fw fas fa-question-circle"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/docs/advanced/"><i class="fa-fw fas fa-cog"></i><span> 高级配置</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page type-docs" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/default_bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Yangting SONG</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-music"></i><span> 音乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-compact-disc"></i><span> 音乐空间</span></a></li><li><a class="site-page child" href="/music-player/"><i class="fa-fw fas fa-play-circle"></i><span> 音乐播放器</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/docs/quick-start/"><i class="fa-fw fas fa-rocket"></i><span> 快速开始</span></a></li><li><a class="site-page child" href="/docs/pages/"><i class="fa-fw fas fa-file-alt"></i><span> 主题页面</span></a></li><li><a class="site-page child" href="/docs/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签外挂</span></a></li><li><a class="site-page child" href="/docs/faq/"><i class="fa-fw fas fa-question-circle"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/docs/advanced/"><i class="fa-fw fas fa-cog"></i><span> 高级配置</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">性能优化</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><h1 id="🛠️-性能优化指南"><a href="#🛠️-性能优化指南" class="headerlink" title="🛠️ 性能优化指南"></a>🛠️ 性能优化指南</h1><p>提升Hexo博客的加载速度和性能表现。</p>
+<h2 id="🚀-图片优化"><a href="#🚀-图片优化" class="headerlink" title="🚀 图片优化"></a>🚀 图片优化</h2><h3 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h3><p>使用工具压缩图片：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://tinypng.com/">TinyPNG</a></li>
+<li><a target="_blank" rel="noopener" href="https://imageoptim.com/">ImageOptim</a></li>
+<li><a target="_blank" rel="noopener" href="https://squoosh.app/">Squoosh</a></li>
+</ul>
+<h3 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h3><p>在主题配置中启用：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">lazyload:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">/img/loading.gif</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="WebP格式"><a href="#WebP格式" class="headerlink" title="WebP格式"></a>WebP格式</h3><p>转换图片为WebP格式以减小文件大小：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install imagemin-webp --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="📦-资源压缩"><a href="#📦-资源压缩" class="headerlink" title="📦 资源压缩"></a>📦 资源压缩</h2><h3 id="HTML压缩"><a href="#HTML压缩" class="headerlink" title="HTML压缩"></a>HTML压缩</h3><p>安装插件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-html-minifier --save</span><br></pre></td></tr></table></figure>
+
+<p>配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">html_minifier:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">exclude:</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS压缩"><a href="#CSS压缩" class="headerlink" title="CSS压缩"></a>CSS压缩</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-clean-css --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="JS压缩"><a href="#JS压缩" class="headerlink" title="JS压缩"></a>JS压缩</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-uglify --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="🌐-CDN加速"><a href="#🌐-CDN加速" class="headerlink" title="🌐 CDN加速"></a>🌐 CDN加速</h2><h3 id="使用CDN"><a href="#使用CDN" class="headerlink" title="使用CDN"></a>使用CDN</h3><p>在主题配置中设置CDN：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">CDN:</span></span><br><span class="line">  <span class="attr">css:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cdn.jsdelivr.net/npm/hexo-theme-butterfly/source/css/index.css</span></span><br><span class="line">  <span class="attr">js:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">https://cdn.jsdelivr.net/npm/hexo-theme-butterfly/source/js/main.js</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常用CDN服务"><a href="#常用CDN服务" class="headerlink" title="常用CDN服务"></a>常用CDN服务</h3><ul>
+<li><strong>jsDelivr</strong>: 免费、快速</li>
+<li><strong>Cloudflare</strong>: 全球CDN</li>
+<li><strong>七牛云</strong>: 国内访问快</li>
+</ul>
+<h2 id="⚡-缓存优化"><a href="#⚡-缓存优化" class="headerlink" title="⚡ 缓存优化"></a>⚡ 缓存优化</h2><h3 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h3><p>配置服务器缓存头：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> <span class="regexp">~* \.(jpg|jpeg|png|gif|ico|css|js)$</span> &#123;</span><br><span class="line">  <span class="attribute">expires</span> <span class="number">1y</span>;</span><br><span class="line">  <span class="attribute">add_header</span> Cache-Control <span class="string">&quot;public, immutable&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h3><p>启用PWA功能：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-offline --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="🔧-代码优化"><a href="#🔧-代码优化" class="headerlink" title="🔧 代码优化"></a>🔧 代码优化</h2><h3 id="减少HTTP请求"><a href="#减少HTTP请求" class="headerlink" title="减少HTTP请求"></a>减少HTTP请求</h3><ul>
+<li>合并CSS文件</li>
+<li>合并JS文件</li>
+<li>使用CSS Sprites</li>
+</ul>
+<h3 id="异步加载"><a href="#异步加载" class="headerlink" title="异步加载"></a>异步加载</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;script.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span> <span class="attr">src</span>=<span class="string">&quot;script.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="预加载关键资源"><a href="#预加载关键资源" class="headerlink" title="预加载关键资源"></a>预加载关键资源</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;preload&quot;</span> <span class="attr">href</span>=<span class="string">&quot;font.woff2&quot;</span> <span class="attr">as</span>=<span class="string">&quot;font&quot;</span> <span class="attr">type</span>=<span class="string">&quot;font/woff2&quot;</span> <span class="attr">crossorigin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="📊-性能监控"><a href="#📊-性能监控" class="headerlink" title="📊 性能监控"></a>📊 性能监控</h2><h3 id="使用工具"><a href="#使用工具" class="headerlink" title="使用工具"></a>使用工具</h3><ul>
+<li><strong>Google PageSpeed Insights</strong></li>
+<li><strong>GTmetrix</strong></li>
+<li><strong>WebPageTest</strong></li>
+<li><strong>Lighthouse</strong></li>
+</ul>
+<h3 id="关键指标"><a href="#关键指标" class="headerlink" title="关键指标"></a>关键指标</h3><ul>
+<li><strong>FCP</strong>: First Contentful Paint</li>
+<li><strong>LCP</strong>: Largest Contentful Paint</li>
+<li><strong>TTI</strong>: Time to Interactive</li>
+<li><strong>CLS</strong>: Cumulative Layout Shift</li>
+</ul>
+<h2 id="🎯-优化建议"><a href="#🎯-优化建议" class="headerlink" title="🎯 优化建议"></a>🎯 优化建议</h2><h3 id="1-减少文件大小"><a href="#1-减少文件大小" class="headerlink" title="1. 减少文件大小"></a>1. 减少文件大小</h3><ul>
+<li>压缩图片</li>
+<li>压缩代码</li>
+<li>移除未使用的CSS&#x2F;JS</li>
+</ul>
+<h3 id="2-优化加载顺序"><a href="#2-优化加载顺序" class="headerlink" title="2. 优化加载顺序"></a>2. 优化加载顺序</h3><ul>
+<li>关键CSS内联</li>
+<li>延迟加载非关键资源</li>
+<li>使用字体显示策略</li>
+</ul>
+<h3 id="3-服务器优化"><a href="#3-服务器优化" class="headerlink" title="3. 服务器优化"></a>3. 服务器优化</h3><ul>
+<li>启用Gzip压缩</li>
+<li>使用HTTP&#x2F;2</li>
+<li>配置缓存策略</li>
+</ul>
+<h3 id="4-数据库优化"><a href="#4-数据库优化" class="headerlink" title="4. 数据库优化"></a>4. 数据库优化</h3><ul>
+<li>清理无用数据</li>
+<li>优化查询</li>
+<li>使用缓存</li>
+</ul>
+<h2 id="📈-性能检查清单"><a href="#📈-性能检查清单" class="headerlink" title="📈 性能检查清单"></a>📈 性能检查清单</h2><ul>
+<li><input disabled="" type="checkbox"> 图片已压缩</li>
+<li><input disabled="" type="checkbox"> 启用懒加载</li>
+<li><input disabled="" type="checkbox"> CSS&#x2F;JS已压缩</li>
+<li><input disabled="" type="checkbox"> 使用CDN</li>
+<li><input disabled="" type="checkbox"> 启用浏览器缓存</li>
+<li><input disabled="" type="checkbox"> 减少HTTP请求</li>
+<li><input disabled="" type="checkbox"> 优化字体加载</li>
+<li><input disabled="" type="checkbox"> 移除未使用代码</li>
+<li><input disabled="" type="checkbox"> 启用Gzip</li>
+<li><input disabled="" type="checkbox"> 使用HTTP&#x2F;2</li>
+</ul>
+<h2 id="🔍-实战案例"><a href="#🔍-实战案例" class="headerlink" title="🔍 实战案例"></a>🔍 实战案例</h2><h3 id="优化前后对比"><a href="#优化前后对比" class="headerlink" title="优化前后对比"></a>优化前后对比</h3><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>优化前</th>
+<th>优化后</th>
+<th>提升</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>页面大小</td>
+<td>2.5MB</td>
+<td>800KB</td>
+<td>68%</td>
+</tr>
+<tr>
+<td>加载时间</td>
+<td>5.2s</td>
+<td>1.8s</td>
+<td>65%</td>
+</tr>
+<tr>
+<td>请求数</td>
+<td>45</td>
+<td>18</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>性能评分</td>
+<td>62</td>
+<td>95</td>
+<td>53%</td>
+</tr>
+</tbody></table>
+</div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/loading.gif" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yangting SONG</div><div class="author-info-description">HIT(SZ) | Urban Planning | AI Development · Quant Trading · Full Stack</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sjkncs"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/sjkncs" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2797660051@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tel:188-5600-8931" target="_blank" title="电话"><i class="fas fa-phone"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">AI-Driven Web Development | 150+ Hours Volunteer Service | Award Winner | Open Source Contributor</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/20/ai-news-platform/" title="AI每日新闻聚合平台 - Insight Pro"><img src="/img/loading.gif" data-lazy-src="/img/insight%20pro.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AI每日新闻聚合平台 - Insight Pro"/></a><div class="content"><a class="title" href="/2025/12/20/ai-news-platform/" title="AI每日新闻聚合平台 - Insight Pro">AI每日新闻聚合平台 - Insight Pro</a><time datetime="2025-12-20T02:00:00.000Z" title="发表于 2025-12-20 10:00:00">2025-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/15/quant-trading-system/" title="基于深度学习的智能金融综合服务系统"><img src="/img/loading.gif" data-lazy-src="/img/%E9%87%91%E8%9E%8D%E6%96%87%E6%9C%AC%E6%99%BA%E8%83%BD%E5%88%86%E6%9E%90.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于深度学习的智能金融综合服务系统"/></a><div class="content"><a class="title" href="/2025/11/15/quant-trading-system/" title="基于深度学习的智能金融综合服务系统">基于深度学习的智能金融综合服务系统</a><time datetime="2025-11-15T06:00:00.000Z" title="发表于 2025-11-15 14:00:00">2025-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/harmonyos-travel-app/" title="旅忆悠然 (SmartTravel) 智慧旅游应用"><img src="/img/loading.gif" data-lazy-src="/img/smart%20travel.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="旅忆悠然 (SmartTravel) 智慧旅游应用"/></a><div class="content"><a class="title" href="/2025/11/10/harmonyos-travel-app/" title="旅忆悠然 (SmartTravel) 智慧旅游应用">旅忆悠然 (SmartTravel) 智慧旅游应用</a><time datetime="2025-11-10T08:00:00.000Z" title="发表于 2025-11-10 16:00:00">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/20/emobuy-platform/" title="EmoBuy - 情绪消费平台"><img src="/img/loading.gif" data-lazy-src="/img/cover3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="EmoBuy - 情绪消费平台"/></a><div class="content"><a class="title" href="/2025/07/20/emobuy-platform/" title="EmoBuy - 情绪消费平台">EmoBuy - 情绪消费平台</a><time datetime="2025-07-20T06:00:00.000Z" title="发表于 2025-07-20 14:00:00">2025-07-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/computer-vision-2025/" title="2025计算机视觉课程项目"><img src="/img/loading.gif" data-lazy-src="/img/cover2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025计算机视觉课程项目"/></a><div class="content"><a class="title" href="/2025/07/15/computer-vision-2025/" title="2025计算机视觉课程项目">2025计算机视觉课程项目</a><time datetime="2025-07-15T02:00:00.000Z" title="发表于 2025-07-15 10:00:00">2025-07-15</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%AC%E5%91%8A/"><span class="card-category-list-name">公告</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%97%85%E8%A1%8C%E6%B8%B8%E8%AE%B0/"><span class="card-category-list-name">旅行游记</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9F%B3%E4%B9%90%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">音乐分享</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86/"><span class="card-category-list-name">项目经历</span><span class="card-category-list-count">5</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/AI/" style="font-size: 1.15em; color: rgb(50, 83, 83);">AI</a><a href="/tags/Python/" style="font-size: 1.45em; color: rgb(143, 50, 50);">Python</a><a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 1.15em; color: rgb(193, 169, 156);">项目</a><a href="/tags/Web%E5%BC%80%E5%8F%91/" style="font-size: 1.25em; color: rgb(50, 148, 50);">Web开发</a><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" style="font-size: 1.15em; color: rgb(123, 96, 51);">计算机视觉</a><a href="/tags/OpenCV/" style="font-size: 1.15em; color: rgb(158, 50, 50);">OpenCV</a><a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 1.15em; color: rgb(186, 50, 114);">深度学习</a><a href="/tags/%E6%83%85%E7%BB%AA%E5%88%86%E6%9E%90/" style="font-size: 1.15em; color: rgb(67, 166, 69);">情绪分析</a><a href="/tags/%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/" style="font-size: 1.15em; color: rgb(50, 111, 143);">电商平台</a><a href="/tags/HarmonyOS/" style="font-size: 1.15em; color: rgb(92, 171, 103);">HarmonyOS</a><a href="/tags/ArkTS/" style="font-size: 1.15em; color: rgb(113, 50, 111);">ArkTS</a><a href="/tags/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" style="font-size: 1.15em; color: rgb(192, 50, 182);">移动开发</a><a href="/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 1.45em; color: rgb(51, 68, 50);">音乐</a><a href="/tags/%E6%8E%A8%E8%8D%90/" style="font-size: 1.25em; color: rgb(100, 139, 85);">推荐</a><a href="/tags/%E8%AE%B8%E5%B5%A9/" style="font-size: 1.35em; color: rgb(159, 52, 118);">许嵩</a><a href="/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/" style="font-size: 1.15em; color: rgb(147, 106, 96);">量化交易</a><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.15em; color: rgb(51, 50, 50);">机器学习</a><a href="/tags/%E9%87%91%E8%9E%8D/" style="font-size: 1.15em; color: rgb(65, 50, 120);">金融</a><a href="/tags/%E6%AC%A7%E7%BE%8E/" style="font-size: 1.15em; color: rgb(194, 138, 157);">欧美</a><a href="/tags/%E6%AD%8C%E5%8D%95/" style="font-size: 1.35em; color: rgb(176, 125, 50);">歌单</a><a href="/tags/APlayer/" style="font-size: 1.15em; color: rgb(135, 50, 175);">APlayer</a><a href="/tags/%E6%AC%A2%E8%BF%8E/" style="font-size: 1.15em; color: rgb(50, 50, 69);">欢迎</a><a href="/tags/%E5%85%AC%E5%91%8A/" style="font-size: 1.15em; color: rgb(105, 50, 50);">公告</a><a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.15em; color: rgb(159, 129, 71);">博客</a><a href="/tags/%E6%97%85%E8%A1%8C/" style="font-size: 1.15em; color: rgb(196, 167, 195);">旅行</a><a href="/tags/%E5%BE%BD%E5%B7%9E/" style="font-size: 1.15em; color: rgb(183, 150, 50);">徽州</a><a href="/tags/%E5%8F%A4%E6%9D%91%E8%90%BD/" style="font-size: 1.15em; color: rgb(67, 107, 150);">古村落</a><a href="/tags/%E6%91%84%E5%BD%B1/" style="font-size: 1.15em; color: rgb(50, 180, 94);">摄影</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Yangting SONG</span></div><div class="footer_custom_text">By Yangting SONG | Harbin Institute of Technology (Shenzhen)</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><div class="aplayer" data-id="2829883691" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-theme="#49b1f5" data-order="random" data-preload="auto" data-listmaxheight="200px"></div></div></body></html>

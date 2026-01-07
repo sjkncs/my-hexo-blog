@@ -1,0 +1,137 @@
+/* 音乐播放器自定义样式 */
+
+/* 固定播放器样式优化 */
+.aplayer.aplayer-fixed {
+  z-index: 99999 !important;
+}
+
+.aplayer.aplayer-fixed .aplayer-body {
+  max-width: 400px;
+}
+
+/* 播放器主题色 */
+.aplayer .aplayer-lrc-current {
+  color: #49b1f5;
+}
+
+.aplayer .aplayer-icon-play,
+.aplayer .aplayer-icon-pause {
+  color: #49b1f5;
+}
+
+/* 播放器按钮悬停效果 */
+.aplayer .aplayer-icon:hover {
+  color: #3a8fd9;
+}
+
+/* 进度条样式 */
+.aplayer .aplayer-bar-wrap {
+  background: #e0e0e0;
+}
+
+.aplayer .aplayer-bar-wrap .aplayer-bar {
+  background: #49b1f5;
+}
+
+.aplayer .aplayer-bar-wrap .aplayer-played {
+  background: #49b1f5;
+}
+
+/* 列表样式 */
+.aplayer .aplayer-list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.aplayer .aplayer-list li {
+  border-top: 1px solid #e9e9e9;
+}
+
+.aplayer .aplayer-list li:hover {
+  background: #f7f7f7;
+}
+
+.aplayer .aplayer-list li.aplayer-list-light {
+  background: #e9e9e9;
+}
+
+/* 暗黑模式适配 */
+[data-theme="dark"] .aplayer {
+  background: #1f1f1f;
+}
+
+[data-theme="dark"] .aplayer .aplayer-list {
+  background: #1f1f1f;
+}
+
+[data-theme="dark"] .aplayer .aplayer-list li {
+  border-top-color: #333;
+}
+
+[data-theme="dark"] .aplayer .aplayer-list li:hover {
+  background: #2a2a2a;
+}
+
+[data-theme="dark"] .aplayer .aplayer-list li.aplayer-list-light {
+  background: #333;
+}
+
+[data-theme="dark"] .aplayer .aplayer-info {
+  border-top-color: #333;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .aplayer.aplayer-fixed .aplayer-body {
+    max-width: 300px;
+  }
+  
+  .aplayer .aplayer-list {
+    max-height: 150px;
+  }
+}
+
+/* 音乐按钮样式 */
+.music-toggle-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s;
+  z-index: 99998;
+}
+
+.music-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.music-toggle-btn i {
+  color: white;
+  font-size: 24px;
+}
+
+/* 音乐按钮动画 */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+  }
+}
+
+.music-toggle-btn.playing {
+  animation: pulse 2s infinite;
+}

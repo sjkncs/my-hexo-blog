@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>旅忆悠然 (SmartTravel) 智慧旅游应用 | Yangting SONG</title><meta name="author" content="Yangting SONG"><meta name="copyright" content="Yangting SONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于HarmonyOS的一站式旅游服务应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="旅忆悠然 (SmartTravel) 智慧旅游应用">
+<meta property="og:url" content="https://yunyunfanfan.top/2025/11/10/harmonyos-travel-app/index.html">
+<meta property="og:site_name" content="Yangting SONG">
+<meta property="og:description" content="基于HarmonyOS的一站式旅游服务应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yunyunfanfan.top/img/smart%20travel.jpg">
+<meta property="article:published_time" content="2025-11-10T08:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-07T21:28:14.615Z">
+<meta property="article:author" content="Yangting SONG">
+<meta property="article:tag" content="HarmonyOS">
+<meta property="article:tag" content="ArkTS">
+<meta property="article:tag" content="移动开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yunyunfanfan.top/img/smart%20travel.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "旅忆悠然 (SmartTravel) 智慧旅游应用",
+  "url": "https://yunyunfanfan.top/2025/11/10/harmonyos-travel-app/",
+  "image": "https://yunyunfanfan.top/img/smart%20travel.jpg",
+  "datePublished": "2025-11-10T08:00:00.000Z",
+  "dateModified": "2026-01-07T21:28:14.615Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yangting SONG",
+      "url": "https://yunyunfanfan.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yunyunfanfan.top/2025/11/10/harmonyos-travel-app/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '旅忆悠然 (SmartTravel) 智慧旅游应用',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/loading.gif" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-music"></i><span> 音乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-compact-disc"></i><span> 音乐空间</span></a></li><li><a class="site-page child" href="/music-player/"><i class="fa-fw fas fa-play-circle"></i><span> 音乐播放器</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/docs/quick-start/"><i class="fa-fw fas fa-rocket"></i><span> 快速开始</span></a></li><li><a class="site-page child" href="/docs/pages/"><i class="fa-fw fas fa-file-alt"></i><span> 主题页面</span></a></li><li><a class="site-page child" href="/docs/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签外挂</span></a></li><li><a class="site-page child" href="/docs/faq/"><i class="fa-fw fas fa-question-circle"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/docs/advanced/"><i class="fa-fw fas fa-cog"></i><span> 高级配置</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/smart%20travel.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Yangting SONG</span></a><a class="nav-page-title" href="/"><span class="site-name">旅忆悠然 (SmartTravel) 智慧旅游应用</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-music"></i><span> 音乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-compact-disc"></i><span> 音乐空间</span></a></li><li><a class="site-page child" href="/music-player/"><i class="fa-fw fas fa-play-circle"></i><span> 音乐播放器</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/docs/quick-start/"><i class="fa-fw fas fa-rocket"></i><span> 快速开始</span></a></li><li><a class="site-page child" href="/docs/pages/"><i class="fa-fw fas fa-file-alt"></i><span> 主题页面</span></a></li><li><a class="site-page child" href="/docs/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签外挂</span></a></li><li><a class="site-page child" href="/docs/faq/"><i class="fa-fw fas fa-question-circle"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/docs/advanced/"><i class="fa-fw fas fa-cog"></i><span> 高级配置</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">旅忆悠然 (SmartTravel) 智慧旅游应用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-10T08:00:00.000Z" title="发表于 2025-11-10 16:00:00">2025-11-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-07T21:28:14.615Z" title="更新于 2026-01-08 05:28:14">2026-01-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86/">项目经历</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="🗺️-旅忆悠然-SmartTravel-智慧旅游应用"><a href="#🗺️-旅忆悠然-SmartTravel-智慧旅游应用" class="headerlink" title="🗺️ 旅忆悠然 (SmartTravel) 智慧旅游应用"></a>🗺️ 旅忆悠然 (SmartTravel) 智慧旅游应用</h1><blockquote>
+<p>项目时间: 2025年11月<br>项目类型: 个人&#x2F;团队项目 · HarmonyOS应用开发<br>版本: 1.0.0<br>GitHub: <a target="_blank" rel="noopener" href="https://github.com/sjkncs/smarttravel">https://github.com/sjkncs/smarttravel</a></p>
+</blockquote>
+<h2 id="📱-项目概述"><a href="#📱-项目概述" class="headerlink" title="📱 项目概述"></a>📱 项目概述</h2><h3 id="开发平台"><a href="#开发平台" class="headerlink" title="开发平台"></a>开发平台</h3><ul>
+<li><strong>操作系统</strong>: HarmonyOS</li>
+<li><strong>开发语言</strong>: ArkTS</li>
+<li><strong>UI框架</strong>: ArkUI</li>
+<li><strong>版本号</strong>: 1.0.0</li>
+</ul>
+<h3 id="项目定位"><a href="#项目定位" class="headerlink" title="项目定位"></a>项目定位</h3><p>基于HarmonyOS的一站式旅游服务应用，解决传统平台信息分散、流程繁琐等痛点，实现”边览边订”的无缝体验。</p>
+<hr>
+<h2 id="🎯-核心痛点与解决方案"><a href="#🎯-核心痛点与解决方案" class="headerlink" title="🎯 核心痛点与解决方案"></a>🎯 核心痛点与解决方案</h2><h3 id="痛点一：信息更新滞后"><a href="#痛点一：信息更新滞后" class="headerlink" title="痛点一：信息更新滞后"></a>痛点一：信息更新滞后</h3><p><strong>问题</strong>: 传统平台信息更新不及时，用户获取的可能是过时信息</p>
+<p><strong>解决方案</strong>:</p>
+<ul>
+<li>实时信息流更新</li>
+<li>UGC内容生态</li>
+<li>智能推送机制</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实时信息更新</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">InfoStream</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">updateInterval</span>: <span class="built_in">number</span> = <span class="number">5000</span>; <span class="comment">// 5秒更新</span></span><br><span class="line">  </span><br><span class="line">  <span class="title function_">startRealTimeUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">fetchLatestInfo</span>();</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">notifyUsers</span>();</span><br><span class="line">    &#125;, <span class="variable language_">this</span>.<span class="property">updateInterval</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="痛点二：报名流程繁琐"><a href="#痛点二：报名流程繁琐" class="headerlink" title="痛点二：报名流程繁琐"></a>痛点二：报名流程繁琐</h3><p><strong>问题</strong>: 多步骤跳转，重复填写信息</p>
+<p><strong>解决方案</strong>:</p>
+<ul>
+<li>“边览边报”浮层表单</li>
+<li>一键报名功能</li>
+<li>信息自动填充</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一键报名</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line">struct <span class="title class_">QuickSignUp</span> &#123;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">userInfo</span>: <span class="title class_">UserInfo</span> = <span class="title function_">getUserInfo</span>();</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">build</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Column</span>() &#123;</span><br><span class="line">      <span class="comment">// 浮层表单</span></span><br><span class="line">      <span class="title class_">FloatingForm</span>(&#123;</span><br><span class="line">        <span class="attr">autoFill</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">data</span>: <span class="variable language_">this</span>.<span class="property">userInfo</span></span><br><span class="line">      &#125;)</span><br><span class="line">      </span><br><span class="line">      <span class="title class_">Button</span>(<span class="string">&#x27;一键报名&#x27;</span>)</span><br><span class="line">        .<span class="title function_">onClick</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">          <span class="variable language_">this</span>.<span class="title function_">submitWithAutoFill</span>();</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="痛点三：定位不精准"><a href="#痛点三：定位不精准" class="headerlink" title="痛点三：定位不精准"></a>痛点三：定位不精准</h3><p><strong>问题</strong>: 推荐内容与实际位置不符</p>
+<p><strong>解决方案</strong>:</p>
+<ul>
+<li>HarmonyOS高精度定位</li>
+<li>智能周边算法</li>
+<li>实时位置更新</li>
+</ul>
+<hr>
+<h2 id="🎨-核心功能模块"><a href="#🎨-核心功能模块" class="headerlink" title="🎨 核心功能模块"></a>🎨 核心功能模块</h2><h3 id="1-首页信息流"><a href="#1-首页信息流" class="headerlink" title="1. 首页信息流"></a>1. 首页信息流</h3><p><strong>功能特性</strong>:</p>
+<ul>
+<li>智能搜索引擎</li>
+<li>分类卡片展示</li>
+<li>8大快捷入口</li>
+<li>一站式信息获取</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entry</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line">struct <span class="title class_">HomePage</span> &#123;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">searchText</span>: <span class="built_in">string</span> = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">categories</span>: <span class="title class_">Category</span>[] = [];</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">build</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Column</span>() &#123;</span><br><span class="line">      <span class="comment">// 搜索栏</span></span><br><span class="line">      <span class="title class_">SearchBar</span>(&#123;</span><br><span class="line">        <span class="attr">placeholder</span>: <span class="string">&#x27;搜索景点、酒店、活动...&#x27;</span>,</span><br><span class="line">        <span class="attr">onSearch</span>: <span class="function">(<span class="params">text</span>) =&gt;</span> <span class="variable language_">this</span>.<span class="title function_">handleSearch</span>(text)</span><br><span class="line">      &#125;)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 分类卡片</span></span><br><span class="line">      <span class="title class_">Grid</span>() &#123;</span><br><span class="line">        <span class="title class_">ForEach</span>(<span class="variable language_">this</span>.<span class="property">categories</span>, <span class="function">(<span class="params"><span class="attr">item</span>: <span class="title class_">Category</span></span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="title class_">GridItem</span>() &#123;</span><br><span class="line">            <span class="title class_">CategoryCard</span>(&#123; <span class="attr">data</span>: item &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 快捷入口</span></span><br><span class="line">      <span class="title class_">QuickEntrance</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-活动报名系统"><a href="#2-活动报名系统" class="headerlink" title="2. 活动报名系统"></a>2. 活动报名系统</h3><p><strong>功能特性</strong>:</p>
+<ul>
+<li>详情页内嵌报名</li>
+<li>一键提交</li>
+<li>报名状态管理</li>
+<li>无缝体验</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line">struct <span class="title class_">ActivitySignUp</span> &#123;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">activity</span>: <span class="title class_">Activity</span> = <span class="literal">null</span>;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">formData</span>: <span class="title class_">FormData</span> = &#123;&#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">build</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Column</span>() &#123;</span><br><span class="line">      <span class="comment">// 活动详情</span></span><br><span class="line">      <span class="title class_">ActivityDetail</span>(&#123; <span class="attr">data</span>: <span class="variable language_">this</span>.<span class="property">activity</span> &#125;)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 内嵌报名表单</span></span><br><span class="line">      <span class="title class_">Form</span>() &#123;</span><br><span class="line">        <span class="title class_">FormItem</span>(&#123; <span class="attr">label</span>: <span class="string">&#x27;姓名&#x27;</span> &#125;) &#123;</span><br><span class="line">          <span class="title class_">TextInput</span>(&#123; <span class="attr">text</span>: <span class="variable language_">this</span>.<span class="property">formData</span>.<span class="property">name</span> &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title class_">FormItem</span>(&#123; <span class="attr">label</span>: <span class="string">&#x27;手机&#x27;</span> &#125;) &#123;</span><br><span class="line">          <span class="title class_">TextInput</span>(&#123; <span class="attr">text</span>: <span class="variable language_">this</span>.<span class="property">formData</span>.<span class="property">phone</span> &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 一键提交</span></span><br><span class="line">      <span class="title class_">Button</span>(<span class="string">&#x27;立即报名&#x27;</span>)</span><br><span class="line">        .<span class="title function_">onClick</span>(<span class="function">() =&gt;</span> <span class="variable language_">this</span>.<span class="title function_">submitSignUp</span>())</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-智能地图导航"><a href="#3-智能地图导航" class="headerlink" title="3. 智能地图导航"></a>3. 智能地图导航</h3><p><strong>功能特性</strong>:</p>
+<ul>
+<li>高精度定位</li>
+<li>AR实景导航</li>
+<li>地址动画切换</li>
+<li>精准导航服务</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line">struct <span class="title class_">SmartMap</span> &#123;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">currentLocation</span>: <span class="title class_">Location</span> = <span class="literal">null</span>;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">destination</span>: <span class="title class_">Location</span> = <span class="literal">null</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">build</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Stack</span>() &#123;</span><br><span class="line">      <span class="comment">// 地图组件</span></span><br><span class="line">      <span class="title class_">Map</span>(&#123;</span><br><span class="line">        <span class="attr">center</span>: <span class="variable language_">this</span>.<span class="property">currentLocation</span>,</span><br><span class="line">        <span class="attr">markers</span>: <span class="variable language_">this</span>.<span class="title function_">getMarkers</span>()</span><br><span class="line">      &#125;)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// AR导航层</span></span><br><span class="line">      <span class="title class_">ARNavigationLayer</span>(&#123;</span><br><span class="line">        <span class="attr">from</span>: <span class="variable language_">this</span>.<span class="property">currentLocation</span>,</span><br><span class="line">        <span class="attr">to</span>: <span class="variable language_">this</span>.<span class="property">destination</span></span><br><span class="line">      &#125;)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 控制按钮</span></span><br><span class="line">      <span class="title class_">NavigationControls</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 高精度定位</span></span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">getCurrentLocation</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> location = <span class="keyword">await</span> geoLocationManager.<span class="title function_">getCurrentLocation</span>(&#123;</span><br><span class="line">      <span class="attr">priority</span>: <span class="title class_">LocationRequestPriority</span>.<span class="property">ACCURACY</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">currentLocation</span> = location;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-酒店预订系统"><a href="#4-酒店预订系统" class="headerlink" title="4. 酒店预订系统"></a>4. 酒店预订系统</h3><p><strong>功能特性</strong>:</p>
+<ul>
+<li>多维度筛选</li>
+<li>在线预订</li>
+<li>入住评价</li>
+<li>完整预订流程</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line">struct <span class="title class_">HotelBooking</span> &#123;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">hotels</span>: <span class="title class_">Hotel</span>[] = [];</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">filters</span>: <span class="title class_">FilterOptions</span> = &#123;&#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">build</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Column</span>() &#123;</span><br><span class="line">      <span class="comment">// 筛选器</span></span><br><span class="line">      <span class="title class_">FilterBar</span>(&#123;</span><br><span class="line">        <span class="attr">options</span>: [<span class="string">&#x27;价格&#x27;</span>, <span class="string">&#x27;评分&#x27;</span>, <span class="string">&#x27;距离&#x27;</span>, <span class="string">&#x27;设施&#x27;</span>],</span><br><span class="line">        <span class="attr">onChange</span>: <span class="function">(<span class="params">filters</span>) =&gt;</span> <span class="variable language_">this</span>.<span class="title function_">applyFilters</span>(filters)</span><br><span class="line">      &#125;)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 酒店列表</span></span><br><span class="line">      <span class="title class_">List</span>() &#123;</span><br><span class="line">        <span class="title class_">ForEach</span>(<span class="variable language_">this</span>.<span class="property">hotels</span>, <span class="function">(<span class="params"><span class="attr">hotel</span>: <span class="title class_">Hotel</span></span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="title class_">ListItem</span>() &#123;</span><br><span class="line">            <span class="title class_">HotelCard</span>(&#123;</span><br><span class="line">              <span class="attr">data</span>: hotel,</span><br><span class="line">              <span class="attr">onBook</span>: <span class="function">() =&gt;</span> <span class="variable language_">this</span>.<span class="title function_">bookHotel</span>(hotel)</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-景点讲解服务"><a href="#5-景点讲解服务" class="headerlink" title="5. 景点讲解服务"></a>5. 景点讲解服务</h3><p><strong>功能特性</strong>:</p>
+<ul>
+<li>多语言语音讲解</li>
+<li>游览路线推荐</li>
+<li>增强旅游体验</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line">struct <span class="title class_">ScenicGuide</span> &#123;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">currentSpot</span>: <span class="title class_">Spot</span> = <span class="literal">null</span>;</span><br><span class="line">  <span class="meta">@State</span> <span class="attr">language</span>: <span class="built_in">string</span> = <span class="string">&#x27;zh-CN&#x27;</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">build</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Column</span>() &#123;</span><br><span class="line">      <span class="comment">// 景点信息</span></span><br><span class="line">      <span class="title class_">SpotInfo</span>(&#123; <span class="attr">data</span>: <span class="variable language_">this</span>.<span class="property">currentSpot</span> &#125;)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 语音讲解</span></span><br><span class="line">      <span class="title class_">AudioPlayer</span>(&#123;</span><br><span class="line">        <span class="attr">src</span>: <span class="variable language_">this</span>.<span class="title function_">getAudioUrl</span>(<span class="variable language_">this</span>.<span class="property">currentSpot</span>, <span class="variable language_">this</span>.<span class="property">language</span>),</span><br><span class="line">        <span class="attr">autoPlay</span>: <span class="literal">true</span></span><br><span class="line">      &#125;)</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 路线推荐</span></span><br><span class="line">      <span class="title class_">RouteRecommendation</span>(&#123;</span><br><span class="line">        <span class="attr">spots</span>: <span class="variable language_">this</span>.<span class="title function_">getNearbySpots</span>()</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-个人中心"><a href="#6-个人中心" class="headerlink" title="6. 个人中心"></a>6. 个人中心</h3><p><strong>功能特性</strong>:</p>
+<ul>
+<li>账户管理</li>
+<li>订单管理</li>
+<li>收藏管理</li>
+<li>会员权益</li>
+<li>个性化服务支撑</li>
+</ul>
+<hr>
+<h2 id="🔧-技术特色"><a href="#🔧-技术特色" class="headerlink" title="🔧 技术特色"></a>🔧 技术特色</h2><h3 id="1-HarmonyOS生态集成"><a href="#1-HarmonyOS生态集成" class="headerlink" title="1. HarmonyOS生态集成"></a>1. HarmonyOS生态集成</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分布式跨设备同步</span></span><br><span class="line"><span class="keyword">import</span> distributedData <span class="keyword">from</span> <span class="string">&#x27;@ohos.data.distributedData&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DataSync</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">kvStore</span>: distributedData.<span class="property">SingleKVStore</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">async</span> <span class="title function_">syncData</span>(<span class="params"><span class="attr">key</span>: <span class="built_in">string</span>, <span class="attr">value</span>: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="keyword">await</span> <span class="variable language_">this</span>.<span class="property">kvStore</span>.<span class="title function_">put</span>(key, value);</span><br><span class="line">    <span class="comment">// 自动同步到其他设备</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-华为服务集成"><a href="#2-华为服务集成" class="headerlink" title="2. 华为服务集成"></a>2. 华为服务集成</h3><ul>
+<li><strong>Map Kit</strong> - 地图服务</li>
+<li><strong>Location Kit</strong> - 定位服务</li>
+<li><strong>Push Kit</strong> - 推送服务</li>
+<li><strong>Account Kit</strong> - 账号服务</li>
+</ul>
+<h3 id="3-ArkUI动画特效"><a href="#3-ArkUI动画特效" class="headerlink" title="3. ArkUI动画特效"></a>3. ArkUI动画特效</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// animateTo地址交换动画</span></span><br><span class="line"><span class="title function_">animateTo</span>(&#123;</span><br><span class="line">  <span class="attr">duration</span>: <span class="number">300</span>,</span><br><span class="line">  <span class="attr">curve</span>: <span class="title class_">Curve</span>.<span class="property">EaseInOut</span></span><br><span class="line">&#125;, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">fromAddress</span> = <span class="variable language_">this</span>.<span class="property">toAddress</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">toAddress</span> = temp;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面转场动画</span></span><br><span class="line"><span class="title function_">pageTransition</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title class_">PageTransitionEnter</span>(&#123; <span class="attr">duration</span>: <span class="number">500</span> &#125;)</span><br><span class="line">    .<span class="title function_">slide</span>(<span class="title class_">SlideEffect</span>.<span class="property">Right</span>)</span><br><span class="line">  <span class="title class_">PageTransitionExit</span>(&#123; <span class="attr">duration</span>: <span class="number">500</span> &#125;)</span><br><span class="line">    .<span class="title function_">slide</span>(<span class="title class_">SlideEffect</span>.<span class="property">Left</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="📊-项目成果"><a href="#📊-项目成果" class="headerlink" title="📊 项目成果"></a>📊 项目成果</h2><h3 id="功能完成度"><a href="#功能完成度" class="headerlink" title="功能完成度"></a>功能完成度</h3><ul>
+<li>✅ 首页信息流 (100%)</li>
+<li>✅ 活动报名系统 (100%)</li>
+<li>✅ 智能地图导航 (100%)</li>
+<li>✅ 酒店预订系统 (100%)</li>
+<li>✅ 景点讲解服务 (100%)</li>
+<li>✅ 个人中心 (100%)</li>
+</ul>
+<h3 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h3><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应用启动时间</td>
+<td>&lt;1.5s</td>
+</tr>
+<tr>
+<td>页面切换流畅度</td>
+<td>60fps</td>
+</tr>
+<tr>
+<td>定位精度</td>
+<td>&lt;5m</td>
+</tr>
+<tr>
+<td>内存占用</td>
+<td>&lt;150MB</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🎓-项目收获"><a href="#🎓-项目收获" class="headerlink" title="🎓 项目收获"></a>🎓 项目收获</h2><h3 id="技术能力"><a href="#技术能力" class="headerlink" title="技术能力"></a>技术能力</h3><ol>
+<li><strong>HarmonyOS开发</strong> - 掌握ArkTS和ArkUI</li>
+<li><strong>移动端开发</strong> - 熟悉移动应用开发流程</li>
+<li><strong>UI&#x2F;UX设计</strong> - 提升用户体验设计能力</li>
+<li><strong>系统集成</strong> - 学会集成华为各类Kit</li>
+</ol>
+<h3 id="团队协作"><a href="#团队协作" class="headerlink" title="团队协作"></a>团队协作</h3><ol>
+<li><strong>需求分析</strong> - 理解用户痛点</li>
+<li><strong>任务分工</strong> - 高效的团队协作</li>
+<li><strong>代码review</strong> - 保证代码质量</li>
+<li><strong>项目管理</strong> - 按时交付成果</li>
+</ol>
+<hr>
+<h2 id="🔮-未来规划"><a href="#🔮-未来规划" class="headerlink" title="🔮 未来规划"></a>🔮 未来规划</h2><ul>
+<li><input disabled="" type="checkbox"> 增加社交功能</li>
+<li><input disabled="" type="checkbox"> 接入更多第三方服务</li>
+<li><input disabled="" type="checkbox"> 优化AI推荐算法</li>
+<li><input disabled="" type="checkbox"> 开发平板版本</li>
+<li><input disabled="" type="checkbox"> 支持更多语言</li>
+</ul>
+<hr>
+<p><strong>🗺️ 智慧旅游，悠然出行 🗺️</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yunyunfanfan.top">Yangting SONG</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yunyunfanfan.top/2025/11/10/harmonyos-travel-app/">https://yunyunfanfan.top/2025/11/10/harmonyos-travel-app/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yunyunfanfan.top" target="_blank">Yangting SONG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HarmonyOS/">HarmonyOS</a><a class="post-meta__tags" href="/tags/ArkTS/">ArkTS</a><a class="post-meta__tags" href="/tags/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a></div><div class="post-share"><div class="social-share" data-image="/img/smart%20travel.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/11/15/quant-trading-system/" title="基于深度学习的智能金融综合服务系统"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/%E9%87%91%E8%9E%8D%E6%96%87%E6%9C%AC%E6%99%BA%E8%83%BD%E5%88%86%E6%9E%90.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">基于深度学习的智能金融综合服务系统</div></div><div class="info-2"><div class="info-item-1">📈 基于深度学习的智能金融综合服务系统 项目时间: 2025年11月项目类型: 个人&#x2F;项目组 · 研究 + 工程开发技术栈: Python, LightGBM, Pandas, NumPyGitHub: https://github.com/sjkncs (私有仓库)  🎯 项目背景本项目聚焦Kronos模型复现与缺陷分析，从理论+实践维度指出其系统性问题，并构建完整的量化策略系统。 核心问题分析发现Kronos模型存在四大系统性问题：  Token化信息丢失 - 数据预处理导致关键信息损失 合约特异性缺失 - 未考虑不同合约的特性差异 主动特征工程缺位 - 缺乏针对性的特征构建 交易风控缺失 - 风险管理机制不完善  实际案例 2023年3月行情踏空 IC500胜率降至45% 最大回撤达-61.3%   🛠️ 系统架构1. 高频因子引擎构建了5大类60+因子： 123456789101112131415161718192021222324class FactorEngine:    def __init__(self):        self.factors ...</div></div></div></a><a class="pagination-related" href="/2025/07/20/emobuy-platform/" title="EmoBuy - 情绪消费平台"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/cover3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">EmoBuy - 情绪消费平台</div></div><div class="info-2"><div class="info-item-1">🛍️ EmoBuy - 情绪消费平台 项目时间: 2025年7月项目类型: 创新项目技术栈: Python, Flask, React, TensorFlowGitHub: https://github.com/sjkncs/emobuy  📋 项目概述EmoBuy是一个创新的情绪消费平台，通过识别用户的情绪状态，智能推荐符合当前心情的商品，提供个性化的购物体验。 项目链接:  🔗 GitHub仓库: https://github.com/sjkncs/emobuy 🌐 在线演示: 开发中   💡 创新理念核心概念情绪驱动消费 - 不同的情绪状态会影响人们的购买决策。EmoBuy通过识别用户情绪，推荐最适合当前心情的商品。 应用场景 开心时 - 推荐分享类、社交类商品 压力大时 - 推荐放松、解压类商品 伤心时 - 推荐治愈系、安慰类商品 兴奋时 - 推荐冒险、挑战类商品   🛠️ 技术架构系统架构图12345678910用户端 (React)    ↓API网关 (Flask)    ↓├─ 情绪识别模块 (TensorFlow)├─ 推荐引擎 (协同过滤)├─ 商...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/loading.gif" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yangting SONG</div><div class="author-info-description">HIT(SZ) | Urban Planning | AI Development · Quant Trading · Full Stack</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sjkncs"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/sjkncs" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2797660051@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tel:188-5600-8931" target="_blank" title="电话"><i class="fas fa-phone"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">AI-Driven Web Development | 150+ Hours Volunteer Service | Award Winner | Open Source Contributor</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%97%BA%EF%B8%8F-%E6%97%85%E5%BF%86%E6%82%A0%E7%84%B6-SmartTravel-%E6%99%BA%E6%85%A7%E6%97%85%E6%B8%B8%E5%BA%94%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">🗺️ 旅忆悠然 (SmartTravel) 智慧旅游应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%B1-%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">📱 项目概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.1.1.</span> <span class="toc-text">开发平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.2.</span> <span class="toc-text">项目定位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%A0%B8%E5%BF%83%E7%97%9B%E7%82%B9%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.2.</span> <span class="toc-text">🎯 核心痛点与解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%97%9B%E7%82%B9%E4%B8%80%EF%BC%9A%E4%BF%A1%E6%81%AF%E6%9B%B4%E6%96%B0%E6%BB%9E%E5%90%8E"><span class="toc-number">1.2.1.</span> <span class="toc-text">痛点一：信息更新滞后</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%97%9B%E7%82%B9%E4%BA%8C%EF%BC%9A%E6%8A%A5%E5%90%8D%E6%B5%81%E7%A8%8B%E7%B9%81%E7%90%90"><span class="toc-number">1.2.2.</span> <span class="toc-text">痛点二：报名流程繁琐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%97%9B%E7%82%B9%E4%B8%89%EF%BC%9A%E5%AE%9A%E4%BD%8D%E4%B8%8D%E7%B2%BE%E5%87%86"><span class="toc-number">1.2.3.</span> <span class="toc-text">痛点三：定位不精准</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%A8-%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="toc-number">1.3.</span> <span class="toc-text">🎨 核心功能模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A6%96%E9%A1%B5%E4%BF%A1%E6%81%AF%E6%B5%81"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 首页信息流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 活动报名系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%99%BA%E8%83%BD%E5%9C%B0%E5%9B%BE%E5%AF%BC%E8%88%AA"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 智能地图导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%85%92%E5%BA%97%E9%A2%84%E8%AE%A2%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. 酒店预订系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%99%AF%E7%82%B9%E8%AE%B2%E8%A7%A3%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.3.5.</span> <span class="toc-text">5. 景点讲解服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83"><span class="toc-number">1.3.6.</span> <span class="toc-text">6. 个人中心</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A7-%E6%8A%80%E6%9C%AF%E7%89%B9%E8%89%B2"><span class="toc-number">1.4.</span> <span class="toc-text">🔧 技术特色</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-HarmonyOS%E7%94%9F%E6%80%81%E9%9B%86%E6%88%90"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. HarmonyOS生态集成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8D%8E%E4%B8%BA%E6%9C%8D%E5%8A%A1%E9%9B%86%E6%88%90"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 华为服务集成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ArkUI%E5%8A%A8%E7%94%BB%E7%89%B9%E6%95%88"><span class="toc-number">1.4.3.</span> <span class="toc-text">3. ArkUI动画特效</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E9%A1%B9%E7%9B%AE%E6%88%90%E6%9E%9C"><span class="toc-number">1.5.</span> <span class="toc-text">📊 项目成果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E5%AE%8C%E6%88%90%E5%BA%A6"><span class="toc-number">1.5.1.</span> <span class="toc-text">功能完成度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-number">1.5.2.</span> <span class="toc-text">性能指标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%93-%E9%A1%B9%E7%9B%AE%E6%94%B6%E8%8E%B7"><span class="toc-number">1.6.</span> <span class="toc-text">🎓 项目收获</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E8%83%BD%E5%8A%9B"><span class="toc-number">1.6.1.</span> <span class="toc-text">技术能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C"><span class="toc-number">1.6.2.</span> <span class="toc-text">团队协作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%AE-%E6%9C%AA%E6%9D%A5%E8%A7%84%E5%88%92"><span class="toc-number">1.7.</span> <span class="toc-text">🔮 未来规划</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/20/ai-news-platform/" title="AI每日新闻聚合平台 - Insight Pro"><img src="/img/loading.gif" data-lazy-src="/img/insight%20pro.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AI每日新闻聚合平台 - Insight Pro"/></a><div class="content"><a class="title" href="/2025/12/20/ai-news-platform/" title="AI每日新闻聚合平台 - Insight Pro">AI每日新闻聚合平台 - Insight Pro</a><time datetime="2025-12-20T02:00:00.000Z" title="发表于 2025-12-20 10:00:00">2025-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/15/quant-trading-system/" title="基于深度学习的智能金融综合服务系统"><img src="/img/loading.gif" data-lazy-src="/img/%E9%87%91%E8%9E%8D%E6%96%87%E6%9C%AC%E6%99%BA%E8%83%BD%E5%88%86%E6%9E%90.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于深度学习的智能金融综合服务系统"/></a><div class="content"><a class="title" href="/2025/11/15/quant-trading-system/" title="基于深度学习的智能金融综合服务系统">基于深度学习的智能金融综合服务系统</a><time datetime="2025-11-15T06:00:00.000Z" title="发表于 2025-11-15 14:00:00">2025-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/10/harmonyos-travel-app/" title="旅忆悠然 (SmartTravel) 智慧旅游应用"><img src="/img/loading.gif" data-lazy-src="/img/smart%20travel.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="旅忆悠然 (SmartTravel) 智慧旅游应用"/></a><div class="content"><a class="title" href="/2025/11/10/harmonyos-travel-app/" title="旅忆悠然 (SmartTravel) 智慧旅游应用">旅忆悠然 (SmartTravel) 智慧旅游应用</a><time datetime="2025-11-10T08:00:00.000Z" title="发表于 2025-11-10 16:00:00">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/20/emobuy-platform/" title="EmoBuy - 情绪消费平台"><img src="/img/loading.gif" data-lazy-src="/img/cover3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="EmoBuy - 情绪消费平台"/></a><div class="content"><a class="title" href="/2025/07/20/emobuy-platform/" title="EmoBuy - 情绪消费平台">EmoBuy - 情绪消费平台</a><time datetime="2025-07-20T06:00:00.000Z" title="发表于 2025-07-20 14:00:00">2025-07-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/computer-vision-2025/" title="2025计算机视觉课程项目"><img src="/img/loading.gif" data-lazy-src="/img/cover2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025计算机视觉课程项目"/></a><div class="content"><a class="title" href="/2025/07/15/computer-vision-2025/" title="2025计算机视觉课程项目">2025计算机视觉课程项目</a><time datetime="2025-07-15T02:00:00.000Z" title="发表于 2025-07-15 10:00:00">2025-07-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Yangting SONG</span></div><div class="footer_custom_text">By Yangting SONG | Harbin Institute of Technology (Shenzhen)</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><div class="aplayer" data-id="2829883691" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-theme="#49b1f5" data-order="random" data-preload="auto" data-listmaxheight="200px"></div></div></body></html>
