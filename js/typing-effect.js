@@ -17,8 +17,8 @@ function initTypingEffect() {
                            document.querySelector('.site-subtitle');
     
     if (titleElement) {
-      const title = '追云之帆';
-      const subtitle = '不如归去，下帝钩';
+      const title = 'Yangting SONG';
+      const subtitle = 'Code with passion, create with purpose';
       
       titleElement.textContent = '';
       if (subtitleElement) subtitleElement.textContent = '';
