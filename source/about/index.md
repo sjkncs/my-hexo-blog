@@ -1,27 +1,25 @@
 ---
-title: 关于我
-date: 2025-01-08
+title: 关于�?date: 2025-01-08
 type: "about"
 comments: false
 ---
 
 <div class="about-header" style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; margin-bottom: 40px; position: relative; overflow: hidden;">
   <div style="position: absolute; top: 20px; right: 20px;">
-    <img src="/img/ferris.gif" alt="动图" style="width: 60px; opacity: 0.6;">
+    <img src="/my-hexo-blog/img/ferris.gif" alt="动图" style="width: 60px; opacity: 0.6;">
   </div>
   <h1 style="color: white; font-size: 3em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
     👋 Hi, I'm Yangting SONG
   </h1>
   <p style="color: rgba(255,255,255,0.95); font-size: 1.4em; margin-bottom: 30px;">
-    🌴 <strong>sjkncs</strong> 👨‍💻
-  </p>
+    🌴 <strong>sjkncs</strong> 👨‍�?  </p>
   <div style="color: white; font-size: 1.2em; line-height: 2;">
     <p>🔢 <strong>Mathematics & Optimization</strong> | 🔬 <strong>NLP & CV</strong> | 🤖 <strong>AI For Science</strong></p>
   </div>
   <div style="margin-top: 30px;">
-    <img src="/img/1.gif" alt="音符" style="width: 40px; margin: 0 10px;">
-    <img src="/img/2.gif" alt="音符" style="width: 40px; margin: 0 10px;">
-    <img src="/img/3.gif" alt="音符" style="width: 40px; margin: 0 10px;">
+    <img src="/my-hexo-blog/img/1.gif" alt="音符" style="width: 40px; margin: 0 10px;">
+    <img src="/my-hexo-blog/img/2.gif" alt="音符" style="width: 40px; margin: 0 10px;">
+    <img src="/my-hexo-blog/img/3.gif" alt="音符" style="width: 40px; margin: 0 10px;">
   </div>
 </div>
 
@@ -36,15 +34,12 @@ comments: false
 <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: center;">
   <div>
     <p style="font-size: 1.1em; line-height: 2; color: #333;">
-      嗨，你好，我是 <strong style="color: #667eea;">Yangting SONG (sjkncs)</strong>！
-    </p>
+      嗨，你好，我�?<strong style="color: #667eea;">Yangting SONG (sjkncs)</strong>�?    </p>
     
-- 🎆 **哈尔滨工业大学（深圳）** - 城市规划专业
-- 🔢 对 **数学、数值分析与优化理论** 充满热情，深入研究算法背后的数学原理
-- 🤖 专注于 **人工智能与机器学习** 领域，热衷于通过技术创新改变世界
-- 🧬 探索 **AI+生物信息学** 交叉领域，致力于将智能算法应用于生物医学研究
-- 🚀 立志成为新一代AI开发者，构建更智能、更人性化的未来
-
+- 🎆 **哈尔滨工业大学（深圳�?* - 城市规划专业
+- 🔢 �?**数学、数值分析与优化理论** 充满热情，深入研究算法背后的数学原理
+- 🤖 专注�?**人工智能与机器学�?* 领域，热衷于通过技术创新改变世�?- 🧬 探索 **AI+生物信息�?* 交叉领域，致力于将智能算法应用于生物医学研究
+- 🚀 立志成为新一代AI开发者，构建更智能、更人性化的未�?
 <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #764ba2; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
   <p style="font-style: italic; color: #666; font-size: 1.1em;">
     "Mathematics is the language of nature, optimization is the key to intelligence, and AI+Bio is the future of scientific discovery."
@@ -53,7 +48,7 @@ comments: false
 
   </div>
   <div style="text-align: center;">
-    <img src="/img/work.gif" alt="工作" style="width: 100%; max-width: 300px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <img src="/my-hexo-blog/img/work.gif" alt="工作" style="width: 100%; max-width: 300px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
   </div>
 </div>
 
@@ -93,23 +88,23 @@ comments: false
 - 💬 Ask me about **Mathematics, Optimization, PyTorch, AI Research & Bioinformatics**
 - 📫 How to reach me: **GitHub @sjkncs**
 - 😄 Pronouns: **He/Him**
-- ⚡ Fun fact: **Math enthusiast who believes optimization is the soul of AI and AI+Bio will revolutionize medicine!** 🔢🧬🎆
+- �?Fun fact: **Math enthusiast who believes optimization is the soul of AI and AI+Bio will revolutionize medicine!** 🔢🧬🎆
 
 </div>
 
 ---
 
-## 🛠️ Tech Stack & Tools
+## 🛠�?Tech Stack & Tools
 
 <div style="text-align: center; margin: 40px 0;">
-  <img src="/img/dynamic_1.gif" alt="分隔线" style="width: 200px; margin-bottom: 30px;">
+  <img src="/my-hexo-blog/img/dynamic_1.gif" alt="分隔�? style="width: 200px; margin-bottom: 30px;">
 </div>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 30px 0;">
   <span style="background: #3776ab; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">🐍 PYTHON</span>
   <span style="background: #f7df1e; color: #000; padding: 8px 16px; border-radius: 20px; font-weight: bold;">📜 JAVASCRIPT</span>
   <span style="background: #3178c6; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">📘 TYPESCRIPT</span>
-  <span style="background: #f89820; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">☕ JAVA</span>
+  <span style="background: #f89820; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">�?JAVA</span>
   <span style="background: #00599c; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">⚙️ C++</span>
   <span style="background: #555555; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">🔧 C</span>
   <span style="background: #61dafb; color: #000; padding: 8px 16px; border-radius: 20px; font-weight: bold;">⚛️ REACT</span>
@@ -117,7 +112,7 @@ comments: false
   <span style="background: #e34f26; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">📄 HTML5</span>
   <span style="background: #1572b6; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">🎨 CSS3</span>
   <span style="background: #339933; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">🟢 NODE.JS</span>
-  <span style="background: #000000; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">⚡ EXPRESS.JS</span>
+  <span style="background: #000000; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">�?EXPRESS.JS</span>
   <span style="background: #47a248; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">🍃 MONGODB</span>
   <span style="background: #4479a1; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">🐬 MYSQL</span>
   <span style="background: #336791; color: white; padding: 8px 16px; border-radius: 20px; font-weight: bold;">🐘 POSTGRESQL</span>
@@ -134,7 +129,7 @@ comments: false
 ## 📊 GitHub & Development Stats
 
 <div style="text-align: center; margin: 40px 0;">
-  <img src="/img/3.gif" alt="图表" style="width: 60px; margin-bottom: 20px;">
+  <img src="/my-hexo-blog/img/3.gif" alt="图表" style="width: 60px; margin-bottom: 20px;">
   <p style="color: #999; margin-top: 10px;">
     <a href="https://github.com/sjkncs" target="_blank" style="color: #667eea; text-decoration: none; font-weight: bold;">
       🐙 @sjkncs on GitHub
@@ -316,7 +311,7 @@ comments: false
 
 <div style="margin: 20px 0;">
   <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0; display: flex; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-    <span style="font-size: 2em; margin-right: 15px;">✅</span>
+    <span style="font-size: 2em; margin-right: 15px;">�?/span>
     <div>
       <strong style="color: #667eea;">Advanced ML Coursework</strong>
       <p style="color: #999; margin: 5px 0 0 0; font-size: 0.9em;">Completed with distinction</p>
@@ -324,7 +319,7 @@ comments: false
   </div>
   
   <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0; display: flex; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-    <span style="font-size: 2em; margin-right: 15px;">✅</span>
+    <span style="font-size: 2em; margin-right: 15px;">�?/span>
     <div>
       <strong style="color: #764ba2;">AI Project Portfolio</strong>
       <p style="color: #999; margin: 5px 0 0 0; font-size: 0.9em;">Built diverse ML applications</p>
@@ -332,7 +327,7 @@ comments: false
   </div>
   
   <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0; display: flex; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-    <span style="font-size: 2em; margin-right: 15px;">✅</span>
+    <span style="font-size: 2em; margin-right: 15px;">�?/span>
     <div>
       <strong style="color: #4facfe;">Technical Writing</strong>
       <p style="color: #999; margin: 5px 0 0 0; font-size: 0.9em;">Shared knowledge through blogs/articles</p>
@@ -340,7 +335,7 @@ comments: false
   </div>
   
   <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0; display: flex; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-    <span style="font-size: 2em; margin-right: 15px;">✅</span>
+    <span style="font-size: 2em; margin-right: 15px;">�?/span>
     <div>
       <strong style="color: #f093fb;">Community Engagement</strong>
       <p style="color: #999; margin: 5px 0 0 0; font-size: 0.9em;">Active in AI/ML communities</p>
@@ -348,7 +343,7 @@ comments: false
   </div>
   
   <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0; display: flex; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
-    <span style="font-size: 2em; margin-right: 15px;">✅</span>
+    <span style="font-size: 2em; margin-right: 15px;">�?/span>
     <div>
       <strong style="color: #43e97b;">Industry Readiness</strong>
       <p style="color: #999; margin: 5px 0 0 0; font-size: 0.9em;">Prepared for professional challenges</p>
@@ -378,12 +373,11 @@ comments: false
   </div>
   
   <div style="margin-top: 40px;">
-    <img src="/img/ferris.gif" alt="结束" style="width: 80px; opacity: 0.8;">
+    <img src="/my-hexo-blog/img/ferris.gif" alt="结束" style="width: 80px; opacity: 0.8;">
   </div>
   
   <p style="margin-top: 20px; font-size: 1.2em; color: rgba(255,255,255,0.9);">
-    💻✨ Happy Coding! ✨💻
-  </p>
+    💻�?Happy Coding! ✨�?  </p>
 </div>
 
 <style>

@@ -6,18 +6,18 @@ comments: true
 ---
 
 <div class="music-space-header" style="text-align: center; margin: 40px 0;">
-  <img src="/img/ferris.gif" alt="音乐" style="width: 150px; height: 150px; border-radius: 50%; box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4); animation: float 3s ease-in-out infinite;">
+  <img src="/my-hexo-blog/img/ferris.gif" alt="音乐" style="width: 150px; height: 150px; border-radius: 50%; box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4); animation: float 3s ease-in-out infinite;">
   <h1 style="color: #667eea; margin-top: 20px; font-size: 2.5em;">🎵 音乐空间</h1>
 </div>
 
 <div class="music-intro" style="text-align: center; margin: 30px auto; max-width: 800px; font-size: 1.2em; color: #666; line-height: 2;">
-  <img src="/img/1.gif" alt="音符" style="width: 40px; vertical-align: middle; margin: 0 15px;">
+  <img src="/my-hexo-blog/img/1.gif" alt="音符" style="width: 40px; vertical-align: middle; margin: 0 15px;">
   欢迎来到我的音乐世界！这里收录了我最喜欢的歌曲，每一首都有特别的意义。
-  <img src="/img/2.gif" alt="音符" style="width: 40px; vertical-align: middle; margin: 0 15px;">
+  <img src="/my-hexo-blog/img/2.gif" alt="音符" style="width: 40px; vertical-align: middle; margin: 0 15px;">
 </div>
 
 <div style="text-align: center; margin: 40px 0;">
-  <img src="/img/dynamic_1.gif" alt="分隔线" style="width: 200px;">
+  <img src="/my-hexo-blog/img/dynamic_1.gif" alt="分隔线" style="width: 200px;">
 </div>
 
 ---
@@ -25,14 +25,14 @@ comments: true
 ## 🎧 许嵩精选歌单
 
 <div style="text-align: center; margin: 30px 0;">
-  <img src="/img/3.gif" alt="播放" style="width: 60px;">
+  <img src="/my-hexo-blog/img/3.gif" alt="播放" style="width: 60px;">
   <p style="color: #999; margin-top: 15px; font-size: 1.1em;">玫瑰花的葬礼、山水之间、清明雨上等经典歌曲</p>
 </div>
 
 {% meting "308168565" "netease" "playlist" "theme:#667eea" "order:list" "loop:all" "preload:auto" "listmaxheight:400px" %}
 
 <div style="text-align: center; margin: 40px 0;">
-  <img src="/img/dynamic_1.gif" alt="分隔线" style="width: 200px;">
+  <img src="/my-hexo-blog/img/dynamic_1.gif" alt="分隔线" style="width: 200px;">
 </div>
 
 ---
@@ -40,7 +40,7 @@ comments: true
 ## 🌍 欧美音乐精选
 
 <div style="text-align: center; margin: 30px 0;">
-  <img src="/img/work.gif" alt="工作" style="width: 80px; border-radius: 10px;">
+  <img src="/my-hexo-blog/img/work.gif" alt="工作" style="width: 80px; border-radius: 10px;">
   <p style="color: #999; margin-top: 15px; font-size: 1.1em;">流行、电音、摇滚等多种风格</p>
 </div>
 
@@ -98,7 +98,7 @@ comments: true
 ---
 
 <div style="text-align: center; margin: 50px 0;">
-  <img src="/img/ferris.gif" alt="结束" style="width: 80px; opacity: 0.6;">
+  <img src="/my-hexo-blog/img/ferris.gif" alt="结束" style="width: 80px; opacity: 0.6;">
   <p style="color: #999; margin-top: 20px; font-size: 1.2em;">🎵 享受音乐，享受生活 🎵</p>
 </div>
 
