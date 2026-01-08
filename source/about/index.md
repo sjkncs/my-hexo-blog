@@ -7,7 +7,7 @@ comments: false
 
 <div class="about-header" style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; margin-bottom: 40px; position: relative; overflow: hidden;">
   <div style="position: absolute; top: 20px; right: 20px;">
-    <img src="/img/ferris.gif" alt="动图" style="width: 60px; opacity: 0.6;">
+    <img src="/my-hexo-blog/img/ferris.gif" alt="动图" style="width: 60px; opacity: 0.6;">
   </div>
   <h1 style="color: white; font-size: 3em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
     👋 Hi, I'm Yangting SONG
@@ -19,9 +19,9 @@ comments: false
     <p>🔢 <strong>Mathematics & Optimization</strong> | 🔬 <strong>NLP & CV</strong> | 🤖 <strong>AI For Science</strong></p>
   </div>
   <div style="margin-top: 30px;">
-    <img src="/img/1.gif" alt="音符" style="width: 40px; margin: 0 10px;">
-    <img src="/img/2.gif" alt="音符" style="width: 40px; margin: 0 10px;">
-    <img src="/img/3.gif" alt="音符" style="width: 40px; margin: 0 10px;">
+    <img src="/my-hexo-blog/img/1.gif" alt="音符" style="width: 40px; margin: 0 10px;">
+    <img src="/my-hexo-blog/img/2.gif" alt="音符" style="width: 40px; margin: 0 10px;">
+    <img src="/my-hexo-blog/img/3.gif" alt="音符" style="width: 40px; margin: 0 10px;">
   </div>
 </div>
 
