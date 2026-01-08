@@ -53,7 +53,7 @@ comments: false
 
   </div>
   <div style="text-align: center;">
-    <img src="/img/work.gif" alt="工作" style="width: 100%; max-width: 300px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <img src="/my-hexo-blog/img/work.gif" alt="工作" style="width: 100%; max-width: 300px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
   </div>
 </div>
 
@@ -102,7 +102,7 @@ comments: false
 ## 🛠️ Tech Stack & Tools
 
 <div style="text-align: center; margin: 40px 0;">
-  <img src="/img/dynamic_1.gif" alt="分隔线" style="width: 200px; margin-bottom: 30px;">
+  <img src="/my-hexo-blog/img/dynamic_1.gif" alt="分隔线" style="width: 200px; margin-bottom: 30px;">
 </div>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 30px 0;">
@@ -134,7 +134,7 @@ comments: false
 ## 📊 GitHub & Development Stats
 
 <div style="text-align: center; margin: 40px 0;">
-  <img src="/img/3.gif" alt="图表" style="width: 60px; margin-bottom: 20px;">
+  <img src="/my-hexo-blog/img/3.gif" alt="图表" style="width: 60px; margin-bottom: 20px;">
   <p style="color: #999; margin-top: 10px;">
     <a href="https://github.com/sjkncs" target="_blank" style="color: #667eea; text-decoration: none; font-weight: bold;">
       🐙 @sjkncs on GitHub
@@ -378,7 +378,7 @@ comments: false
   </div>
   
   <div style="margin-top: 40px;">
-    <img src="/img/ferris.gif" alt="结束" style="width: 80px; opacity: 0.8;">
+    <img src="/my-hexo-blog/img/ferris.gif" alt="结束" style="width: 80px; opacity: 0.8;">
   </div>
   
   <p style="margin-top: 20px; font-size: 1.2em; color: rgba(255,255,255,0.9);">
