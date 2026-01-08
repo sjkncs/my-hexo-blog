@@ -100,6 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('%cAI-Driven · Web Development · Quantitative Trading', 'color: #667eea; font-size: 16px;');
   console.log('%c欢迎来到我的技术空间！', 'color: #764ba2; font-size: 14px;');
 
+  // 首页标题打字机效果
+  initTypingEffect();
+
   // 音乐播放器初始化
   setTimeout(() => {
     initMusicPlayer();
@@ -164,4 +167,63 @@ if ('loading' in HTMLImageElement.prototype) {
   const script = document.createElement('script');
   script.src = 'https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js';
   document.body.appendChild(script);
+}
+
+// 首页标题打字机效果
+function initTypingEffect() {
+  // 只在首页执行
+  const isHomePage = window.location.pathname === '/my-hexo-blog/' || 
+                     window.location.pathname === '/my-hexo-blog/index.html' ||
+                     window.location.pathname === '/my-hexo-blog';
+  
+  if (!isHomePage) return;
+  
+  // 延迟执行，等待页面元素加载
+  setTimeout(function() {
+    // 查找标题元素 - Butterfly主题的标题在 #site-info 中
+    const siteInfo = document.querySelector('#site-info');
+    if (!siteInfo) return;
+    
+    const titleElement = siteInfo.querySelector('.site-title') || 
+                        siteInfo.querySelector('h1') ||
+                        siteInfo.querySelector('.site-name');
+    const subtitleElement = siteInfo.querySelector('.site-subtitle') || 
+                           siteInfo.querySelector('p');
+    
+    if (titleElement) {
+      const originalTitle = titleElement.textContent;
+      const title = 'Yangting SONG';
+      const subtitle = 'Code with passion, create with purpose';
+      
+      // 清空内容
+      titleElement.textContent = '';
+      if (subtitleElement) subtitleElement.textContent = '';
+      
+      let titleIndex = 0;
+      let subtitleIndex = 0;
+      
+      // 打字机效果函数
+      function typeTitle() {
+        if (titleIndex < title.length) {
+          titleElement.textContent += title.charAt(titleIndex);
+          titleIndex++;
+          setTimeout(typeTitle, 120);
+        } else {
+          // 标题打完后开始打副标题
+          setTimeout(typeSubtitle, 400);
+        }
+      }
+      
+      function typeSubtitle() {
+        if (subtitleElement && subtitleIndex < subtitle.length) {
+          subtitleElement.textContent += subtitle.charAt(subtitleIndex);
+          subtitleIndex++;
+          setTimeout(typeSubtitle, 80);
+        }
+      }
+      
+      // 开始打字
+      setTimeout(typeTitle, 600);
+    }
+  }, 800);
 }
