@@ -1,0 +1,35 @@
+:root { --project-accent: #28685c; }
+html, body { overflow-x: clip; }
+#sidebar #sidebar-menus:not(.open) { display: none; }
+#nav { top: 0; }
+#rightside button { width: 35px; height: 35px; padding: 0; border-radius: 6px; }
+#rightside { overflow: hidden; }
+#rightside:not(.rightside-show) { visibility: hidden; }
+#footer { color: #4a5560; }
+#footer a { color: #28685c; }
+[data-theme="dark"] #footer, [data-theme="dark"] #footer a { color: #d4e4dd; }
+.music-widget { margin: 24px 0; padding: 20px; border: 1px solid var(--light-grey); border-radius: 12px; background: var(--card-bg); }
+.music-widget-heading { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.music-widget svg { width: 24px; height: 24px; flex: none; }
+.music-widget button { margin: 12px 12px 0 0; padding: 8px 16px; color: #fff; background: var(--project-accent); border: 0; border-radius: 6px; cursor: pointer; }
+.music-widget button:disabled { opacity: .55; cursor: wait; }
+.music-widget-status { margin: 10px 0; font-size: .9em; color: var(--font-color); }
+.music-widget .aplayer { margin: 14px 0 0; }
+.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 24px 0; }
+.project-card { padding: 24px; border: 1px solid var(--light-grey); border-radius: 12px; background: var(--card-bg); min-width: 0; }
+.project-card h3 { margin: 0 0 12px; overflow-wrap: anywhere; }
+.project-card p { margin: 10px 0; }
+.project-meta { font-size: .85em; color: var(--font-color); }
+.project-card svg { width: 22px; height: 22px; vertical-align: middle; margin-right: 8px; color: var(--project-accent); }
+#reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--project-accent); z-index: 1001; pointer-events: none; }
+@media (max-width: 768px) {
+  #content-inner { width: calc(100% - 20px); }
+  .project-grid { grid-template-columns: minmax(0, 1fr); }
+  .about-header h1 { font-size: 1.8em !important; }
+  .profile-section { padding: 20px !important; }
+  .profile-section > div[style*="grid"] { grid-template-columns: minmax(0, 1fr) !important; }
+  #article-container img { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
+}
