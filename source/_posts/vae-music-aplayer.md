@@ -1,5 +1,6 @@
 ---
 title: 许嵩音乐精选集 (APlayer版)
+permalink: 2025/01/07/vae-music-aplayer/
 date: 2025-01-07 00:00:00
 updated: 2026-10-14
 tags: [音乐, 许嵩, 歌单, APlayer]

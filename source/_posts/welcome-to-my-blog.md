@@ -1,5 +1,6 @@
 ---
 title: 欢迎来到我的技术空间
+permalink: 2025/01/07/welcome-to-my-blog/
 date: 2025-01-07 00:00:00
 tags:
   - 欢迎
