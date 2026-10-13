@@ -4,8 +4,8 @@
 
 # Site
 title: Yangting SONG
-subtitle: 'AI-Driven · Web Development · Quantitative Trading'
-description: 'Harbin Institute of Technology (Shenzhen) | Urban Planning | AI Developer'
+subtitle: 'AI Engineering · Research Tools · Urban Computing'
+description: 'Yangting SONG | HIT Shenzhen | AI engineering, research workflows and spatial computing'
 keywords: AI Application, Web Development, Quantitative Trading, Data Analysis, Personal Blog
 author: Yangting SONG
 language: zh-CN
@@ -83,7 +83,7 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+updated_option: 'date'
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -109,7 +109,9 @@ deploy:
 # APlayer Configuration
 aplayer:
   meting: true
-  asset_inject: true
-  externalLink: https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.js
-  styleLink: https://cdn.jsdelivr.net/npm/aplayer@latest/dist/APlayer.min.css
-  metingLink: https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js
+  asset_inject: false
+
+search:
+  path: search.xml
+  field: post
+  content: true

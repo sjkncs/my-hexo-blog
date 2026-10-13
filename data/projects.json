@@ -1,0 +1,86 @@
+{
+  "collected_at": "2026-10-13T16:39:56.127Z",
+  "source": "GitHub public repository API",
+  "projects": [
+    {
+      "name": "shenzhen-housing-redevelopment",
+      "html_url": "https://github.com/sjkncs/shenzhen-housing-redevelopment",
+      "description": "Shenzhen housing redevelopment research: citywide data coverage, Luohu case study, spatial audits and event-study diagnostics",
+      "language": "Python",
+      "stargazers_count": 0,
+      "pushed_at": "2026-10-13T16:26:07Z"
+    },
+    {
+      "name": "bili-ai-index",
+      "html_url": "https://github.com/sjkncs/bili-ai-index",
+      "description": "Bilibili AI 学习资源总索引：论文精读 / 课程 / 访谈，20 个账号按内容类型分目录",
+      "language": null,
+      "stargazers_count": 0,
+      "pushed_at": "2026-10-13T03:47:40Z"
+    },
+    {
+      "name": "agentx",
+      "html_url": "https://github.com/sjkncs/agentx",
+      "description": "DeepSeek-native AI coding agent harness - 基于 DeepSeek Prefix-Cache 的 AI 编程 Agent，支持多模型和插件系统",
+      "language": "TypeScript",
+      "stargazers_count": 1,
+      "pushed_at": "2026-09-06T11:51:41Z"
+    },
+    {
+      "name": "dsh-research",
+      "html_url": "https://github.com/sjkncs/dsh-research",
+      "description": "DeepSeek Harness Research Edition (GA) — preset/plugin/desktop research stack with bilingual showcase site",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "pushed_at": "2026-08-30T04:38:31Z"
+    },
+    {
+      "name": "guishan-island-tourism",
+      "html_url": "https://github.com/sjkncs/guishan-island-tourism",
+      "description": "珠海桂山岛文旅体验分析 - 多平台NLP+高德云图AOI客流画像",
+      "language": "Python",
+      "stargazers_count": 0,
+      "pushed_at": "2026-07-20T15:22:01Z"
+    },
+    {
+      "name": "paper-plot-skills",
+      "html_url": "https://github.com/sjkncs/paper-plot-skills",
+      "description": "Publication-quality academic figure reproduction tools: plot-from-data (data → styled chart) and plot-from-image (image → reproduced figure)",
+      "language": "Python",
+      "stargazers_count": 2,
+      "pushed_at": "2026-07-06T09:53:56Z"
+    },
+    {
+      "name": "smarttravel-qingyuan",
+      "html_url": "https://github.com/sjkncs/smarttravel-qingyuan",
+      "description": "AI-Powered Rural Tourism Platform | AI驱动的乡村旅游数字化解决方案 - Next.js 16 + React 19 + Electron + Prisma + RAG",
+      "language": "TypeScript",
+      "stargazers_count": 0,
+      "pushed_at": "2026-04-25T06:59:27Z"
+    },
+    {
+      "name": "gui-agent-framework",
+      "html_url": "https://github.com/sjkncs/gui-agent-framework",
+      "description": "Modular block-based GUI automation framework combining VLM vision, LLM planning, Playwright browser control, and pyautogui desktop automation. Includes food review crawler with multi-agent collaboration and MCP server.",
+      "language": "Python",
+      "stargazers_count": 0,
+      "pushed_at": "2026-04-07T17:12:47Z"
+    },
+    {
+      "name": "Ding-AI",
+      "html_url": "https://github.com/sjkncs/Ding-AI",
+      "description": "AI-powered PPT generation tool / AI 驱动的 PPT 自动生成工具",
+      "language": "TypeScript",
+      "stargazers_count": 3,
+      "pushed_at": "2026-02-09T11:55:10Z"
+    },
+    {
+      "name": "PandaQuantFlow",
+      "html_url": "https://github.com/sjkncs/PandaQuantFlow",
+      "description": "AI-driven quantitative factor platform",
+      "language": "Python",
+      "stargazers_count": 3,
+      "pushed_at": "2026-01-15T09:04:58Z"
+    }
+  ]
+}

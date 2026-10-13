@@ -12,6 +12,6 @@ public/
 *~
 .deploy_git/
 .npmrc
-package-lock.json
+.preview/
 yarn.lock
 pnpm-lock.yaml

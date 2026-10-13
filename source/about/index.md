@@ -1,6 +1,7 @@
 ---
 title: 关于我
 date: 2025-01-08
+updated: 2026-10-14
 type: "about"
 comments: false
 ---
@@ -68,19 +69,19 @@ comments: false
 <div class="focus-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; padding: 25px; color: white; transition: transform 0.3s; box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);">
   <div style="font-size: 2.5em; margin-bottom: 15px;">🔭</div>
   <h3 style="color: white; margin-bottom: 15px;">Working On</h3>
-  <p style="line-height: 1.8;">Large Language Models, Optimization Algorithms & AI for Biology</p>
+  <p style="line-height: 1.8;">AI Agents, Research Workflows & Urban Computing</p>
 </div>
 
 <div class="focus-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 15px; padding: 25px; color: white; transition: transform 0.3s; box-shadow: 0 5px 20px rgba(240, 147, 251, 0.3);">
   <div style="font-size: 2.5em; margin-bottom: 15px;">🌱</div>
   <h3 style="color: white; margin-bottom: 15px;">Learning</h3>
-  <p style="line-height: 1.8;">Numerical Analysis, Convex Optimization, Deep Learning Theory & Bioinformatics</p>
+  <p style="line-height: 1.8;">Numerical Analysis, Optimization, Machine Learning & Spatial Data</p>
 </div>
 
 <div class="focus-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 15px; padding: 25px; color: white; transition: transform 0.3s; box-shadow: 0 5px 20px rgba(79, 172, 254, 0.3);">
   <div style="font-size: 2.5em; margin-bottom: 15px;">👯</div>
   <h3 style="color: white; margin-bottom: 15px;">Collaborate</h3>
-  <p style="line-height: 1.8;">AI/ML, Mathematical Computing & Computational Biology Projects</p>
+  <p style="line-height: 1.8;">AI Tools, Scientific Computing & Spatial Analysis Projects</p>
 </div>
 
 </div>

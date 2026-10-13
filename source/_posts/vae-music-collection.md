@@ -319,27 +319,38 @@ function loadSong(index) {
   });
 }
 
+async function playAudio() {
+  try {
+    await audio.play();
+    playBtn.textContent = '⏸';
+    isPlaying = true;
+  } catch {
+    playBtn.textContent = '▶';
+    isPlaying = false;
+    lyricsScroll.textContent = '音频暂时无法播放，请使用音乐空间中的原站链接收听。';
+  }
+}
+
 function togglePlay() {
   if (isPlaying) {
     audio.pause();
     playBtn.textContent = '▶';
   } else {
-    audio.play();
-    playBtn.textContent = '⏸';
+    playAudio();
   }
-  isPlaying = !isPlaying;
+  if (audio.paused) isPlaying = false;
 }
 
 function prevSong() {
   currentIndex = (currentIndex - 1 + songs.length) % songs.length;
   loadSong(currentIndex);
-  if (isPlaying) audio.play();
+  if (isPlaying) playAudio();
 }
 
 function nextSong() {
   currentIndex = (currentIndex + 1) % songs.length;
   loadSong(currentIndex);
-  if (isPlaying) audio.play();
+  if (isPlaying) playAudio();
 }
 
 function formatTime(seconds) {
@@ -353,7 +364,7 @@ prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 
 audio.addEventListener('timeupdate', () => {
-  const percent = (audio.currentTime / audio.duration) * 100;
+  const percent = Number.isFinite(audio.duration) && audio.duration > 0 ? (audio.currentTime / audio.duration) * 100 : 0;
   progressBar.style.width = `${percent}%`;
   currentTime.textContent = formatTime(audio.currentTime);
 });
@@ -366,9 +377,7 @@ document.querySelectorAll('.song-entry').forEach((entry, index) => {
   entry.addEventListener('click', () => {
     currentIndex = index;
     loadSong(index);
-    audio.play();
-    playBtn.textContent = '⏸';
-    isPlaying = true;
+    playAudio();
   });
 });
 

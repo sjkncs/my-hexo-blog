@@ -4,7 +4,9 @@
   "description": "Personal documentation website built with Hexo and Butterfly theme",
   "main": "index.js",
   "scripts": {
-    "build": "hexo generate",
+    "build": "hexo generate && node tools/check-site.cjs",
+    "sync": "node tools/sync-projects.cjs",
+    "test": "node --test tests/*.test.cjs",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
@@ -14,7 +16,8 @@
     "version": "7.3.0"
   },
   "dependencies": {
-    "hexo": "^7.3.0",
+    "hexo": "7.3.0",
+    "hexo-generator-searchdb": "1.5.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-index-pin-top": "^0.2.2",
@@ -24,8 +27,10 @@
     "hexo-renderer-pug": "^3.0.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
-    "hexo-tag-aplayer": "^3.0.4",
-    "hexo-theme-butterfly": "^5.4.3"
+    "hexo-tag-aplayer": "3.0.4",
+    "aplayer": "1.10.1",
+    "cheerio": "1.0.0",
+    "hexo-theme-butterfly": "5.5.3"
   },
   "keywords": [
     "hexo",
@@ -33,6 +38,6 @@
     "documentation",
     "butterfly"
   ],
-  "author": "Your Name",
+  "author": "Yangting SONG",
   "license": "MIT"
 }

@@ -4,6 +4,7 @@
 # Navigation menu
 menu:
   首页: / || fas fa-home
+  项目动态: /projects/ || fas fa-code-branch
   音乐||fas fa-music:
     音乐空间: /music/ || fas fa-compact-disc
     音乐播放器: /music-player/ || fas fa-play-circle
@@ -43,12 +44,17 @@ avatar:
 
 # Top image
 index_img: /img/bg.jpg
-default_top_img: /img/default_bg.jpg
-archive_img: /img/archive_bg.jpg
-tag_img: /img/tag_bg.jpg
-category_img: /img/category_bg.jpg
+default_top_img: /img/bg.jpg
+archive_img: /img/bg.jpg
+tag_img: /img/bg.jpg
+category_img: /img/bg.jpg
+favicon: /img/favicon.svg
 
 # Cover
+index_post_content:
+  method: 2
+  length: 180
+
 cover:
   index_enable: true
   aside_enable: true
@@ -72,7 +78,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description: HIT(SZ) | Urban Planning | AI Development · Quant Trading · Full Stack
+    description: HIT(SZ) | AI Engineering · Research Tools · Urban Computing
     button:
       enable: true
       icon: fab fa-github
@@ -80,7 +86,7 @@ aside:
       link: https://github.com/sjkncs
   card_announcement:
     enable: true
-    content: AI-Driven Web Development | 150+ Hours Volunteer Service | Award Winner | Open Source Contributor
+    content: AI 工具、科研工作流与城市空间数据。公开项目动态每日同步，文章保留原始发布时间。
   card_recent_post:
     enable: true
     limit: 5
@@ -134,10 +140,13 @@ background: /img/bg.jpg
 footer_bg: true
 
 # Search
-local_search:
-  enable: true
-  preload: false
-  CDN:
+search:
+  use: local_search
+  placeholder: 搜索文章
+  local_search:
+    preload: false
+    top_n_per_article: 1
+    unescape: false
 
 # Math
 mathjax:
@@ -182,7 +191,8 @@ pangu:
 lazyload:
   enable: true
   field: site
-  placeholder: /img/loading.gif
+  placeholder: /img/loading.svg
+  native: true
   blur: false
 
 # Preloader
@@ -228,11 +238,13 @@ rightside_item_order:
 # Inject
 inject:
   head:
-    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+    - <link rel="stylesheet" href="/my-hexo-blog/vendor/APlayer.min.css">
+    - <link rel="stylesheet" href="/my-hexo-blog/css/custom.css">
+    - <link rel="stylesheet" href="/my-hexo-blog/css/site-fixes.css">
   bottom:
-    - <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
-    - <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
-    - <div class="aplayer" data-id="2829883691" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-theme="#49b1f5" data-order="random" data-preload="auto" data-listmaxheight="200px"></div>
+    - <script defer src="/my-hexo-blog/vendor/APlayer.min.js"></script>
+    - <script defer src="/my-hexo-blog/js/custom.js"></script>
+    - <script defer src="/my-hexo-blog/js/music.js"></script>
 
 # CDN
 CDN:
