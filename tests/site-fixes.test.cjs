@@ -37,3 +37,11 @@ test('music tags nested in HTML are rendered and no longer leak into visible tex
   assert.match(data.content, /class="music-widget"/);
   assert.doesNotMatch(data.excerpt, /\{% meting|music-widget/);
 });
+test('generated project page has its own route and title instead of the home layout', () => {
+  const route = generators['project-feed']();
+  assert.equal(route.path, 'projects/index.html');
+  assert.equal(route.data.path, route.path);
+  assert.equal(route.data.layout, 'page');
+  assert.equal(route.data.title, '公开项目动态');
+  assert.match(route.data.content, /github.com/);
+});
