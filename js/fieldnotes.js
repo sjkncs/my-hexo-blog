@@ -18,12 +18,13 @@
   menuButton.addEventListener('click', () => { const open = menu.classList.toggle('open'); menuButton.setAttribute('aria-expanded',String(open)); });
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
   document.addEventListener('click', e => { if (!e.target.closest('.site-header')) closeMenu(); });
-  document.addEventListener('keydown', e => { if(e.key==='Escape'){closeMenu();if(dialog.open)dialog.close();} });
+  document.addEventListener('keydown', e => { if(e.key==='Escape'){closeMenu();if(dialog.open)dialog.close();if(viewer.open)viewer.close();} });
 
   const dialog = document.querySelector('#site-search');
   const input = document.querySelector('#global-search-input');
   const status = document.querySelector('#search-status');
   const results = document.querySelector('#search-results');
+  const retry = document.querySelector('#search-retry');
   let searchData, loading, queryVersion=0;
   const openSearch = () => { closeMenu();dialog.showModal();input.focus();if(input.value) search(); };
   document.querySelectorAll('[data-open-search]').forEach(b => b.addEventListener('click', openSearch));
@@ -33,11 +34,23 @@
     const version = ++queryVersion;
     const query=input.value.trim().toLocaleLowerCase();
     results.replaceChildren();
+    retry.hidden=true;
     if(!query){status.textContent='输入关键词';return;}
     status.textContent='正在搜索…';
     try {
       if(!searchData){
-        loading ||= fetch(root+'search-index.json').then(r=>{if(!r.ok)throw new Error('search');return r.json();}).then(data=>{searchData=data;return data;}).catch(e=>{loading=null;throw e;});
+        if(!loading) {
+          const controller=new AbortController();
+          const timeout=setTimeout(()=>controller.abort(),10000);
+          loading=fetch(root+'search-index.json',{signal:controller.signal})
+            .then(r=>{if(!r.ok)throw new Error('search');return r.json();})
+            .then(data=>{
+              if(!Array.isArray(data)||!data.every(p=>typeof p.title==='string'&&typeof p.content==='string'&&typeof p.url==='string'&&p.url.startsWith(root)&&Array.isArray(p.tags)))throw new Error('invalid-search');
+              searchData=data;return data;
+            })
+            .catch(e=>{loading=null;throw e;})
+            .finally(()=>clearTimeout(timeout));
+        }
         await loading;
       }
       if(version!==queryVersion)return;
@@ -47,9 +60,49 @@
         const li=document.createElement('li'),a=document.createElement('a'),h=document.createElement('h3'),p=document.createElement('p');
         a.href=post.url;h.textContent=post.title;p.textContent=post.summary || post.content.slice(0,100);a.append(h,p);li.append(a);results.append(li);
       }
-    } catch {if(version===queryVersion)status.textContent='搜索数据暂时不可用，请重试。';}
+    } catch {if(version===queryVersion){status.textContent='搜索数据暂时不可用，请重试。';retry.hidden=false;}}
   }
   input.addEventListener('input',search);
+  retry.addEventListener('click',search);
+
+  const viewer=document.querySelector('#image-viewer');
+  const viewerImage=document.querySelector('#viewer-image');
+  const stage=viewer.querySelector('.image-stage');
+  const zoomButton=document.querySelector('#image-zoom');
+  const imageStatus=document.querySelector('#image-status');
+  let imageTrigger;
+  function resetImageZoom() {
+    stage.classList.remove('is-zoomed');stage.scrollTo(0,0);
+    zoomButton.setAttribute('aria-pressed','false');
+    zoomButton.title='查看原始尺寸';zoomButton.setAttribute('aria-label','查看原始尺寸');
+    zoomButton.replaceChildren(document.querySelector('#image-zoom-in-icon').content.cloneNode(true));
+  }
+  zoomButton.addEventListener('click',()=>{
+    const zoomed=stage.classList.toggle('is-zoomed');
+    zoomButton.setAttribute('aria-pressed',String(zoomed));
+    zoomButton.title=zoomed?'适应窗口':'查看原始尺寸';zoomButton.setAttribute('aria-label',zoomButton.title);
+    zoomButton.replaceChildren(document.querySelector(zoomed?'#image-zoom-out-icon':'#image-zoom-in-icon').content.cloneNode(true));
+  });
+  document.querySelector('#image-close').addEventListener('click',()=>viewer.close());
+  viewer.addEventListener('close',()=>{resetImageZoom();if(imageTrigger)imageTrigger.focus({preventScroll:true});});
+  viewer.addEventListener('click',e=>{const box=viewer.getBoundingClientRect();if(e.clientX<box.left||e.clientX>box.right||e.clientY<box.top||e.clientY>box.bottom)viewer.close();});
+  viewerImage.addEventListener('load',()=>{imageStatus.textContent='';zoomButton.disabled=false;});
+  viewerImage.addEventListener('error',()=>{imageStatus.textContent='图片暂时无法载入，可通过原图链接查看。';zoomButton.disabled=true;});
+  document.querySelectorAll('.article-cover img,.prose img').forEach(img=>{
+    if(img.closest('a,button,.music-widget')||img.classList.contains('about-portrait'))return;
+    const button=document.createElement('button');button.type='button';button.className='image-trigger';
+    button.title='放大图片';button.setAttribute('aria-label','放大图片：'+(img.alt||'文章图片'));
+    img.before(button);button.append(img);
+    button.addEventListener('click',()=>{
+      imageTrigger=button;resetImageZoom();
+      const src=img.currentSrc||img.src;
+      document.querySelector('#image-title').textContent=img.alt||'文章图片';
+      document.querySelector('#image-original').href=src;
+      viewerImage.alt=img.alt||'文章图片';imageStatus.textContent='正在加载图片…';zoomButton.disabled=true;
+      viewerImage.src=src;viewer.showModal();
+      if(viewerImage.complete&&viewerImage.naturalWidth){imageStatus.textContent='';zoomButton.disabled=false;}
+    });
+  });
 
   const grid=document.querySelector('#project-grid');
   if(grid) {

@@ -6,6 +6,8 @@
   <meta name="color-scheme" content="light dark">
   <title>Yangting SONG</title>
   <meta name="description" content="Yangting SONG | HIT Shenzhen | AI engineering, research workflows and spatial computing">
+  
+  <link rel="alternate" type="application/rss+xml" title="Yangting SONG" href="/my-hexo-blog/feed.xml">
   <link rel="canonical" href="https://sjkncs.github.io/my-hexo-blog/tags/深圳/index.html">
   <link rel="icon" href="/my-hexo-blog/img/favicon.svg" type="image/svg+xml">
   <script>try{const t=localStorage.getItem('fieldnotes-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}</script>
@@ -114,7 +116,7 @@
 </header>
 
   <main id="main-content">
-<div class="site-container archive-page"><header class="page-heading"><span class="eyebrow">THE WRITING INDEX</span><h1>深圳<span class="heading-period">.</span></h1><p>工程记录、研究笔记，与一些生活片段。</p></header><nav class="archive-categories" aria-label="文章分类"><a href="/my-hexo-blog/archives/">全部</a><a href="/my-hexo-blog/categories/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86/">项目经历<span>5</span></a><a href="/my-hexo-blog/categories/%E9%9F%B3%E4%B9%90%E5%88%86%E4%BA%AB/">音乐分享<span>4</span></a><a href="/my-hexo-blog/categories/%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/">研究笔记<span>1</span></a><a href="/my-hexo-blog/categories/%E6%97%85%E8%A1%8C%E6%B8%B8%E8%AE%B0/">旅行游记<span>1</span></a><a href="/my-hexo-blog/categories/%E5%85%AC%E5%91%8A/">公告<span>1</span></a></nav><div class="writing-list"><a class="writing-row" href="/my-hexo-blog/2026/10/14/shenzhen-research-notes/"><time>2026.10.14</time><span>深圳住宅更新：先把数据与研究边界讲清楚</span><span class="writing-category">研究笔记</span><!-- @license lucide-static v1.56.0 - ISC -->
+<div class="site-container archive-page"><header class="page-heading"><span class="eyebrow">THE WRITING INDEX</span><h1>深圳<span class="heading-period">.</span></h1><p>工程记录、研究笔记，与一些生活片段。</p></header><nav class="archive-categories" aria-label="文章分类"><a href="/my-hexo-blog/archives/">全部</a><a href="/my-hexo-blog/categories/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86/" >项目经历<span>5</span></a><a href="/my-hexo-blog/categories/%E9%9F%B3%E4%B9%90%E5%88%86%E4%BA%AB/" >音乐分享<span>4</span></a><a href="/my-hexo-blog/categories/%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/" >研究笔记<span>1</span></a><a href="/my-hexo-blog/categories/%E5%85%AC%E5%91%8A/" >公告<span>1</span></a><a href="/my-hexo-blog/categories/%E6%97%85%E8%A1%8C%E6%B8%B8%E8%AE%B0/" >旅行游记<span>1</span></a></nav><div class="writing-list"><a class="writing-row" href="/my-hexo-blog/2026/10/14/shenzhen-research-notes/"><time>2026.10.14</time><span>深圳住宅更新：先把数据与研究边界讲清楚</span><span class="writing-category">研究笔记</span><!-- @license lucide-static v1.56.0 - ISC -->
 <svg
   class="lucide lucide-arrow-up-right"
   xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +227,84 @@
 </svg>
 <input id="global-search-input" type="search" placeholder="输入文章、标签或关键词" autocomplete="off"></label>
     <p id="search-status" role="status">输入关键词</p>
+    <button type="button" class="text-link" id="search-retry" hidden>重试搜索 <!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-rotate-ccw"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+  <path d="M3 3v5h5" />
+</svg>
+</button>
     <ul id="search-results"></ul>
+  </dialog>
+  <dialog class="image-dialog" id="image-viewer" aria-labelledby="image-title">
+    <header class="image-viewer-head"><h2 id="image-title">图片</h2><div class="image-viewer-tools">
+      <button class="icon-button" type="button" id="image-zoom" title="查看原始尺寸" aria-label="查看原始尺寸" aria-pressed="false"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-zoom-in"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" x2="16.65" y1="21" y2="16.65" />
+  <line x1="11" x2="11" y1="8" y2="14" />
+  <line x1="8" x2="14" y1="11" y2="11" />
+</svg>
+</button>
+      <a class="icon-button" id="image-original" target="_blank" rel="noopener noreferrer" title="打开原图" aria-label="打开原图"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-external-link"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+</svg>
+</a>
+      <button class="icon-button" type="button" id="image-close" title="关闭图片" aria-label="关闭图片"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-x"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M18 6 6 18" />
+  <path d="m6 6 12 12" />
+</svg>
+</button>
+    </div></header>
+    <div class="image-stage"><img id="viewer-image" alt=""></div>
+    <p class="image-status" id="image-status" role="status"></p>
   </dialog>
   <div id="reading-progress" aria-hidden="true"></div>
   <template id="code-copy-icon"><!-- @license lucide-static v1.56.0 - ISC -->
@@ -259,6 +338,43 @@
   stroke-linejoin="round"
 >
   <path d="M20 6 9 17l-5-5" />
+</svg>
+</template>
+  <template id="image-zoom-in-icon"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-zoom-in"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" x2="16.65" y1="21" y2="16.65" />
+  <line x1="11" x2="11" y1="8" y2="14" />
+  <line x1="8" x2="14" y1="11" y2="11" />
+</svg>
+</template>
+  <template id="image-zoom-out-icon"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-zoom-out"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" x2="16.65" y1="21" y2="16.65" />
+  <line x1="8" x2="14" y1="11" y2="11" />
 </svg>
 </template>
   <button type="button" class="icon-button back-top" id="back-top" title="回到顶部" aria-label="回到顶部"><!-- @license lucide-static v1.56.0 - ISC -->

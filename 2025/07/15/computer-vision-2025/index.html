@@ -6,6 +6,8 @@
   <meta name="color-scheme" content="light dark">
   <title>2025计算机视觉课程项目 · Yangting SONG</title>
   <meta name="description" content="计算机视觉课程综合项目实践">
+  
+  <link rel="alternate" type="application/rss+xml" title="Yangting SONG" href="/my-hexo-blog/feed.xml">
   <link rel="canonical" href="https://sjkncs.github.io/my-hexo-blog/2025/07/15/computer-vision-2025/">
   <link rel="icon" href="/my-hexo-blog/img/favicon.svg" type="image/svg+xml">
   <script>try{const t=localStorage.getItem('fieldnotes-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}</script>
@@ -149,17 +151,17 @@
 </svg>
 </button><span id="copy-status" role="status"></span></div></header>
   <figure class="article-cover"><img src="/my-hexo-blog/img/cover2.jpg" alt="2025计算机视觉课程项目"></figure>
-  <div class="article-layout"><article id="article-container" class="prose"><h1 id="👁️-2025计算机视觉课程项目">2025计算机视觉课程项目</h1><blockquote>
+  <div class="article-layout"><article id="article-container" class="prose"><h1 id="👁️-2025计算机视觉课程项目"><a href="#👁️-2025计算机视觉课程项目" class="headerlink" title="👁️ 2025计算机视觉课程项目"></a> 2025计算机视觉课程项目</h1><blockquote>
 <p>项目时间: 2025年7月<br>项目类型: 课程项目<br>技术栈: Python, OpenCV, TensorFlow, PyTorch<br>GitHub: <a target="_blank" rel="noopener" href="https://github.com/sjkncs/2025-cs-vision">https://github.com/sjkncs/2025-cs-vision</a></p>
 </blockquote>
-<h2 id="📋-项目概述">项目概述</h2><p>本项目是2025年计算机视觉课程的综合实践项目，涵盖图像处理、目标检测、图像分割等多个计算机视觉核心技术。</p>
+<h2 id="📋-项目概述"><a href="#📋-项目概述" class="headerlink" title="📋 项目概述"></a> 项目概述</h2><p>本项目是2025年计算机视觉课程的综合实践项目，涵盖图像处理、目标检测、图像分割等多个计算机视觉核心技术。</p>
 <p><strong>项目链接</strong>:</p>
 <ul>
 <li>🔗 GitHub仓库: <a target="_blank" rel="noopener" href="https://github.com/sjkncs/2025-cs-vision">https://github.com/sjkncs/2025-cs-vision</a></li>
 <li>📚 项目文档: 完整的实验报告和代码注释</li>
 </ul>
 <hr>
-<h2 id="🎯-项目目标">项目目标</h2><h3 id="核心任务">核心任务</h3><ol>
+<h2 id="🎯-项目目标"><a href="#🎯-项目目标" class="headerlink" title="🎯 项目目标"></a> 项目目标</h2><h3 id="核心任务"><a href="#核心任务" class="headerlink" title="核心任务"></a>核心任务</h3><ol>
 <li><strong>图像处理基础</strong> - 滤波、边缘检测、形态学操作</li>
 <li><strong>特征提取</strong> - SIFT、SURF、ORB等特征点检测</li>
 <li><strong>目标检测</strong> - YOLO、Faster R-CNN等模型应用</li>
@@ -167,20 +169,20 @@
 <li><strong>深度学习应用</strong> - CNN、ResNet等网络架构</li>
 </ol>
 <hr>
-<h2 id="🛠️-技术实现">技术实现</h2><h3 id="1-图像预处理">1. 图像预处理</h3><p><strong>功能实现</strong>:</p>
+<h2 id="🛠️-技术实现"><a href="#🛠️-技术实现" class="headerlink" title="🛠️ 技术实现"></a> 技术实现</h2><h3 id="1-图像预处理"><a href="#1-图像预处理" class="headerlink" title="1. 图像预处理"></a>1. 图像预处理</h3><p><strong>功能实现</strong>:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ImageProcessor</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.filters = {</span><br><span class="line">            <span class="string">'gaussian'</span>: cv2.GaussianBlur,</span><br><span class="line">            <span class="string">'median'</span>: cv2.medianBlur,</span><br><span class="line">            <span class="string">'bilateral'</span>: cv2.bilateralFilter</span><br><span class="line">        }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">denoise</span>(<span class="params">self, image, method=<span class="string">'gaussian'</span></span>):</span><br><span class="line">        <span class="string">"""图像去噪"""</span></span><br><span class="line">        <span class="keyword">if</span> method == <span class="string">'gaussian'</span>:</span><br><span class="line">            <span class="keyword">return</span> cv2.GaussianBlur(image, (<span class="number">5</span>, <span class="number">5</span>), <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">elif</span> method == <span class="string">'median'</span>:</span><br><span class="line">            <span class="keyword">return</span> cv2.medianBlur(image, <span class="number">5</span>)</span><br><span class="line">        <span class="keyword">elif</span> method == <span class="string">'bilateral'</span>:</span><br><span class="line">            <span class="keyword">return</span> cv2.bilateralFilter(image, <span class="number">9</span>, <span class="number">75</span>, <span class="number">75</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">edge_detection</span>(<span class="params">self, image, method=<span class="string">'canny'</span></span>):</span><br><span class="line">        <span class="string">"""边缘检测"""</span></span><br><span class="line">        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> method == <span class="string">'canny'</span>:</span><br><span class="line">            edges = cv2.Canny(gray, <span class="number">50</span>, <span class="number">150</span>)</span><br><span class="line">        <span class="keyword">elif</span> method == <span class="string">'sobel'</span>:</span><br><span class="line">            sobelx = cv2.Sobel(gray, cv2.CV_64F, <span class="number">1</span>, <span class="number">0</span>, ksize=<span class="number">5</span>)</span><br><span class="line">            sobely = cv2.Sobel(gray, cv2.CV_64F, <span class="number">0</span>, <span class="number">1</span>, ksize=<span class="number">5</span>)</span><br><span class="line">            edges = np.sqrt(sobelx**<span class="number">2</span> + sobely**<span class="number">2</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> edges</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="2-特征点检测与匹配">2. 特征点检测与匹配</h3><p><strong>SIFT特征提取</strong>:</p>
+<h3 id="2-特征点检测与匹配"><a href="#2-特征点检测与匹配" class="headerlink" title="2. 特征点检测与匹配"></a>2. 特征点检测与匹配</h3><p><strong>SIFT特征提取</strong>:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FeatureDetector</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.sift = cv2.SIFT_create()</span><br><span class="line">        <span class="variable language_">self</span>.orb = cv2.ORB_create()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">detect_sift</span>(<span class="params">self, image</span>):</span><br><span class="line">        <span class="string">"""SIFT特征检测"""</span></span><br><span class="line">        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</span><br><span class="line">        keypoints, descriptors = <span class="variable language_">self</span>.sift.detectAndCompute(gray, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">return</span> keypoints, descriptors</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">match_features</span>(<span class="params">self, desc1, desc2</span>):</span><br><span class="line">        <span class="string">"""特征匹配"""</span></span><br><span class="line">        bf = cv2.BFMatcher()</span><br><span class="line">        matches = bf.knnMatch(desc1, desc2, k=<span class="number">2</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 应用比率测试</span></span><br><span class="line">        good_matches = []</span><br><span class="line">        <span class="keyword">for</span> m, n <span class="keyword">in</span> matches:</span><br><span class="line">            <span class="keyword">if</span> m.distance &lt; <span class="number">0.75</span> * n.distance:</span><br><span class="line">                good_matches.append(m)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> good_matches</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="3-目标检测">3. 目标检测</h3><p><strong>YOLO模型应用</strong>:</p>
+<h3 id="3-目标检测"><a href="#3-目标检测" class="headerlink" title="3. 目标检测"></a>3. 目标检测</h3><p><strong>YOLO模型应用</strong>:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torchvision.models.detection <span class="keyword">import</span> fasterrcnn_resnet50_fpn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ObjectDetector</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.model = fasterrcnn_resnet50_fpn(pretrained=<span class="literal">True</span>)</span><br><span class="line">        <span class="variable language_">self</span>.model.<span class="built_in">eval</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">detect</span>(<span class="params">self, image</span>):</span><br><span class="line">        <span class="string">"""目标检测"""</span></span><br><span class="line">        <span class="comment"># 预处理</span></span><br><span class="line">        image_tensor = <span class="variable language_">self</span>.preprocess(image)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 推理</span></span><br><span class="line">        <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">            predictions = <span class="variable language_">self</span>.model([image_tensor])</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 后处理</span></span><br><span class="line">        boxes = predictions[<span class="number">0</span>][<span class="string">'boxes'</span>].cpu().numpy()</span><br><span class="line">        labels = predictions[<span class="number">0</span>][<span class="string">'labels'</span>].cpu().numpy()</span><br><span class="line">        scores = predictions[<span class="number">0</span>][<span class="string">'scores'</span>].cpu().numpy()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> boxes, labels, scores</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">preprocess</span>(<span class="params">self, image</span>):</span><br><span class="line">        <span class="string">"""图像预处理"""</span></span><br><span class="line">        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)</span><br><span class="line">        image = torch.from_numpy(image).permute(<span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>).<span class="built_in">float</span>() / <span class="number">255.0</span></span><br><span class="line">        <span class="keyword">return</span> image</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="4-图像分割">4. 图像分割</h3><p><strong>语义分割</strong>:</p>
+<h3 id="4-图像分割"><a href="#4-图像分割" class="headerlink" title="4. 图像分割"></a>4. 图像分割</h3><p><strong>语义分割</strong>:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torchvision.models.segmentation <span class="keyword">import</span> deeplabv3_resnet50</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ImageSegmentation</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.model = deeplabv3_resnet50(pretrained=<span class="literal">True</span>)</span><br><span class="line">        <span class="variable language_">self</span>.model.<span class="built_in">eval</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">segment</span>(<span class="params">self, image</span>):</span><br><span class="line">        <span class="string">"""语义分割"""</span></span><br><span class="line">        input_tensor = <span class="variable language_">self</span>.preprocess(image)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">            output = <span class="variable language_">self</span>.model(input_tensor)[<span class="string">'out'</span>][<span class="number">0</span>]</span><br><span class="line">        </span><br><span class="line">        output_predictions = output.argmax(<span class="number">0</span>).byte().cpu().numpy()</span><br><span class="line">        <span class="keyword">return</span> output_predictions</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
-<h2 id="📊-实验结果">实验结果</h2><h3 id="性能指标">性能指标</h3><table>
+<h2 id="📊-实验结果"><a href="#📊-实验结果" class="headerlink" title="📊 实验结果"></a> 实验结果</h2><h3 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h3><table>
 <thead>
 <tr>
 <th>任务</th>
@@ -208,26 +210,26 @@
 <td>30</td>
 </tr>
 </tbody></table>
-<h3 id="实验数据集">实验数据集</h3><ul>
+<h3 id="实验数据集"><a href="#实验数据集" class="headerlink" title="实验数据集"></a>实验数据集</h3><ul>
 <li><strong>COCO数据集</strong> - 目标检测</li>
 <li><strong>Pascal VOC</strong> - 图像分割</li>
 <li><strong>自建数据集</strong> - 特征匹配</li>
 </ul>
 <hr>
-<h2 id="🎓-项目收获">项目收获</h2><h3 id="技术能力">技术能力</h3><ol>
+<h2 id="🎓-项目收获"><a href="#🎓-项目收获" class="headerlink" title="🎓 项目收获"></a> 项目收获</h2><h3 id="技术能力"><a href="#技术能力" class="headerlink" title="技术能力"></a>技术能力</h3><ol>
 <li><strong>图像处理</strong> - 掌握OpenCV常用操作</li>
 <li><strong>深度学习</strong> - 熟悉PyTorch框架</li>
 <li><strong>模型应用</strong> - 能够应用预训练模型</li>
 <li><strong>算法优化</strong> - 提升模型性能和速度</li>
 </ol>
-<h3 id="理论知识">理论知识</h3><ol>
+<h3 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h3><ol>
 <li><strong>卷积神经网络</strong> - CNN原理与应用</li>
 <li><strong>目标检测算法</strong> - R-CNN系列、YOLO系列</li>
 <li><strong>图像分割方法</strong> - FCN、U-Net、DeepLab</li>
 <li><strong>特征工程</strong> - 传统特征与深度特征</li>
 </ol>
 <hr>
-<h2 id="🔮-未来改进">未来改进</h2><ul>
+<h2 id="🔮-未来改进"><a href="#🔮-未来改进" class="headerlink" title="🔮 未来改进"></a> 未来改进</h2><ul>
 <li><input disabled="" type="checkbox"> 实现实时视频处理</li>
 <li><input disabled="" type="checkbox"> 优化模型推理速度</li>
 <li><input disabled="" type="checkbox"> 添加更多数据增强方法</li>
@@ -235,7 +237,7 @@
 </ul>
 <hr>
 <p><strong>👁️ 计算机视觉，让机器看懂世界 👁️</strong></p>
-</article><aside class="article-toc"><h2>目录 <span>On this page</span></h2><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%91%81%EF%B8%8F-2025%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E8%AF%BE%E7%A8%8B%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">2025计算机视觉课程项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8B-%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">项目概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87"><span class="toc-number">1.2.</span> <span class="toc-text">项目目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text">核心任务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">技术实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 图像预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%8C%B9%E9%85%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 特征点检测与匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 目标检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. 图像分割</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.4.</span> <span class="toc-text">实验结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-number">1.4.1.</span> <span class="toc-text">性能指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">1.4.2.</span> <span class="toc-text">实验数据集</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%93-%E9%A1%B9%E7%9B%AE%E6%94%B6%E8%8E%B7"><span class="toc-number">1.5.</span> <span class="toc-text">项目收获</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E8%83%BD%E5%8A%9B"><span class="toc-number">1.5.1.</span> <span class="toc-text">技术能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86"><span class="toc-number">1.5.2.</span> <span class="toc-text">理论知识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%AE-%E6%9C%AA%E6%9D%A5%E6%94%B9%E8%BF%9B"><span class="toc-number">1.6.</span> <span class="toc-text">未来改进</span></a></li></ol></li></ol></aside></div>
+</article><aside class="article-toc"><h2>目录 <span>On this page</span></h2><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%91%81%EF%B8%8F-2025%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E8%AF%BE%E7%A8%8B%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text"> 2025计算机视觉课程项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8B-%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text"> 项目概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E9%A1%B9%E7%9B%AE%E7%9B%AE%E6%A0%87"><span class="toc-number">1.2.</span> <span class="toc-text"> 项目目标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.2.1.</span> <span class="toc-text">核心任务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9B%A0%EF%B8%8F-%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text"> 技术实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 图像预处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%89%B9%E5%BE%81%E7%82%B9%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%8C%B9%E9%85%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. 特征点检测与匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 目标检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2"><span class="toc-number">1.3.4.</span> <span class="toc-text">4. 图像分割</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.4.</span> <span class="toc-text"> 实验结果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-number">1.4.1.</span> <span class="toc-text">性能指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">1.4.2.</span> <span class="toc-text">实验数据集</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%93-%E9%A1%B9%E7%9B%AE%E6%94%B6%E8%8E%B7"><span class="toc-number">1.5.</span> <span class="toc-text"> 项目收获</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E8%83%BD%E5%8A%9B"><span class="toc-number">1.5.1.</span> <span class="toc-text">技术能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86"><span class="toc-number">1.5.2.</span> <span class="toc-text">理论知识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%AE-%E6%9C%AA%E6%9D%A5%E6%94%B9%E8%BF%9B"><span class="toc-number">1.6.</span> <span class="toc-text"> 未来改进</span></a></li></ol></li></ol></aside></div>
   <div class="article-end"><div class="article-tags"><a href="/my-hexo-blog/tags/Python/">Python</a><a href="/my-hexo-blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a><a href="/my-hexo-blog/tags/OpenCV/">OpenCV</a><a href="/my-hexo-blog/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></div><p>来源与研究边界以正文和对应项目的当前说明为准。</p></div>
   <nav class="article-neighbors" aria-label="相邻文章"><a href="/my-hexo-blog/2025/07/20/emobuy-platform/"><span>上一篇</span><strong>EmoBuy - 情绪消费平台</strong></a><a href="/my-hexo-blog/2025/01/08/music-recommend/"><span>下一篇</span><strong>音乐空间 - 精选歌单推荐</strong></a></nav>
 </div>
@@ -332,7 +334,84 @@
 </svg>
 <input id="global-search-input" type="search" placeholder="输入文章、标签或关键词" autocomplete="off"></label>
     <p id="search-status" role="status">输入关键词</p>
+    <button type="button" class="text-link" id="search-retry" hidden>重试搜索 <!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-rotate-ccw"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+  <path d="M3 3v5h5" />
+</svg>
+</button>
     <ul id="search-results"></ul>
+  </dialog>
+  <dialog class="image-dialog" id="image-viewer" aria-labelledby="image-title">
+    <header class="image-viewer-head"><h2 id="image-title">图片</h2><div class="image-viewer-tools">
+      <button class="icon-button" type="button" id="image-zoom" title="查看原始尺寸" aria-label="查看原始尺寸" aria-pressed="false"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-zoom-in"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" x2="16.65" y1="21" y2="16.65" />
+  <line x1="11" x2="11" y1="8" y2="14" />
+  <line x1="8" x2="14" y1="11" y2="11" />
+</svg>
+</button>
+      <a class="icon-button" id="image-original" target="_blank" rel="noopener noreferrer" title="打开原图" aria-label="打开原图"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-external-link"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+</svg>
+</a>
+      <button class="icon-button" type="button" id="image-close" title="关闭图片" aria-label="关闭图片"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-x"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M18 6 6 18" />
+  <path d="m6 6 12 12" />
+</svg>
+</button>
+    </div></header>
+    <div class="image-stage"><img id="viewer-image" alt=""></div>
+    <p class="image-status" id="image-status" role="status"></p>
   </dialog>
   <div id="reading-progress" aria-hidden="true"></div>
   <template id="code-copy-icon"><!-- @license lucide-static v1.56.0 - ISC -->
@@ -366,6 +445,43 @@
   stroke-linejoin="round"
 >
   <path d="M20 6 9 17l-5-5" />
+</svg>
+</template>
+  <template id="image-zoom-in-icon"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-zoom-in"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" x2="16.65" y1="21" y2="16.65" />
+  <line x1="11" x2="11" y1="8" y2="14" />
+  <line x1="8" x2="14" y1="11" y2="11" />
+</svg>
+</template>
+  <template id="image-zoom-out-icon"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-zoom-out"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" x2="16.65" y1="21" y2="16.65" />
+  <line x1="8" x2="14" y1="11" y2="11" />
 </svg>
 </template>
   <button type="button" class="icon-button back-top" id="back-top" title="回到顶部" aria-label="回到顶部"><!-- @license lucide-static v1.56.0 - ISC -->
