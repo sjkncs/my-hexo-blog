@@ -6,6 +6,8 @@
   <meta name="color-scheme" content="light dark">
   <title><%= page.title ? clean_title(page.title) + ' · ' : '' %><%= config.title %></title>
   <meta name="description" content="<%= page.description || config.description %>">
+  <% if(page.layout === 'not-found') { %><meta name="robots" content="noindex"><% } %>
+  <link rel="alternate" type="application/rss+xml" title="Yangting SONG" href="<%- url_for('/feed.xml') %>">
   <link rel="canonical" href="<%= config.url + '/' + (page.path || '') %>">
   <link rel="icon" href="<%- url_for('/img/favicon.svg') %>" type="image/svg+xml">
   <script>try{const t=localStorage.getItem('fieldnotes-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}</script>
@@ -24,11 +26,23 @@
     <div class="search-dialog-head"><h2 id="search-title">搜索文章</h2><button type="button" class="icon-button" data-close-search title="关闭搜索" aria-label="关闭搜索"><%- site_icon('x') %></button></div>
     <label class="search-field"><%- site_icon('search') %><input id="global-search-input" type="search" placeholder="输入文章、标签或关键词" autocomplete="off"></label>
     <p id="search-status" role="status">输入关键词</p>
+    <button type="button" class="text-link" id="search-retry" hidden>重试搜索 <%- site_icon('rotate-ccw') %></button>
     <ul id="search-results"></ul>
+  </dialog>
+  <dialog class="image-dialog" id="image-viewer" aria-labelledby="image-title">
+    <header class="image-viewer-head"><h2 id="image-title">图片</h2><div class="image-viewer-tools">
+      <button class="icon-button" type="button" id="image-zoom" title="查看原始尺寸" aria-label="查看原始尺寸" aria-pressed="false"><%- site_icon('zoom-in') %></button>
+      <a class="icon-button" id="image-original" target="_blank" rel="noopener noreferrer" title="打开原图" aria-label="打开原图"><%- site_icon('external-link') %></a>
+      <button class="icon-button" type="button" id="image-close" title="关闭图片" aria-label="关闭图片"><%- site_icon('x') %></button>
+    </div></header>
+    <div class="image-stage"><img id="viewer-image" alt=""></div>
+    <p class="image-status" id="image-status" role="status"></p>
   </dialog>
   <div id="reading-progress" aria-hidden="true"></div>
   <template id="code-copy-icon"><%- site_icon('copy') %></template>
   <template id="code-copied-icon"><%- site_icon('check') %></template>
+  <template id="image-zoom-in-icon"><%- site_icon('zoom-in') %></template>
+  <template id="image-zoom-out-icon"><%- site_icon('zoom-out') %></template>
   <button type="button" class="icon-button back-top" id="back-top" title="回到顶部" aria-label="回到顶部"><%- site_icon('arrow-up') %></button>
 </body>
 </html>

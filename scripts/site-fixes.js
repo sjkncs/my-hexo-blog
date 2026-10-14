@@ -18,8 +18,14 @@ hexo.extend.filter.register('after_post_render', function (data) {
     (_, id, type) => renderMusic([id, 'netease', type]));
   const $ = cheerio.load(data.content);
   $('h1,h2,h3,h4').each((_, heading) => {
-    const element = $(heading);
-    element.text(element.text().replace(/[\u{1F000}-\u{1FAFF}\u2600-\u27BF\uFE0F\u200D]/gu, '').trim());
+    const cleanText = node => {
+      if (node.type === 'text') node.data = node.data.replace(/[\u{1F000}-\u{1FAFF}\u2600-\u27BF\uFE0F\u200D]/gu, '');
+      else if (node.children) node.children.forEach(cleanText);
+    };
+    cleanText(heading);
+    const children = heading.children || [];
+    if (children[0] && children[0].type === 'text') children[0].data = children[0].data.replace(/^\s+/, '');
+    if (children.length && children[children.length - 1].type === 'text') children[children.length - 1].data = children[children.length - 1].data.replace(/\s+$/, '');
   });
   $('[style]').each((_, element) => {
     if (!['img', 'video', 'audio'].includes(element.tagName)) $(element).removeAttr('style');
@@ -78,6 +84,10 @@ hexo.extend.generator.register('project-feed', () => {
     content: '<p>公开仓库动态来自 <a href="https://github.com/sjkncs">GitHub</a>，不代表独立验证的成果或上线状态。</p>',
   }};
 });
+
+hexo.extend.generator.register('fieldnotes-404', () => ({
+  path:'404.html',layout:'not-found',data:{path:'404.html',layout:'not-found',title:'页面未找到',content:''},
+}));
 
 hexo.extend.generator.register('fieldnotes-search-and-feed', locals => {
   const posts = locals.posts.sort('date', -1).toArray();

@@ -8,6 +8,8 @@ The research preview image is a byte-identical copy of the user's public `shenzh
 
 Use `npm ci --ignore-scripts`, `npm test`, `npm run sync`, and `npm run build`. The lockfile records installed versions. Builds fail on unresolved music tags, missing local links/assets, absent canonical/compatibility routes, missing search data or duplicate APlayer scripts.
 
+Secondary index pages render their actual article slice rather than repeating the homepage. A generated `404.html` supplies search and recovery navigation with `noindex`. Search requests time out after ten seconds and expose an explicit retry action. Article images open a keyboard-accessible viewer with fit/original-size controls, source links and focus restoration. Heading normalization removes decorative emoji without discarding links or inline code.
+
 Music requests occur only after a visitor clicks Load. APlayer 1.10.1 is bundled from npm; no mutable CDN is used for it. API failures, empty responses, timeouts and playback errors display a status with retry and the original music-platform link. Actual music availability is external and must be verified separately from player rendering. Do not download or republish song audio.
 
 `scripts/site-fixes.js` maintains published article URLs, generates their alternate-date redirects, resolves raw HTML asset/link prefixes and renders music widgets. `tools/sync-projects.cjs` gathers a fixed public repository list fully before replacing the snapshot; failure blocks the deployment so the current site stays available. Descriptions are sourced from repository metadata and do not establish research results or production readiness.

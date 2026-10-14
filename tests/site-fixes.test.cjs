@@ -61,3 +61,14 @@ test('search and RSS entries use canonical routes and escape source text', () =>
   assert.match(routes[1].data,/Title &lt; &amp;/);
   assert.match(routes[1].data,/<rss version="2.0">/);
 });
+test('heading cleanup preserves link and code markup rather than flattening content', () => {
+  const data=filters.after_post_render({content:'<h2 id="source">🎵 <a href="https://example.com">Source</a> and <code>API</code></h2>'});
+  assert.match(data.content,/<h2 id="source"><a href="https:\/\/example.com">Source<\/a> and <code>API<\/code><\/h2>/);
+});
+test('custom 404 route uses local layout without claiming a real article', () => {
+  const route=generators['fieldnotes-404']();
+  assert.equal(route.path,'404.html');
+  assert.equal(route.layout,'not-found');
+  assert.equal(route.data.path,'404.html');
+  assert.equal(route.data.content,'');
+});

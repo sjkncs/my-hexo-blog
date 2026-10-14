@@ -33,7 +33,7 @@ function visit(dir) {
   }
 }
 visit(base);
-for (const required of ['projects/index.html', 'search.xml', 'search-index.json', 'feed.xml', 'css/fieldnotes.css', 'js/fieldnotes.js', '2026/10/14/shenzhen-research-notes/index.html', '2025/01/07/vae-music-aplayer/index.html', '2025/01/08/vae-music-aplayer/index.html']) {
+for (const required of ['404.html', 'page/2/index.html', 'projects/index.html', 'search.xml', 'search-index.json', 'feed.xml', 'css/fieldnotes.css', 'js/fieldnotes.js', '2026/10/14/shenzhen-research-notes/index.html', '2025/01/07/vae-music-aplayer/index.html', '2025/01/08/vae-music-aplayer/index.html']) {
   if (!fs.existsSync(path.join(base, required))) errors.push(`Missing route: ${required}`);
 }
 const search = JSON.parse(fs.readFileSync(path.join(base, 'search-index.json'), 'utf8'));
@@ -49,5 +49,9 @@ projectPage('.project-card').each((_, card) => {
 });
 const home = cheerio.load(fs.readFileSync(path.join(base, 'index.html'), 'utf8'));
 if (!home('.lead-story img').length || !home('.main-nav').length) errors.push('Homepage content or navigation missing');
+const secondPage=cheerio.load(fs.readFileSync(path.join(base,'page/2/index.html'),'utf8'));
+if(secondPage('.lead-story').length || !secondPage('.writing-row').length || !secondPage('.pagination a').length) errors.push('Second index page must show article pagination, not duplicate homepage');
+const notFound=cheerio.load(fs.readFileSync(path.join(base,'404.html'),'utf8'));
+if(notFound('meta[name="robots"]').attr('content')!=='noindex'||!notFound('[data-open-search]').length) errors.push('404 page needs noindex and recovery navigation');
 if (errors.length) { console.error(errors.join('\n')); process.exit(1); }
 console.log(`PASS: ${pages} HTML pages, local links/assets, compatibility routes, search and player scripts`);
