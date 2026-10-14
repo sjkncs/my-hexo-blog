@@ -84,5 +84,18 @@
   const headings=document.querySelectorAll('.prose h2[id],.prose h3[id]');
   if(headings.length&&'IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.article-toc a').forEach(a=>a.classList.toggle('active',decodeURIComponent(a.hash.slice(1))===e.target.id));});},{rootMargin:'-15% 0px -65% 0px'});headings.forEach(h=>observer.observe(h));}
   document.querySelectorAll('a[href]').forEach(a=>{const url=new URL(a.href,location.href);if(['http:','https:'].includes(url.protocol)&&url.origin!==location.origin){a.target='_blank';a.rel='noopener noreferrer';}});
-  document.querySelectorAll('pre').forEach(pre=>{if(pre.closest('.gutter'))return;const button=document.createElement('button');button.className='code-copy';button.type='button';button.textContent='复制';button.title='复制代码';button.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(pre.textContent);button.textContent='已复制';}catch{button.textContent='复制失败';}});pre.parentElement.style.position='relative';pre.parentElement.append(button);});
+  document.querySelectorAll('pre').forEach(pre=>{
+    if(pre.closest('.gutter'))return;
+    const button=document.createElement('button');
+    button.className='code-copy';button.type='button';button.title='复制代码';button.setAttribute('aria-label','复制代码');
+    button.append(document.querySelector('#code-copy-icon').content.cloneNode(true));
+    button.addEventListener('click',async()=>{
+      try {
+        await navigator.clipboard.writeText(pre.textContent);
+        button.dataset.state='copied';button.title='已复制';button.setAttribute('aria-label','已复制');
+        button.replaceChildren(document.querySelector('#code-copied-icon').content.cloneNode(true));
+      } catch {button.title='复制失败，请重试';button.setAttribute('aria-label','复制失败，请重试');}
+    });
+    pre.parentElement.style.position='relative';pre.parentElement.append(button);
+  });
 })();
