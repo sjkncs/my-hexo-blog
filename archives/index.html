@@ -1,198 +1,392 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>归档 | Yangting SONG</title><meta name="author" content="Yangting SONG"><meta name="copyright" content="Yangting SONG"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Yangting SONG | HIT Shenzhen | AI engineering, research workflows and spatial computing">
-<meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://sjkncs.github.io/my-hexo-blog/archives/index.html">
-<meta property="og:site_name" content="Yangting SONG">
-<meta property="og:description" content="Yangting SONG | HIT Shenzhen | AI engineering, research workflows and spatial computing">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://sjkncs.github.io/my-hexo-blog/img/avatar.jpg">
-<meta property="article:author" content="Yangting SONG">
-<meta property="article:tag" content="AI Application, Web Development, Quantitative Trading, Data Analysis, Personal Blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sjkncs.github.io/my-hexo-blog/img/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/my-hexo-blog/img/favicon.svg"><link rel="canonical" href="https://sjkncs.github.io/my-hexo-blog/archives/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/my-hexo-blog/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
-    (() => {
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Yangting SONG</title>
+  <meta name="description" content="Yangting SONG | HIT Shenzhen | AI engineering, research workflows and spatial computing">
+  <link rel="canonical" href="https://sjkncs.github.io/my-hexo-blog/archives/index.html">
+  <link rel="icon" href="/my-hexo-blog/img/favicon.svg" type="image/svg+xml">
+  <script>try{const t=localStorage.getItem('fieldnotes-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}</script>
+  <link rel="stylesheet" href="/my-hexo-blog/css/fieldnotes.css">
+  <link rel="stylesheet" href="/my-hexo-blog/vendor/APlayer.min.css">
+  <script defer src="/my-hexo-blog/vendor/APlayer.min.js"></script>
+  <script defer src="/my-hexo-blog/js/fieldnotes.js"></script>
+  <script defer src="/my-hexo-blog/js/music.js"></script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body data-root="/my-hexo-blog/">
+  <a class="skip-link" href="#main-content">跳到正文</a>
+  <header class="site-header">
+  <div class="header-inner">
+    <a href="/my-hexo-blog/" class="brand" aria-label="Yangting SONG 首页"><span class="brand-mark">ys<span>.</span></span><span class="brand-name">Yangting SONG<span>FIELDNOTES / 个人记录</span></span></a>
+    <nav class="main-nav" id="main-nav" aria-label="主导航">
       
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
-
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!false && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
-  
       
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
-        
+        <a href="/my-hexo-blog/" >首页</a>
       
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
+        <a href="/my-hexo-blog/projects/" >项目</a>
       
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-  
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/my-hexo-blog/',
-  algolia: undefined,
-  localSearch: {"path":"/my-hexo-blog/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300,"highlightFullpage":false,"highlightMacStyle":false},
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyloadPlugin: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '归档',
-  isHighlightShrink: false,
-  isToc: false,
-  pageType: 'archive'
-}</script><link rel="stylesheet" href="/my-hexo-blog/vendor/APlayer.min.css"><link rel="stylesheet" href="/my-hexo-blog/css/custom.css"><link rel="stylesheet" href="/my-hexo-blog/css/site-fixes.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/my-hexo-blog/img/bg.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/my-hexo-blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/my-hexo-blog/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/my-hexo-blog/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/my-hexo-blog/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/my-hexo-blog/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/my-hexo-blog/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/projects/"><i class="fa-fw fas fa-code-branch"></i><span> 项目动态</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-music"></i><span> 音乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/my-hexo-blog/music/"><i class="fa-fw fas fa-compact-disc"></i><span> 音乐空间</span></a></li><li><a class="site-page child" href="/my-hexo-blog/music-player/"><i class="fa-fw fas fa-play-circle"></i><span> 音乐播放器</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/my-hexo-blog/docs/quick-start/"><i class="fa-fw fas fa-rocket"></i><span> 快速开始</span></a></li><li><a class="site-page child" href="/my-hexo-blog/docs/pages/"><i class="fa-fw fas fa-file-alt"></i><span> 主题页面</span></a></li><li><a class="site-page child" href="/my-hexo-blog/docs/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签外挂</span></a></li><li><a class="site-page child" href="/my-hexo-blog/docs/faq/"><i class="fa-fw fas fa-question-circle"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/my-hexo-blog/docs/advanced/"><i class="fa-fw fas fa-cog"></i><span> 高级配置</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/my-hexo-blog/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/my-hexo-blog/"><span class="site-name">Yangting SONG</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/my-hexo-blog/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/projects/"><i class="fa-fw fas fa-code-branch"></i><span> 项目动态</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-music"></i><span> 音乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/my-hexo-blog/music/"><i class="fa-fw fas fa-compact-disc"></i><span> 音乐空间</span></a></li><li><a class="site-page child" href="/my-hexo-blog/music-player/"><i class="fa-fw fas fa-play-circle"></i><span> 音乐播放器</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-book"></i><span> 文档</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/my-hexo-blog/docs/quick-start/"><i class="fa-fw fas fa-rocket"></i><span> 快速开始</span></a></li><li><a class="site-page child" href="/my-hexo-blog/docs/pages/"><i class="fa-fw fas fa-file-alt"></i><span> 主题页面</span></a></li><li><a class="site-page child" href="/my-hexo-blog/docs/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签外挂</span></a></li><li><a class="site-page child" href="/my-hexo-blog/docs/faq/"><i class="fa-fw fas fa-question-circle"></i><span> 常见问题</span></a></li><li><a class="site-page child" href="/my-hexo-blog/docs/advanced/"><i class="fa-fw fas fa-cog"></i><span> 高级配置</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/my-hexo-blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">归档</h1></div></header><main class="layout" id="content-inner"><div id="archive"><div class="article-sort-title">全部文章 - 11</div><div class="article-sort"><div class="article-sort-item year">2025</div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/12/20/ai-news-platform/" title="AI每日新闻聚合平台 - Insight Pro"><img src="/my-hexo-blog/img/insight%20pro.jpg" alt="AI每日新闻聚合平台 - Insight Pro" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-12-20T02:00:00.000Z" title="发表于 2025-12-20 10:00:00">2025-12-20</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/12/20/ai-news-platform/" title="AI每日新闻聚合平台 - Insight Pro">AI每日新闻聚合平台 - Insight Pro</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/11/15/quant-trading-system/" title="基于深度学习的智能金融综合服务系统"><img src="/my-hexo-blog/img/%E9%87%91%E8%9E%8D%E6%96%87%E6%9C%AC%E6%99%BA%E8%83%BD%E5%88%86%E6%9E%90.jpg" alt="基于深度学习的智能金融综合服务系统" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-11-15T06:00:00.000Z" title="发表于 2025-11-15 14:00:00">2025-11-15</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/11/15/quant-trading-system/" title="基于深度学习的智能金融综合服务系统">基于深度学习的智能金融综合服务系统</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/11/10/harmonyos-travel-app/" title="旅忆悠然 (SmartTravel) 智慧旅游应用"><img src="/my-hexo-blog/img/smart%20travel.jpg" alt="旅忆悠然 (SmartTravel) 智慧旅游应用" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-11-10T08:00:00.000Z" title="发表于 2025-11-10 16:00:00">2025-11-10</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/11/10/harmonyos-travel-app/" title="旅忆悠然 (SmartTravel) 智慧旅游应用">旅忆悠然 (SmartTravel) 智慧旅游应用</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/07/20/emobuy-platform/" title="EmoBuy - 情绪消费平台"><img src="/my-hexo-blog/img/cover3.jpg" alt="EmoBuy - 情绪消费平台" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-07-20T06:00:00.000Z" title="发表于 2025-07-20 14:00:00">2025-07-20</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/07/20/emobuy-platform/" title="EmoBuy - 情绪消费平台">EmoBuy - 情绪消费平台</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/07/15/computer-vision-2025/" title="2025计算机视觉课程项目"><img src="/my-hexo-blog/img/cover2.jpg" alt="2025计算机视觉课程项目" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-07-15T02:00:00.000Z" title="发表于 2025-07-15 10:00:00">2025-07-15</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/07/15/computer-vision-2025/" title="2025计算机视觉课程项目">2025计算机视觉课程项目</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/01/08/music-recommend/" title="🎵 音乐空间 - 精选歌单推荐"><img src="/my-hexo-blog/img/work.gif" alt="🎵 音乐空间 - 精选歌单推荐" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-01-08T02:00:00.000Z" title="发表于 2025-01-08 10:00:00">2025-01-08</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/01/08/music-recommend/" title="🎵 音乐空间 - 精选歌单推荐">🎵 音乐空间 - 精选歌单推荐</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/01/07/vae-music-collection/" title="许嵩音乐精选集"><img src="/my-hexo-blog/img/%E8%AE%B8%E5%B5%A9.jpg" alt="许嵩音乐精选集" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-01-07T15:30:00.000Z" title="发表于 2025-01-07 23:30:00">2025-01-07</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/01/07/vae-music-collection/" title="许嵩音乐精选集">许嵩音乐精选集</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/01/07/xidi-hongcun-travel/" title="徽州印象 · 西递宏村游记"><img src="/my-hexo-blog/img/%E5%BE%BD%E5%B7%9E%E5%8D%B0%E8%B1%A1.jpg" alt="徽州印象 · 西递宏村游记" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-01-07T04:00:00.000Z" title="发表于 2025-01-07 12:00:00">2025-01-07</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/01/07/xidi-hongcun-travel/" title="徽州印象 · 西递宏村游记">徽州印象 · 西递宏村游记</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/01/07/vae-music-aplayer/" title="许嵩音乐精选集 (APlayer版)"><img src="/my-hexo-blog/img/%E8%AE%B8%E5%B5%A9.jpg" alt="许嵩音乐精选集 (APlayer版)" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-01-06T16:00:00.000Z" title="发表于 2025-01-07 00:00:00">2025-01-07</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/01/07/vae-music-aplayer/" title="许嵩音乐精选集 (APlayer版)">许嵩音乐精选集 (APlayer版)</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/my-hexo-blog/2025/01/07/welcome-to-my-blog/" title="欢迎来到我的技术空间"><img src="/my-hexo-blog/img/cover1.jpg" alt="欢迎来到我的技术空间" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" loading='lazy'></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-01-06T16:00:00.000Z" title="发表于 2025-01-07 00:00:00">2025-01-07</time></div><a class="article-sort-item-title" href="/my-hexo-blog/2025/01/07/welcome-to-my-blog/" title="欢迎来到我的技术空间">欢迎来到我的技术空间</a></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/my-hexo-blog/archives/page/2/">2</a><a class="extend next" rel="next" href="/my-hexo-blog/archives/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/my-hexo-blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/my-hexo-blog/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">Yangting SONG</div><div class="author-info-description">HIT(SZ) | AI Engineering · Research Tools · Urban Computing</div><div class="site-data"><a href="/my-hexo-blog/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/my-hexo-blog/tags/"><div class="headline">标签</div><div class="length-num">28</div></a><a href="/my-hexo-blog/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/sjkncs"><i class="fab fa-github"></i><span>GitHub</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/sjkncs" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2797660051@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="tel:188-5600-8931" target="_blank" title="电话"><i class="fas fa-phone"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">AI 工具、科研工作流与城市空间数据。公开项目动态每日同步，文章保留原始发布时间。</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/my-hexo-blog/2025/12/20/ai-news-platform/" title="AI每日新闻聚合平台 - Insight Pro"><img src="/my-hexo-blog/img/insight%20pro.jpg" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" alt="AI每日新闻聚合平台 - Insight Pro"/ loading='lazy'></a><div class="content"><a class="title" href="/my-hexo-blog/2025/12/20/ai-news-platform/" title="AI每日新闻聚合平台 - Insight Pro">AI每日新闻聚合平台 - Insight Pro</a><time datetime="2025-12-20T02:00:00.000Z" title="发表于 2025-12-20 10:00:00">2025-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/my-hexo-blog/2025/11/15/quant-trading-system/" title="基于深度学习的智能金融综合服务系统"><img src="/my-hexo-blog/img/%E9%87%91%E8%9E%8D%E6%96%87%E6%9C%AC%E6%99%BA%E8%83%BD%E5%88%86%E6%9E%90.jpg" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" alt="基于深度学习的智能金融综合服务系统"/ loading='lazy'></a><div class="content"><a class="title" href="/my-hexo-blog/2025/11/15/quant-trading-system/" title="基于深度学习的智能金融综合服务系统">基于深度学习的智能金融综合服务系统</a><time datetime="2025-11-15T06:00:00.000Z" title="发表于 2025-11-15 14:00:00">2025-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/my-hexo-blog/2025/11/10/harmonyos-travel-app/" title="旅忆悠然 (SmartTravel) 智慧旅游应用"><img src="/my-hexo-blog/img/smart%20travel.jpg" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" alt="旅忆悠然 (SmartTravel) 智慧旅游应用"/ loading='lazy'></a><div class="content"><a class="title" href="/my-hexo-blog/2025/11/10/harmonyos-travel-app/" title="旅忆悠然 (SmartTravel) 智慧旅游应用">旅忆悠然 (SmartTravel) 智慧旅游应用</a><time datetime="2025-11-10T08:00:00.000Z" title="发表于 2025-11-10 16:00:00">2025-11-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/my-hexo-blog/2025/07/20/emobuy-platform/" title="EmoBuy - 情绪消费平台"><img src="/my-hexo-blog/img/cover3.jpg" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" alt="EmoBuy - 情绪消费平台"/ loading='lazy'></a><div class="content"><a class="title" href="/my-hexo-blog/2025/07/20/emobuy-platform/" title="EmoBuy - 情绪消费平台">EmoBuy - 情绪消费平台</a><time datetime="2025-07-20T06:00:00.000Z" title="发表于 2025-07-20 14:00:00">2025-07-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/my-hexo-blog/2025/07/15/computer-vision-2025/" title="2025计算机视觉课程项目"><img src="/my-hexo-blog/img/cover2.jpg" onerror="this.onerror=null;this.src='/my-hexo-blog/img/404.jpg'" alt="2025计算机视觉课程项目"/ loading='lazy'></a><div class="content"><a class="title" href="/my-hexo-blog/2025/07/15/computer-vision-2025/" title="2025计算机视觉课程项目">2025计算机视觉课程项目</a><time datetime="2025-07-15T02:00:00.000Z" title="发表于 2025-07-15 10:00:00">2025-07-15</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
-            
-          </div>
-          <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/my-hexo-blog/categories/%E5%85%AC%E5%91%8A/"><span class="card-category-list-name">公告</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/my-hexo-blog/categories/%E6%97%85%E8%A1%8C%E6%B8%B8%E8%AE%B0/"><span class="card-category-list-name">旅行游记</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/my-hexo-blog/categories/%E9%9F%B3%E4%B9%90%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">音乐分享</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/my-hexo-blog/categories/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86/"><span class="card-category-list-name">项目经历</span><span class="card-category-list-count">5</span></a></li>
-          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/my-hexo-blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" style="font-size: 1.15em; color: rgb(50, 63, 178);">计算机视觉</a><a href="/my-hexo-blog/tags/Python/" style="font-size: 1.45em; color: rgb(50, 50, 120);">Python</a><a href="/my-hexo-blog/tags/OpenCV/" style="font-size: 1.15em; color: rgb(140, 50, 190);">OpenCV</a><a href="/my-hexo-blog/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 1.15em; color: rgb(69, 165, 50);">深度学习</a><a href="/my-hexo-blog/tags/AI/" style="font-size: 1.15em; color: rgb(172, 64, 184);">AI</a><a href="/my-hexo-blog/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 1.15em; color: rgb(54, 60, 167);">项目</a><a href="/my-hexo-blog/tags/Web%E5%BC%80%E5%8F%91/" style="font-size: 1.25em; color: rgb(50, 50, 50);">Web开发</a><a href="/my-hexo-blog/tags/HarmonyOS/" style="font-size: 1.15em; color: rgb(78, 90, 61);">HarmonyOS</a><a href="/my-hexo-blog/tags/ArkTS/" style="font-size: 1.15em; color: rgb(171, 146, 193);">ArkTS</a><a href="/my-hexo-blog/tags/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" style="font-size: 1.15em; color: rgb(126, 107, 190);">移动开发</a><a href="/my-hexo-blog/tags/%E6%83%85%E7%BB%AA%E5%88%86%E6%9E%90/" style="font-size: 1.15em; color: rgb(131, 143, 63);">情绪分析</a><a href="/my-hexo-blog/tags/%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/" style="font-size: 1.15em; color: rgb(50, 199, 180);">电商平台</a><a href="/my-hexo-blog/tags/%E9%9F%B3%E4%B9%90/" style="font-size: 1.45em; color: rgb(181, 50, 134);">音乐</a><a href="/my-hexo-blog/tags/%E6%8E%A8%E8%8D%90/" style="font-size: 1.25em; color: rgb(197, 96, 90);">推荐</a><a href="/my-hexo-blog/tags/%E8%AE%B8%E5%B5%A9/" style="font-size: 1.35em; color: rgb(177, 132, 155);">许嵩</a><a href="/my-hexo-blog/tags/%E6%AC%A7%E7%BE%8E/" style="font-size: 1.15em; color: rgb(97, 57, 74);">欧美</a><a href="/my-hexo-blog/tags/%E6%AD%8C%E5%8D%95/" style="font-size: 1.35em; color: rgb(193, 199, 177);">歌单</a><a href="/my-hexo-blog/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/" style="font-size: 1.15em; color: rgb(73, 93, 100);">量化交易</a><a href="/my-hexo-blog/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.15em; color: rgb(50, 72, 83);">机器学习</a><a href="/my-hexo-blog/tags/%E9%87%91%E8%9E%8D/" style="font-size: 1.15em; color: rgb(200, 147, 50);">金融</a><a href="/my-hexo-blog/tags/APlayer/" style="font-size: 1.15em; color: rgb(128, 50, 119);">APlayer</a><a href="/my-hexo-blog/tags/%E6%AC%A2%E8%BF%8E/" style="font-size: 1.15em; color: rgb(119, 170, 191);">欢迎</a><a href="/my-hexo-blog/tags/%E5%85%AC%E5%91%8A/" style="font-size: 1.15em; color: rgb(88, 157, 50);">公告</a><a href="/my-hexo-blog/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 1.15em; color: rgb(110, 159, 146);">博客</a><a href="/my-hexo-blog/tags/%E6%97%85%E8%A1%8C/" style="font-size: 1.15em; color: rgb(155, 110, 50);">旅行</a><a href="/my-hexo-blog/tags/%E5%BE%BD%E5%B7%9E/" style="font-size: 1.15em; color: rgb(79, 141, 50);">徽州</a><a href="/my-hexo-blog/tags/%E5%8F%A4%E6%9D%91%E8%90%BD/" style="font-size: 1.15em; color: rgb(50, 103, 182);">古村落</a><a href="/my-hexo-blog/tags/%E6%91%84%E5%BD%B1/" style="font-size: 1.15em; color: rgb(53, 83, 55);">摄影</a></div></div><div class="card-widget card-archives">
-    <div class="item-headline">
-      <i class="fas fa-archive"></i>
-      <span>归档</span>
+        <a href="/my-hexo-blog/archives/" aria-current="page">文章</a>
       
+        <a href="/my-hexo-blog/music/" >音乐</a>
+      
+        <a href="/my-hexo-blog/about/" >关于</a>
+      
+    </nav>
+    <div class="header-tools">
+      <button class="icon-button" type="button" data-open-search title="搜索文章" aria-label="搜索文章"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+</button>
+      <button class="icon-button" type="button" id="theme-toggle" title="切换深浅主题" aria-label="切换深浅主题" aria-pressed="false"><span class="theme-sun"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-sun"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" />
+</svg>
+</span><span class="theme-moon"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-moon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+</svg>
+</span></button>
+      <button class="icon-button menu-toggle" type="button" id="menu-toggle" title="打开导航" aria-label="打开导航" aria-controls="main-nav" aria-expanded="false"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-menu"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 5h16" />
+  <path d="M4 12h16" />
+  <path d="M4 19h16" />
+</svg>
+</button>
     </div>
-  
-    <ul class="card-archive-list">
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/my-hexo-blog/archives/2025/12/">
-            <span class="card-archive-list-date">
-              十二月 2025
-            </span>
-            <span class="card-archive-list-count">1</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/my-hexo-blog/archives/2025/11/">
-            <span class="card-archive-list-date">
-              十一月 2025
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/my-hexo-blog/archives/2025/07/">
-            <span class="card-archive-list-date">
-              七月 2025
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/my-hexo-blog/archives/2025/01/">
-            <span class="card-archive-list-date">
-              一月 2025
-            </span>
-            <span class="card-archive-list-count">6</span>
-          </a>
-        </li>
-      
-    </ul>
-  </div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Yangting SONG</span></div><div class="footer_custom_text">By Yangting SONG | Harbin Institute of Technology (Shenzhen)</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/my-hexo-blog/js/utils.js?v=5.5.3"></script><script src="/my-hexo-blog/js/main.js?v=5.5.3"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"></div><script defer src="/my-hexo-blog/vendor/APlayer.min.js"></script><script defer src="/my-hexo-blog/js/custom.js"></script><script defer src="/my-hexo-blog/js/music.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/my-hexo-blog/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>
+  </div>
+</header>
+
+  <main id="main-content">
+<div class="site-container archive-page"><header class="page-heading"><span class="eyebrow">THE WRITING INDEX</span><h1>文章归档<span class="heading-period">.</span></h1><p>工程记录、研究笔记，与一些生活片段。</p></header><nav class="archive-categories" aria-label="文章分类"><a href="/my-hexo-blog/archives/">全部</a><a href="/my-hexo-blog/categories/%E9%A1%B9%E7%9B%AE%E7%BB%8F%E5%8E%86/">项目经历<span>5</span></a><a href="/my-hexo-blog/categories/%E9%9F%B3%E4%B9%90%E5%88%86%E4%BA%AB/">音乐分享<span>4</span></a><a href="/my-hexo-blog/categories/%E7%A0%94%E7%A9%B6%E7%AC%94%E8%AE%B0/">研究笔记<span>1</span></a><a href="/my-hexo-blog/categories/%E5%85%AC%E5%91%8A/">公告<span>1</span></a><a href="/my-hexo-blog/categories/%E6%97%85%E8%A1%8C%E6%B8%B8%E8%AE%B0/">旅行游记<span>1</span></a></nav><div class="writing-list"><a class="writing-row" href="/my-hexo-blog/2026/10/14/shenzhen-research-notes/"><time>2026.10.14</time><span>深圳住宅更新：先把数据与研究边界讲清楚</span><span class="writing-category">研究笔记</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a class="writing-row" href="/my-hexo-blog/2025/12/20/ai-news-platform/"><time>2025.12.20</time><span>AI每日新闻聚合平台 - Insight Pro</span><span class="writing-category">项目经历</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a class="writing-row" href="/my-hexo-blog/2025/11/15/quant-trading-system/"><time>2025.11.15</time><span>基于深度学习的智能金融综合服务系统</span><span class="writing-category">项目经历</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a class="writing-row" href="/my-hexo-blog/2025/11/10/harmonyos-travel-app/"><time>2025.11.10</time><span>旅忆悠然 (SmartTravel) 智慧旅游应用</span><span class="writing-category">项目经历</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a class="writing-row" href="/my-hexo-blog/2025/07/20/emobuy-platform/"><time>2025.07.20</time><span>EmoBuy - 情绪消费平台</span><span class="writing-category">项目经历</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a class="writing-row" href="/my-hexo-blog/2025/07/15/computer-vision-2025/"><time>2025.07.15</time><span>2025计算机视觉课程项目</span><span class="writing-category">项目经历</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a class="writing-row" href="/my-hexo-blog/2025/01/08/music-recommend/"><time>2025.01.08</time><span>音乐空间 - 精选歌单推荐</span><span class="writing-category">音乐分享</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a class="writing-row" href="/my-hexo-blog/2025/01/07/vae-music-collection/"><time>2025.01.07</time><span>许嵩音乐精选集</span><span class="writing-category">音乐分享</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a class="writing-row" href="/my-hexo-blog/2025/01/07/xidi-hongcun-travel/"><time>2025.01.07</time><span>徽州印象 · 西递宏村游记</span><span class="writing-category">旅行游记</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a class="writing-row" href="/my-hexo-blog/2025/01/07/vae-music-aplayer/"><time>2025.01.07</time><span>许嵩音乐精选集 (APlayer版)</span><span class="writing-category">音乐分享</span><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a></div><nav class="pagination" aria-label="归档分页"><span class="page-number current">1</span><a class="page-number" href="/my-hexo-blog/archives/page/2/">2</a><a class="extend next" rel="next" href="/my-hexo-blog/archives/page/2/">下一页</a></nav></div>
+</main>
+  <footer class="site-footer">
+  <div class="footer-inner"><div><a href="/my-hexo-blog/" class="footer-name">Yangting SONG</a><p>AI 工程 · 科研工具 · 城市计算</p></div>
+    <nav aria-label="页脚导航"><a target="_blank" rel="noopener" href="https://github.com/sjkncs">GitHub <!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a target="_blank" rel="noopener" href="https://orcid.org/0009-0001-7693-6484">ORCID <!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</a><a href="mailto:zhiwaisong@gmail.com">联系</a><a href="/my-hexo-blog/docs/">文档</a><a href="/my-hexo-blog/links/">友链</a></nav>
+  </div>
+  <div class="footer-bottom"><span>© 2025–2026 Yangting SONG</span><span>Written with care. Built with Hexo.</span><a href="/my-hexo-blog/feed.xml" class="rss-link"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-rss"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 11a9 9 0 0 1 9 9" />
+  <path d="M4 4a16 16 0 0 1 16 16" />
+  <circle cx="5" cy="19" r="1" />
+</svg>
+ RSS</a></div>
+</footer>
+
+  <dialog class="search-dialog" id="site-search" aria-labelledby="search-title">
+    <div class="search-dialog-head"><h2 id="search-title">搜索文章</h2><button type="button" class="icon-button" data-close-search title="关闭搜索" aria-label="关闭搜索"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-x"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M18 6 6 18" />
+  <path d="m6 6 12 12" />
+</svg>
+</button></div>
+    <label class="search-field"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+<input id="global-search-input" type="search" placeholder="输入文章、标签或关键词" autocomplete="off"></label>
+    <p id="search-status" role="status">输入关键词</p>
+    <ul id="search-results"></ul>
+  </dialog>
+  <div id="reading-progress" aria-hidden="true"></div>
+  <button type="button" class="icon-button back-top" id="back-top" title="回到顶部" aria-label="回到顶部"><!-- @license lucide-static v1.56.0 - ISC -->
+<svg
+  class="lucide lucide-arrow-up"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m5 12 7-7 7 7" />
+  <path d="M12 19V5" />
+</svg>
+</button>
+</body>
+</html>
