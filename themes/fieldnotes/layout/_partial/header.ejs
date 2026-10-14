@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a href="<%- url_for('/') %>" class="brand" aria-label="Yangting SONG 首页"><span class="brand-mark">ys<span>.</span></span><span class="brand-name">Yangting SONG<span>FIELDNOTES / 个人记录</span></span></a>
+    <nav class="main-nav" id="main-nav" aria-label="主导航">
+      <% const nav = [['/', '首页'], ['/projects/', '项目'], ['/archives/', '文章'], ['/music/', '音乐'], ['/about/', '关于']]; %>
+      <% nav.forEach(([href,label]) => { const active = href === '/' ? (!page.path || page.path === 'index.html') : String(page.path || '').startsWith(href.slice(1)); %>
+        <a href="<%- url_for(href) %>" <%- active ? 'aria-current="page"' : '' %>><%= label %></a>
+      <% }) %>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-button" type="button" data-open-search title="搜索文章" aria-label="搜索文章"><%- site_icon('search') %></button>
+      <button class="icon-button" type="button" id="theme-toggle" title="切换深浅主题" aria-label="切换深浅主题" aria-pressed="false"><span class="theme-sun"><%- site_icon('sun') %></span><span class="theme-moon"><%- site_icon('moon') %></span></button>
+      <button class="icon-button menu-toggle" type="button" id="menu-toggle" title="打开导航" aria-label="打开导航" aria-controls="main-nav" aria-expanded="false"><%- site_icon('menu') %></button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title><%= page.title ? clean_title(page.title) + ' · ' : '' %><%= config.title %></title>
+  <meta name="description" content="<%= page.description || config.description %>">
+  <link rel="canonical" href="<%= config.url + '/' + (page.path || '') %>">
+  <link rel="icon" href="<%- url_for('/img/favicon.svg') %>" type="image/svg+xml">
+  <script>try{const t=localStorage.getItem('fieldnotes-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch{}</script>
+  <link rel="stylesheet" href="<%- url_for('/css/fieldnotes.css') %>">
+  <link rel="stylesheet" href="<%- url_for('/vendor/APlayer.min.css') %>">
+  <script defer src="<%- url_for('/vendor/APlayer.min.js') %>"></script>
+  <script defer src="<%- url_for('/js/fieldnotes.js') %>"></script>
+  <script defer src="<%- url_for('/js/music.js') %>"></script>
+</head>
+<body data-root="<%= config.root %>">
+  <a class="skip-link" href="#main-content">跳到正文</a>
+  <%- partial('_partial/header') %>
+  <main id="main-content"><%- body %></main>
+  <%- partial('_partial/footer') %>
+  <dialog class="search-dialog" id="site-search" aria-labelledby="search-title">
+    <div class="search-dialog-head"><h2 id="search-title">搜索文章</h2><button type="button" class="icon-button" data-close-search title="关闭搜索" aria-label="关闭搜索"><%- site_icon('x') %></button></div>
+    <label class="search-field"><%- site_icon('search') %><input id="global-search-input" type="search" placeholder="输入文章、标签或关键词" autocomplete="off"></label>
+    <p id="search-status" role="status">输入关键词</p>
+    <ul id="search-results"></ul>
+  </dialog>
+  <div id="reading-progress" aria-hidden="true"></div>
+  <button type="button" class="icon-button back-top" id="back-top" title="回到顶部" aria-label="回到顶部"><%- site_icon('arrow-up') %></button>
+</body>
+</html>

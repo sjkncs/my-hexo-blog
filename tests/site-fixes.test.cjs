@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const filters = {}, generators = {}, tags = {};
-const hexo = {config: {root: '/my-hexo-blog/', url: 'https://sjkncs.github.io/my-hexo-blog'}, base_dir: path.resolve(__dirname, '..'),
+const hexo = {config: {root: '/my-hexo-blog/', url: 'https://sjkncs.github.io/my-hexo-blog',title:'Yangting SONG',description:'Personal notes'}, base_dir: path.resolve(__dirname, '..'),
   extend: {filter: {register: (name, fn) => {filters[name] = fn;}},
     generator: {register: (name, fn) => {generators[name] = fn;}}, tag: {register: (name, fn) => {tags[name] = fn;}}}};
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../scripts/site-fixes.js'), 'utf8'), {hexo, require});
@@ -41,7 +41,23 @@ test('generated project page has its own route and title instead of the home lay
   const route = generators['project-feed']();
   assert.equal(route.path, 'projects/index.html');
   assert.equal(route.data.path, route.path);
-  assert.equal(route.data.layout, 'page');
+  assert.equal(route.data.layout, 'projects');
   assert.equal(route.data.title, '公开项目动态');
   assert.match(route.data.content, /github.com/);
+});
+test('rendered excerpts do not execute legacy scripts or retain decorative inline styles', () => {
+  const data = filters.after_post_render({description:'Excerpt',content:'<h2>🎵 Heading</h2><div style="color:purple">Content</div><script>danger()</script>'});
+  assert.doesNotMatch(data.excerpt, /script|danger|purple/);
+  assert.match(data.content, /<h2>Heading<\/h2>/);
+  assert.doesNotMatch(data.content, /style="/);
+  assert.match(data.content, /<script>danger\(\)<\/script>/);
+});
+test('search and RSS entries use canonical routes and escape source text', () => {
+  const posts=[{title:'Title < &',path:'2026/test/',description:'Summary < &',date:new Date('2026-10-14'),tags:{toArray:()=>[{name:'AI'}]},content:'<p>Searchable</p><script>ignoreMe()</script>'}];
+  const routes=generators['fieldnotes-search-and-feed']({posts:{sort:()=>({toArray:()=>posts})}});
+  const data=JSON.parse(routes[0].data);
+  assert.equal(data[0].url,'/my-hexo-blog/2026/test/');
+  assert.equal(data[0].content,'Searchable');
+  assert.match(routes[1].data,/Title &lt; &amp;/);
+  assert.match(routes[1].data,/<rss version="2.0">/);
 });

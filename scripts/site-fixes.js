@@ -17,6 +17,15 @@ hexo.extend.filter.register('after_post_render', function (data) {
   data.content = data.content.replace(/(?:<p>\s*)?\{%\s*meting\s+"(\d+)"\s+"netease"\s+"(song|playlist)"[^%]*%\}(?:\s*<\/p>)?/g,
     (_, id, type) => renderMusic([id, 'netease', type]));
   const $ = cheerio.load(data.content);
+  $('h1,h2,h3,h4').each((_, heading) => {
+    const element = $(heading);
+    element.text(element.text().replace(/[\u{1F000}-\u{1FAFF}\u2600-\u27BF\uFE0F\u200D]/gu, '').trim());
+  });
+  $('[style]').each((_, element) => {
+    if (!['img', 'video', 'audio'].includes(element.tagName)) $(element).removeAttr('style');
+  });
+  $('style').remove();
+  data.content = $('body').html();
   $('script,style,.music-widget').remove();
   data.excerpt = `<p>${escapeHTML(data.description || $('body').text().replace(/\{%[^%]*%\}/g, '').replace(/\s+/g, ' ').slice(0, 180))}</p>`;
   return data;
@@ -63,11 +72,22 @@ hexo.extend.generator.register('compatibility-routes', () => [...canonical].map(
 
 hexo.extend.generator.register('project-feed', () => {
   const snapshot = JSON.parse(fs.readFileSync(path.join(hexo.base_dir, 'data/projects.json'), 'utf8'));
-  const icon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 4l-6 8 6 8M16 4l6 8-6 8M14 3l-4 18"/></svg>';
-  const cards = snapshot.projects.map(repo => `<section class="project-card"><h3>${icon}<a href="${escapeHTML(repo.html_url)}">${escapeHTML(repo.name)}</a></h3><p>${escapeHTML(repo.description || '项目说明见仓库。')}</p><p class="project-meta">${escapeHTML(repo.language || '文档 / 资源')} · ${repo.stargazers_count} stars · 最近推送 ${repo.pushed_at.slice(0, 10)}</p></section>`).join('');
-  return {path: 'projects/index.html', layout: 'page', data: {
-    path: 'projects/index.html', layout: 'page', type: 'page',
+  return {path: 'projects/index.html', layout: 'projects', data: {
+    path: 'projects/index.html', layout: 'projects', type: 'page',
     title: '公开项目动态', date: '2026-10-14', updated: snapshot.collected_at, comments: false,
-    content: `<p>这里展示公开仓库的最新信息，按最近推送排序。仓库描述来自 GitHub，不代表独立验证的成果或上线状态。</p><p>快照更新：${escapeHTML(snapshot.collected_at)}（UTC）。每日尝试同步，文章正文独立维护。</p><div class="project-grid">${cards}</div><p><a href="https://github.com/sjkncs?tab=repositories">查看全部公开仓库</a></p>`,
+    content: '<p>公开仓库动态来自 <a href="https://github.com/sjkncs">GitHub</a>，不代表独立验证的成果或上线状态。</p>',
   }};
+});
+
+hexo.extend.generator.register('fieldnotes-search-and-feed', locals => {
+  const posts = locals.posts.sort('date', -1).toArray();
+  const clean = text => String(text || '').replace(/[\u{1F000}-\u{1FAFF}\u2600-\u27BF\uFE0F\u200D]/gu, '').trim();
+  const index = posts.map(post => {
+    const $ = cheerio.load(post.content || '');
+    $('script,style,.music-widget').remove();
+    return {title:clean(post.title), url:root()+post.path, summary:clean(post.description),
+      tags:post.tags.toArray().map(t=>t.name), content:$('body').text().replace(/\s+/g,' ').slice(0,10000)};
+  });
+  const feed = '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>'+escapeHTML(hexo.config.title)+'</title><link>'+hexo.config.url+'/</link><description>'+escapeHTML(hexo.config.description)+'</description>'+posts.slice(0,20).map(post => '<item><title>'+escapeHTML(clean(post.title))+'</title><link>'+hexo.config.url+'/'+post.path+'</link><guid>'+hexo.config.url+'/'+post.path+'</guid><pubDate>'+new Date(post.date.valueOf()).toUTCString()+'</pubDate><description>'+escapeHTML(clean(post.description))+'</description></item>').join('')+'</channel></rss>';
+  return [{path:'search-index.json',data:JSON.stringify(index)}, {path:'feed.xml',data:feed}];
 });

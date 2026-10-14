@@ -21,11 +21,11 @@ function visit(dir) {
       pages++;
       const html = fs.readFileSync(file, 'utf8');
       const $ = cheerio.load(html);
-      $('pre,code,script,style').remove();
-      if ($('body').text().includes('{% meting')) errors.push(`Unrendered music tag in ${file}`);
       $('[href],[src],[data-src],[poster]').each((_, el) => {
         for (const attr of ['href', 'src', 'data-src', 'poster']) targetExists($(el).attr(attr), file);
       });
+      $('pre,code,script,style').remove();
+      if ($('body').text().includes('{% meting')) errors.push(`Unrendered music tag in ${file}`);
       for (const match of html.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)) targetExists(match[1], file);
       const scripts = [...html.matchAll(/<script[^>]*src=['"]([^'"]+)['"]/g)].map(m => m[1]);
       if (scripts.filter(s => /APlayer\.min\.js/.test(s)).length > 1) errors.push(`Duplicate APlayer library: ${file}`);
@@ -33,8 +33,21 @@ function visit(dir) {
   }
 }
 visit(base);
-for (const required of ['projects/index.html', 'search.xml', '2025/01/07/vae-music-aplayer/index.html', '2025/01/08/vae-music-aplayer/index.html']) {
+for (const required of ['projects/index.html', 'search.xml', 'search-index.json', 'feed.xml', 'css/fieldnotes.css', 'js/fieldnotes.js', '2026/10/14/shenzhen-research-notes/index.html', '2025/01/07/vae-music-aplayer/index.html', '2025/01/08/vae-music-aplayer/index.html']) {
   if (!fs.existsSync(path.join(base, required))) errors.push(`Missing route: ${required}`);
 }
+const search = JSON.parse(fs.readFileSync(path.join(base, 'search-index.json'), 'utf8'));
+if (!search.length || new Set(search.map(p => p.url)).size !== search.length) errors.push('Search index must contain unique article URLs');
+for (const post of search) targetExists(post.url, path.join(base, 'index.html'));
+const projectPage = cheerio.load(fs.readFileSync(path.join(base, 'projects/index.html'), 'utf8'));
+if (projectPage('.project-card').length !== 10 || projectPage('[data-category="all"]').length !== 1) errors.push('Project index controls or entries missing');
+const categories = new Set(['engineering', 'research', 'applications', 'resources']);
+projectPage('.project-card').each((_, card) => {
+  const element = projectPage(card);
+  if (!categories.has(element.attr('data-category'))) errors.push('Invalid project category');
+  if (!/^https:\/\/github.com\/sjkncs\/[A-Za-z0-9_.-]+$/.test(element.find('h2 a').attr('href'))) errors.push('Unexpected project URL');
+});
+const home = cheerio.load(fs.readFileSync(path.join(base, 'index.html'), 'utf8'));
+if (!home('.lead-story img').length || !home('.main-nav').length) errors.push('Homepage content or navigation missing');
 if (errors.length) { console.error(errors.join('\n')); process.exit(1); }
 console.log(`PASS: ${pages} HTML pages, local links/assets, compatibility routes, search and player scripts`);

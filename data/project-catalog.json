@@ -1,0 +1,12 @@
+[
+  {"name":"shenzhen-housing-redevelopment","title":"深圳住房更新研究","category":"research","summary":"交易数据覆盖、空间核验与事件研究诊断。正式项目因果识别仍待完成。","cover":"/img/research-event-study.png","icon":"map"},
+  {"name":"agentx","title":"AgentX","category":"engineering","summary":"多模型与插件集成的 AI 编程智能体，连接工具调用和数据任务工作流。","icon":"terminal"},
+  {"name":"dsh-research","title":"科研 Harness","category":"engineering","summary":"围绕 DeepSeek Harness 的科研预设、工作台和桌面包装。","icon":"flask-conical"},
+  {"name":"bili-ai-index","title":"AI 学习资源索引","category":"resources","summary":"论文精读、课程与访谈的分类索引，保留原视频及论文来源。","icon":"library"},
+  {"name":"gui-agent-framework","title":"GUI Agent Framework","category":"engineering","summary":"模块化浏览器与桌面自动化，结合视觉决策、任务规划与人工介入。","icon":"mouse-pointer-2"},
+  {"name":"guishan-island-tourism","title":"桂山岛文旅分析","category":"research","summary":"多平台评论、文本分析与空间客流资料的研究整理。","icon":"map-pinned"},
+  {"name":"paper-plot-skills","title":"Paper Plot Skills","category":"resources","summary":"从真实数据或参考图组织科研图表，提供可复现的出图入口。","icon":"chart-no-axes-combined"},
+  {"name":"smarttravel-qingyuan","title":"智游清远","category":"applications","summary":"乡村旅游信息、知识库问答与桌面支持的应用项目。","icon":"compass"},
+  {"name":"Ding-AI","title":"Ding-AI","category":"applications","summary":"Web 与桌面端的 AI 辅助演示文稿生成工具。","icon":"presentation"},
+  {"name":"PandaQuantFlow","title":"PandaQuantFlow","category":"research","summary":"LLM 辅助量化因子分析与回测的研究工具。","icon":"chart-line"}
+]
