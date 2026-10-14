@@ -225,6 +225,140 @@ Pascal VOC - 图像分割
       </tags>
   </entry>
   <entry>
+    <title>EmoBuy - 情绪消费平台</title>
+    <url>/my-hexo-blog/2025/07/20/emobuy-platform/</url>
+    <content><![CDATA[EmoBuy - 情绪消费平台
+项目时间: 2025年7月项目类型: 创新项目技术栈: Python, Flask, React, TensorFlowGitHub: https://github.com/sjkncs/emobuy
+
+项目概述EmoBuy是一个创新的情绪消费平台，通过识别用户的情绪状态，智能推荐符合当前心情的商品，提供个性化的购物体验。
+项目链接:
+
+🔗 GitHub仓库: https://github.com/sjkncs/emobuy
+🌐 在线演示: 开发中
+
+
+创新理念核心概念情绪驱动消费 - 不同的情绪状态会影响人们的购买决策。EmoBuy通过识别用户情绪，推荐最适合当前心情的商品。
+应用场景
+开心时 - 推荐分享类、社交类商品
+压力大时 - 推荐放松、解压类商品
+伤心时 - 推荐治愈系、安慰类商品
+兴奋时 - 推荐冒险、挑战类商品
+
+
+技术架构系统架构图用户端 (React)    ↓API网关 (Flask)    ↓├─ 情绪识别模块 (TensorFlow)├─ 推荐引擎 (协同过滤)├─ 商品管理系统└─ 用户行为分析    ↓数据库 (MongoDB)
+
+核心模块1. 情绪识别模块面部表情识别:
+import tensorflow as tffrom tensorflow.keras.models import load_modelimport cv2class EmotionDetector:    def __init__(self):        self.model = load_model('emotion_model.h5')        self.emotions = ['angry', 'disgust', 'fear', 'happy',                         'sad', 'surprise', 'neutral']        self.face_cascade = cv2.CascadeClassifier(            cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'        )        def detect_emotion(self, image):        """检测图像中的情绪"""        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)        faces = self.face_cascade.detectMultiScale(gray, 1.3, 5)                emotions_detected = []        for (x, y, w, h) in faces:            face_roi = gray[y:y+h, x:x+w]            face_roi = cv2.resize(face_roi, (48, 48))            face_roi = face_roi / 255.0            face_roi = face_roi.reshape(1, 48, 48, 1)                        prediction = self.model.predict(face_roi)            emotion_idx = prediction.argmax()            emotion = self.emotions[emotion_idx]            confidence = prediction[0][emotion_idx]                        emotions_detected.append({                'emotion': emotion,                'confidence': float(confidence),                'bbox': [int(x), int(y), int(w), int(h)]            })                return emotions_detected
+
+文本情绪分析:
+from transformers import pipelineclass TextEmotionAnalyzer:    def __init__(self):        self.analyzer = pipeline(            "sentiment-analysis",            model="distilbert-base-uncased-finetuned-sst-2-english"        )        def analyze(self, text):        """分析文本情绪"""        result = self.analyzer(text)[0]        return {            'emotion': result['label'],            'score': result['score']        }
+
+2. 智能推荐引擎基于情绪的推荐:
+class EmotionBasedRecommender:    def __init__(self):        self.emotion_product_mapping = {            'happy': ['party_supplies', 'gifts', 'social_games'],            'sad': ['comfort_food', 'movies', 'books', 'plush_toys'],            'angry': ['stress_balls', 'boxing_equipment', 'meditation'],            'fear': ['security_devices', 'insurance', 'safety_equipment'],            'surprise': ['mystery_boxes', 'adventure_gear'],            'neutral': ['daily_necessities', 'bestsellers']        }        def recommend(self, emotion, user_history=None):        """根据情绪推荐商品"""        categories = self.emotion_product_mapping.get(emotion, [])                # 获取对应分类的商品        products = self.get_products_by_categories(categories)                # 结合用户历史行为        if user_history:            products = self.personalize(products, user_history)                return products[:10]  # 返回Top 10        def get_products_by_categories(self, categories):        """从数据库获取商品"""        # 数据库查询逻辑        pass        def personalize(self, products, user_history):        """个性化排序"""        # 协同过滤算法        pass
+
+3. 前端交互React组件:
+import React, { useState, useEffect } from 'react';import Webcam from 'react-webcam';function EmotionDetection() {  const [emotion, setEmotion] = useState(null);  const [products, setProducts] = useState([]);  const webcamRef = React.useRef(null);  const captureEmotion = async () =&gt; {    const imageSrc = webcamRef.current.getScreenshot();        const response = await fetch('/api/detect-emotion', {      method: 'POST',      headers: { 'Content-Type': 'application/json' },      body: JSON.stringify({ image: imageSrc })    });        const data = await response.json();    setEmotion(data.emotion);        // 获取推荐商品    const productsResponse = await fetch(      `/api/recommend?emotion=${data.emotion}`    );    const productsData = await productsResponse.json();    setProducts(productsData.products);  };  return (    &lt;div className="emotion-detection"&gt;      &lt;Webcam ref={webcamRef} /&gt;      &lt;button onClick={captureEmotion}&gt;检测情绪&lt;/button&gt;            {emotion &amp;&amp; (        &lt;div className="emotion-result"&gt;          &lt;h3&gt;检测到的情绪: {emotion}&lt;/h3&gt;          &lt;div className="product-recommendations"&gt;            {products.map(product =&gt; (              &lt;ProductCard key={product.id} product={product} /&gt;            ))}          &lt;/div&gt;        &lt;/div&gt;      )}    &lt;/div&gt;  );}
+
+
+核心功能1. 情绪检测
+📷 摄像头实时检测 - 通过面部表情识别情绪
+📝 文本情绪分析 - 分析用户输入的文字情绪
+🎵 语音情绪识别 - 通过语音语调判断情绪
+📊 情绪历史追踪 - 记录用户情绪变化趋势
+
+2. 智能推荐
+🎯 情绪匹配 - 根据当前情绪推荐商品
+👤 个性化推荐 - 结合用户历史偏好
+🔥 热门推荐 - 同情绪下的热门商品
+🆕 新品推荐 - 符合情绪的新上架商品
+
+3. 购物体验
+🛒 一键加购 - 快速添加到购物车
+💬 情绪日记 - 记录购物时的心情
+📈 消费分析 - 分析情绪与消费的关系
+🎁 情绪礼物 - 为朋友选择合适的礼物
+
+
+项目成果用户数据
+👥 注册用户: 500+ (测试阶段)
+📈 情绪检测准确率: 87.3%
+🛍️ 推荐点击率: 提升42%
+⭐ 用户满意度: 4.5/5.0
+
+技术指标
+
+
+指标
+数值
+
+
+
+情绪识别速度
+&lt;200ms
+
+
+推荐响应时间
+&lt;500ms
+
+
+系统可用性
+99.5%
+
+
+并发用户数
+1000+
+
+
+
+项目收获技术能力
+深度学习应用 - 情绪识别模型训练与部署
+全栈开发 - React + Flask完整开发流程
+推荐系统 - 协同过滤算法实现
+实时处理 - WebSocket实时通信
+
+产品思维
+用户体验 - 关注用户情感需求
+创新思维 - 将心理学与电商结合
+数据驱动 - 基于用户行为优化推荐
+商业价值 - 提升转化率和用户粘性
+
+
+未来规划短期目标
+ 优化情绪识别准确率
+ 增加更多商品分类
+ 完善推荐算法
+ 开发移动端应用
+
+长期愿景
+ 接入真实电商平台
+ 开发情绪社交功能
+ 建立情绪消费数据库
+ 提供情绪管理建议
+
+
+用户反馈
+“这个平台太有趣了！它真的能理解我的心情，推荐的商品都很对我胃口。” - 用户A
+
+
+“情绪检测很准确，推荐的解压商品帮我缓解了压力。” - 用户B
+
+
+“创新的购物体验，让购物变得更有意义。” - 用户C
+
+
+🛍️ EmoBuy - 懂你的心情，懂你的需求 🛍️
+]]></content>
+      <categories>
+        <category>项目经历</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Web开发</tag>
+        <tag>情绪分析</tag>
+        <tag>电商平台</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>旅忆悠然 (SmartTravel) 智慧旅游应用</title>
     <url>/my-hexo-blog/2025/11/10/harmonyos-travel-app/</url>
     <content><![CDATA[旅忆悠然 (SmartTravel) 智慧旅游应用
@@ -391,140 +525,6 @@ UI/UX设计 - 提升用户体验设计能力
         <tag>HarmonyOS</tag>
         <tag>ArkTS</tag>
         <tag>移动开发</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>EmoBuy - 情绪消费平台</title>
-    <url>/my-hexo-blog/2025/07/20/emobuy-platform/</url>
-    <content><![CDATA[EmoBuy - 情绪消费平台
-项目时间: 2025年7月项目类型: 创新项目技术栈: Python, Flask, React, TensorFlowGitHub: https://github.com/sjkncs/emobuy
-
-项目概述EmoBuy是一个创新的情绪消费平台，通过识别用户的情绪状态，智能推荐符合当前心情的商品，提供个性化的购物体验。
-项目链接:
-
-🔗 GitHub仓库: https://github.com/sjkncs/emobuy
-🌐 在线演示: 开发中
-
-
-创新理念核心概念情绪驱动消费 - 不同的情绪状态会影响人们的购买决策。EmoBuy通过识别用户情绪，推荐最适合当前心情的商品。
-应用场景
-开心时 - 推荐分享类、社交类商品
-压力大时 - 推荐放松、解压类商品
-伤心时 - 推荐治愈系、安慰类商品
-兴奋时 - 推荐冒险、挑战类商品
-
-
-技术架构系统架构图用户端 (React)    ↓API网关 (Flask)    ↓├─ 情绪识别模块 (TensorFlow)├─ 推荐引擎 (协同过滤)├─ 商品管理系统└─ 用户行为分析    ↓数据库 (MongoDB)
-
-核心模块1. 情绪识别模块面部表情识别:
-import tensorflow as tffrom tensorflow.keras.models import load_modelimport cv2class EmotionDetector:    def __init__(self):        self.model = load_model('emotion_model.h5')        self.emotions = ['angry', 'disgust', 'fear', 'happy',                         'sad', 'surprise', 'neutral']        self.face_cascade = cv2.CascadeClassifier(            cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'        )        def detect_emotion(self, image):        """检测图像中的情绪"""        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)        faces = self.face_cascade.detectMultiScale(gray, 1.3, 5)                emotions_detected = []        for (x, y, w, h) in faces:            face_roi = gray[y:y+h, x:x+w]            face_roi = cv2.resize(face_roi, (48, 48))            face_roi = face_roi / 255.0            face_roi = face_roi.reshape(1, 48, 48, 1)                        prediction = self.model.predict(face_roi)            emotion_idx = prediction.argmax()            emotion = self.emotions[emotion_idx]            confidence = prediction[0][emotion_idx]                        emotions_detected.append({                'emotion': emotion,                'confidence': float(confidence),                'bbox': [int(x), int(y), int(w), int(h)]            })                return emotions_detected
-
-文本情绪分析:
-from transformers import pipelineclass TextEmotionAnalyzer:    def __init__(self):        self.analyzer = pipeline(            "sentiment-analysis",            model="distilbert-base-uncased-finetuned-sst-2-english"        )        def analyze(self, text):        """分析文本情绪"""        result = self.analyzer(text)[0]        return {            'emotion': result['label'],            'score': result['score']        }
-
-2. 智能推荐引擎基于情绪的推荐:
-class EmotionBasedRecommender:    def __init__(self):        self.emotion_product_mapping = {            'happy': ['party_supplies', 'gifts', 'social_games'],            'sad': ['comfort_food', 'movies', 'books', 'plush_toys'],            'angry': ['stress_balls', 'boxing_equipment', 'meditation'],            'fear': ['security_devices', 'insurance', 'safety_equipment'],            'surprise': ['mystery_boxes', 'adventure_gear'],            'neutral': ['daily_necessities', 'bestsellers']        }        def recommend(self, emotion, user_history=None):        """根据情绪推荐商品"""        categories = self.emotion_product_mapping.get(emotion, [])                # 获取对应分类的商品        products = self.get_products_by_categories(categories)                # 结合用户历史行为        if user_history:            products = self.personalize(products, user_history)                return products[:10]  # 返回Top 10        def get_products_by_categories(self, categories):        """从数据库获取商品"""        # 数据库查询逻辑        pass        def personalize(self, products, user_history):        """个性化排序"""        # 协同过滤算法        pass
-
-3. 前端交互React组件:
-import React, { useState, useEffect } from 'react';import Webcam from 'react-webcam';function EmotionDetection() {  const [emotion, setEmotion] = useState(null);  const [products, setProducts] = useState([]);  const webcamRef = React.useRef(null);  const captureEmotion = async () =&gt; {    const imageSrc = webcamRef.current.getScreenshot();        const response = await fetch('/api/detect-emotion', {      method: 'POST',      headers: { 'Content-Type': 'application/json' },      body: JSON.stringify({ image: imageSrc })    });        const data = await response.json();    setEmotion(data.emotion);        // 获取推荐商品    const productsResponse = await fetch(      `/api/recommend?emotion=${data.emotion}`    );    const productsData = await productsResponse.json();    setProducts(productsData.products);  };  return (    &lt;div className="emotion-detection"&gt;      &lt;Webcam ref={webcamRef} /&gt;      &lt;button onClick={captureEmotion}&gt;检测情绪&lt;/button&gt;            {emotion &amp;&amp; (        &lt;div className="emotion-result"&gt;          &lt;h3&gt;检测到的情绪: {emotion}&lt;/h3&gt;          &lt;div className="product-recommendations"&gt;            {products.map(product =&gt; (              &lt;ProductCard key={product.id} product={product} /&gt;            ))}          &lt;/div&gt;        &lt;/div&gt;      )}    &lt;/div&gt;  );}
-
-
-核心功能1. 情绪检测
-📷 摄像头实时检测 - 通过面部表情识别情绪
-📝 文本情绪分析 - 分析用户输入的文字情绪
-🎵 语音情绪识别 - 通过语音语调判断情绪
-📊 情绪历史追踪 - 记录用户情绪变化趋势
-
-2. 智能推荐
-🎯 情绪匹配 - 根据当前情绪推荐商品
-👤 个性化推荐 - 结合用户历史偏好
-🔥 热门推荐 - 同情绪下的热门商品
-🆕 新品推荐 - 符合情绪的新上架商品
-
-3. 购物体验
-🛒 一键加购 - 快速添加到购物车
-💬 情绪日记 - 记录购物时的心情
-📈 消费分析 - 分析情绪与消费的关系
-🎁 情绪礼物 - 为朋友选择合适的礼物
-
-
-项目成果用户数据
-👥 注册用户: 500+ (测试阶段)
-📈 情绪检测准确率: 87.3%
-🛍️ 推荐点击率: 提升42%
-⭐ 用户满意度: 4.5/5.0
-
-技术指标
-
-
-指标
-数值
-
-
-
-情绪识别速度
-&lt;200ms
-
-
-推荐响应时间
-&lt;500ms
-
-
-系统可用性
-99.5%
-
-
-并发用户数
-1000+
-
-
-
-项目收获技术能力
-深度学习应用 - 情绪识别模型训练与部署
-全栈开发 - React + Flask完整开发流程
-推荐系统 - 协同过滤算法实现
-实时处理 - WebSocket实时通信
-
-产品思维
-用户体验 - 关注用户情感需求
-创新思维 - 将心理学与电商结合
-数据驱动 - 基于用户行为优化推荐
-商业价值 - 提升转化率和用户粘性
-
-
-未来规划短期目标
- 优化情绪识别准确率
- 增加更多商品分类
- 完善推荐算法
- 开发移动端应用
-
-长期愿景
- 接入真实电商平台
- 开发情绪社交功能
- 建立情绪消费数据库
- 提供情绪管理建议
-
-
-用户反馈
-“这个平台太有趣了！它真的能理解我的心情，推荐的商品都很对我胃口。” - 用户A
-
-
-“情绪检测很准确，推荐的解压商品帮我缓解了压力。” - 用户B
-
-
-“创新的购物体验，让购物变得更有意义。” - 用户C
-
-
-🛍️ EmoBuy - 懂你的心情，懂你的需求 🛍️
-]]></content>
-      <categories>
-        <category>项目经历</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Web开发</tag>
-        <tag>情绪分析</tag>
-        <tag>电商平台</tag>
       </tags>
   </entry>
   <entry>
@@ -705,6 +705,37 @@ Yiruma - River Flows in You
       </tags>
   </entry>
   <entry>
+    <title>深圳住宅更新：先把数据与研究边界讲清楚</title>
+    <url>/my-hexo-blog//2026/10/14/shenzhen-research-notes/</url>
+    <content><![CDATA[为什么先谈证据，而不是效果住宅拆除重建不仅改变建筑，还可能改变周边服务、交通和供应预期。想研究既有住宅价格如何响应，需要先区分三个层次：交易来源是否覆盖研究窗口、片区比较反映了什么，以及住宅能否被可靠地归属到具体项目周边。
+本文是 2026 年 10 月 14 日的研究进度记录，不是论文成果公告。代码、来源清单和后续更新以研究仓库为准。
+
+
+从全市覆盖到罗湖样本现有平台来源包含 139,514 条原始交易，规则清洗后为 132,774 条；罗湖清洗样本为 16,199 条、621 个小区。它们是平台样本，不是官方成交普查。现有小区级交易来源止于 2024 年 4 月 25 日，行政区日度成交量不能替代项目附近的住宅价格。
+全市覆盖摘要记录了数量、来源哈希和时间范围。缺失记录不直接填零，不用更大范围的数据量代表项目识别已经完成。
+片区诊断能告诉我们什么当前罗湖试算比较来源中的翠竹商圈与其他商圈。住房特征调整后，主模型使用 10,867 笔交易、607 个小区；事后交互系数为 0.1606，对应相对差异约 17.42%。
+但是，事件前联合检验已经显示明显差异。图中的事件前路径、单一处理商圈的共同冲击，以及尚未核定的空间边界，都限制了这个结果的解释。因此不能把这个数字称为木头龙项目的因果效应。
+图中为公开仓库封存的真实事件研究，参照期是 2019Q4，2021Q4 处理组缺失观测未插值。动态系数与运行摘要提供完整核查入口。
+下一步的关口当前重点是核定木头龙的坐标依据、拆除范围、分期事件和既有住宅身份，再构造比较样本。补充项目线索不等于已经接受的空间处理样本；测试通过也不等于平行趋势或识别成立。
+较新的区级市场统计仍需说明缺日、区名口径和统计粒度。它可以支持背景描述，不能自动补齐小区级长期价格面板。研究的每一层证据都需要保留自己的来源与边界。
+可复现入口
+研究设计
+复现指南
+数据来源与使用条件
+
+原始输入、汇总诊断与正式因果证据是不同的产物。把它们分清楚，才有可能在后续工作中做出可解释、可核查的比较。
+]]></content>
+      <categories>
+        <category>研究笔记</category>
+      </categories>
+      <tags>
+        <tag>城市更新</tag>
+        <tag>深圳</tag>
+        <tag>空间数据</tag>
+        <tag>计量经济学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基于深度学习的智能金融综合服务系统</title>
     <url>/my-hexo-blog/2025/11/15/quant-trading-system/</url>
     <content><![CDATA[基于深度学习的智能金融综合服务系统
@@ -872,37 +903,6 @@ LightGBM官方文档
         <tag>许嵩</tag>
         <tag>歌单</tag>
         <tag>APlayer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>深圳住宅更新：先把数据与研究边界讲清楚</title>
-    <url>/my-hexo-blog//2026/10/14/shenzhen-research-notes/</url>
-    <content><![CDATA[为什么先谈证据，而不是效果住宅拆除重建不仅改变建筑，还可能改变周边服务、交通和供应预期。想研究既有住宅价格如何响应，需要先区分三个层次：交易来源是否覆盖研究窗口、片区比较反映了什么，以及住宅能否被可靠地归属到具体项目周边。
-本文是 2026 年 10 月 14 日的研究进度记录，不是论文成果公告。代码、来源清单和后续更新以研究仓库为准。
-
-
-从全市覆盖到罗湖样本现有平台来源包含 139,514 条原始交易，规则清洗后为 132,774 条；罗湖清洗样本为 16,199 条、621 个小区。它们是平台样本，不是官方成交普查。现有小区级交易来源止于 2024 年 4 月 25 日，行政区日度成交量不能替代项目附近的住宅价格。
-全市覆盖摘要记录了数量、来源哈希和时间范围。缺失记录不直接填零，不用更大范围的数据量代表项目识别已经完成。
-片区诊断能告诉我们什么当前罗湖试算比较来源中的翠竹商圈与其他商圈。住房特征调整后，主模型使用 10,867 笔交易、607 个小区；事后交互系数为 0.1606，对应相对差异约 17.42%。
-但是，事件前联合检验已经显示明显差异。图中的事件前路径、单一处理商圈的共同冲击，以及尚未核定的空间边界，都限制了这个结果的解释。因此不能把这个数字称为木头龙项目的因果效应。
-图中为公开仓库封存的真实事件研究，参照期是 2019Q4，2021Q4 处理组缺失观测未插值。动态系数与运行摘要提供完整核查入口。
-下一步的关口当前重点是核定木头龙的坐标依据、拆除范围、分期事件和既有住宅身份，再构造比较样本。补充项目线索不等于已经接受的空间处理样本；测试通过也不等于平行趋势或识别成立。
-较新的区级市场统计仍需说明缺日、区名口径和统计粒度。它可以支持背景描述，不能自动补齐小区级长期价格面板。研究的每一层证据都需要保留自己的来源与边界。
-可复现入口
-研究设计
-复现指南
-数据来源与使用条件
-
-原始输入、汇总诊断与正式因果证据是不同的产物。把它们分清楚，才有可能在后续工作中做出可解释、可核查的比较。
-]]></content>
-      <categories>
-        <category>研究笔记</category>
-      </categories>
-      <tags>
-        <tag>城市更新</tag>
-        <tag>深圳</tag>
-        <tag>空间数据</tag>
-        <tag>计量经济学</tag>
       </tags>
   </entry>
   <entry>
@@ -1200,6 +1200,211 @@ loadSong(0);
       </tags>
   </entry>
   <entry>
+    <title>徽州印象 · 西递宏村游记</title>
+    <url>/my-hexo-blog/2025/01/07/xidi-hongcun-travel/</url>
+    <content><![CDATA[徽州印象 · 西递宏村游记
+旅行时间: 2024年秋地点: 安徽黄山 · 西递 · 宏村同行: 独自旅行
+
+前言这次徽州之行，是一场寻找诗意生活的旅程。西递和宏村，两个被时光温柔对待的古村落，用它们的白墙黛瓦、小桥流水，讲述着徽州文化的千年故事。
+
+  
+  📷 徽州古村落 - 白墙黛瓦间的诗意
+西递和宏村，两座被列入世界文化遗产的古村落，是徽州建筑的代表，也是我心心念念已久的目的地。
+
+
+西递古村初见西递清晨的西递，笼罩在薄雾之中。踏入村口，映入眼帘的是高耸的牌坊和层层叠叠的马头墙。阳光透过云层洒下，为古老的建筑镀上一层金色。
+建筑之美西递的建筑保存完好，每一栋房屋都是艺术品：
+特色建筑:
+
+🏛️ 胡文光刺史牌坊 - 村口标志性建筑，雕刻精美
+🏠 敬爱堂 - 典型的徽派建筑，三进院落
+🎨 西园 - 私家园林，小巧精致
+📚 追慕堂 - 书香门第，文化底蕴深厚
+
+徽派建筑特点白墙黛瓦马头墙回廊挂落花格窗三雕艺术显精湛天井采光纳吉祥
+
+三雕艺术:
+
+🪵 木雕 - 门窗、梁柱上的精美雕刻
+🪨 石雕 - 门楼、漏窗的装饰图案
+🧱 砖雕 - 门罩、照壁的立体浮雕
+
+
+宏村水韵画里乡村宏村被誉为”画里乡村”，果然名不虚传。整个村落依山傍水，布局如牛形，是古代水系规划的杰作。
+南湖晨曦清晨的南湖，是宏村最美的时刻：
+
+🌅 日出时分 - 金色阳光洒在湖面
+🏘️ 倒影如画 - 白墙黛瓦倒映水中
+🦆 鸭戏清波 - 几只野鸭悠然游弋
+📷 摄影天堂 - 无数摄影师的最爱
+
+月沼夜色月沼是宏村的核心，形似半月：
+白天:
+
+村民在此洗衣、聊天
+游客围绕拍照留念
+阳光下波光粼粼
+
+夜晚:
+
+灯光映照，如梦如幻
+古宅倒影，虚实相生
+宁静祥和，别有韵味
+
+承志堂宏村最豪华的民居，被誉为”民间故宫”：
+
+🏛️ 规模宏大 - 占地2100平方米
+🎨 雕刻精美 - 木雕作品达千余件
+💰 富商宅邸 - 清代盐商汪定贵所建
+📖 文化价值 - 徽商文化的见证
+
+
+徽州美食必尝美食传统菜肴:
+
+臭鳜鱼 ⭐⭐⭐⭐⭐
+
+闻起来臭，吃起来香
+徽菜代表作
+
+
+毛豆腐 ⭐⭐⭐⭐
+
+表面长满白毛
+煎炸后外酥里嫩
+
+
+徽州刀板香 ⭐⭐⭐⭐
+
+腌制五花肉
+肥而不腻
+
+
+黄山烧饼 ⭐⭐⭐⭐⭐
+
+层层酥脆
+梅干菜馅料
+
+
+
+特色小吃:
+
+🥟 徽州饺子
+🍲 石耳炖鸡
+🥘 问政山笋
+🍵 黄山毛峰茶
+
+
+摄影攻略最佳拍摄时间西递:
+
+🌅 清晨6:00-7:30 - 晨雾缭绕，光影迷人
+🌇 傍晚5:00-6:30 - 夕阳西下，金色暖光
+
+宏村:
+
+🌄 日出前后 - 南湖倒影最美
+🌃 夜晚7:00-9:00 - 月沼灯光璀璨
+
+推荐机位西递:
+
+村口牌坊 - 标志性建筑
+观景台 - 俯瞰全村
+巷弄深处 - 捕捉生活气息
+
+宏村:
+
+南湖画桥 - 经典机位
+月沼北岸 - 对称构图
+承志堂内 - 建筑细节
+
+拍摄建议
+📷 设备: 广角镜头 + 标准镜头
+🎨 构图: 利用倒影、线条、框架
+⏰ 时间: 避开人流高峰
+🌦️ 天气: 雨后或薄雾天气最佳
+
+
+旅行贴士交通方式到达黄山:
+
+✈️ 飞机: 黄山屯溪国际机场
+🚄 高铁: 黄山北站
+🚌 汽车: 黄山汽车站
+
+景区交通:
+
+🚌 黄山市区 → 宏村/西递 (约1小时)
+🚗 包车或自驾更方便
+🚶 两村之间约8公里，可骑行
+
+住宿推荐西递:
+
+🏠 古宅民宿 - 体验徽派建筑
+💰 价格: 150-300元/晚
+
+宏村:
+
+🏘️ 村内客栈 - 近水楼台
+💰 价格: 200-400元/晚
+
+建议: 在宏村住一晚，方便拍摄日出日落
+游览建议时间安排:
+
+西递: 半天 (3-4小时)
+宏村: 1天 (含日出日落)
+总计: 1.5-2天
+
+门票信息:
+
+西递: 104元
+宏村: 104元
+联票: 190元 (有效期3天)
+
+最佳季节:
+
+🌸 春季(3-5月) - 油菜花开
+🍂 秋季(10-11月) - 红叶满山
+🌧️ 雨季 - 烟雨朦胧，别有韵味
+
+
+旅行感悟时光的印记走在西递宏村的青石板路上，仿佛穿越回了明清时代。这里的每一块砖瓦，每一道门楣，都承载着历史的记忆。
+生活的诗意最打动我的，不是那些精美的建筑，而是村民们悠然自得的生活状态。清晨在南湖边洗衣，傍晚在月沼旁闲聊，这种与自然和谐共处的生活方式，正是现代人所向往的。
+文化的传承徽州文化博大精深，从建筑到美食，从商道到家训，无不体现着中华传统文化的智慧。保护好这些古村落，就是保护我们的文化根脉。
+
+旅行清单必带物品
+📷 相机 + 备用电池
+🎒 轻便背包
+👟 舒适的鞋子
+🧥 外套（早晚温差大）
+☂️ 雨伞（山区多雨）
+🔋 充电宝
+💊 常用药品
+
+推荐APP
+🗺️ 高德地图 - 导航
+📸 美图秀秀 - 修图
+🏨 携程/美团 - 订房
+🌤️ 墨迹天气 - 查天气
+
+
+结语西递宏村之行，是一次与历史的对话，与文化的邂逅。在这里，我找到了内心的宁静，感受到了传统文化的魅力。
+如果你也向往诗意的生活，向往古朴的建筑，那么西递宏村一定不会让你失望。
+下次再见，徽州。
+
+精选照片[南湖晨曦] - 金色阳光洒在湖面[月沼倒影] - 白墙黛瓦映水中[马头墙] - 层层叠叠，错落有致[三雕艺术] - 精美绝伦的木雕[徽州人家] - 宁静祥和的生活
+
+
+🏘️ 愿你也能在徽州，找到属于自己的诗和远方 🏘️
+]]></content>
+      <categories>
+        <category>旅行游记</category>
+      </categories>
+      <tags>
+        <tag>旅行</tag>
+        <tag>徽州</tag>
+        <tag>古村落</tag>
+        <tag>摄影</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>欢迎来到我的技术空间</title>
     <url>/my-hexo-blog//2025/01/07/welcome-to-my-blog/</url>
     <content><![CDATA[欢迎来到我的技术空间
@@ -1415,211 +1620,6 @@ Powered by Hexo &amp; Butterfly Theme
         <tag>欢迎</tag>
         <tag>公告</tag>
         <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>徽州印象 · 西递宏村游记</title>
-    <url>/my-hexo-blog/2025/01/07/xidi-hongcun-travel/</url>
-    <content><![CDATA[徽州印象 · 西递宏村游记
-旅行时间: 2024年秋地点: 安徽黄山 · 西递 · 宏村同行: 独自旅行
-
-前言这次徽州之行，是一场寻找诗意生活的旅程。西递和宏村，两个被时光温柔对待的古村落，用它们的白墙黛瓦、小桥流水，讲述着徽州文化的千年故事。
-
-  
-  📷 徽州古村落 - 白墙黛瓦间的诗意
-西递和宏村，两座被列入世界文化遗产的古村落，是徽州建筑的代表，也是我心心念念已久的目的地。
-
-
-西递古村初见西递清晨的西递，笼罩在薄雾之中。踏入村口，映入眼帘的是高耸的牌坊和层层叠叠的马头墙。阳光透过云层洒下，为古老的建筑镀上一层金色。
-建筑之美西递的建筑保存完好，每一栋房屋都是艺术品：
-特色建筑:
-
-🏛️ 胡文光刺史牌坊 - 村口标志性建筑，雕刻精美
-🏠 敬爱堂 - 典型的徽派建筑，三进院落
-🎨 西园 - 私家园林，小巧精致
-📚 追慕堂 - 书香门第，文化底蕴深厚
-
-徽派建筑特点白墙黛瓦马头墙回廊挂落花格窗三雕艺术显精湛天井采光纳吉祥
-
-三雕艺术:
-
-🪵 木雕 - 门窗、梁柱上的精美雕刻
-🪨 石雕 - 门楼、漏窗的装饰图案
-🧱 砖雕 - 门罩、照壁的立体浮雕
-
-
-宏村水韵画里乡村宏村被誉为”画里乡村”，果然名不虚传。整个村落依山傍水，布局如牛形，是古代水系规划的杰作。
-南湖晨曦清晨的南湖，是宏村最美的时刻：
-
-🌅 日出时分 - 金色阳光洒在湖面
-🏘️ 倒影如画 - 白墙黛瓦倒映水中
-🦆 鸭戏清波 - 几只野鸭悠然游弋
-📷 摄影天堂 - 无数摄影师的最爱
-
-月沼夜色月沼是宏村的核心，形似半月：
-白天:
-
-村民在此洗衣、聊天
-游客围绕拍照留念
-阳光下波光粼粼
-
-夜晚:
-
-灯光映照，如梦如幻
-古宅倒影，虚实相生
-宁静祥和，别有韵味
-
-承志堂宏村最豪华的民居，被誉为”民间故宫”：
-
-🏛️ 规模宏大 - 占地2100平方米
-🎨 雕刻精美 - 木雕作品达千余件
-💰 富商宅邸 - 清代盐商汪定贵所建
-📖 文化价值 - 徽商文化的见证
-
-
-徽州美食必尝美食传统菜肴:
-
-臭鳜鱼 ⭐⭐⭐⭐⭐
-
-闻起来臭，吃起来香
-徽菜代表作
-
-
-毛豆腐 ⭐⭐⭐⭐
-
-表面长满白毛
-煎炸后外酥里嫩
-
-
-徽州刀板香 ⭐⭐⭐⭐
-
-腌制五花肉
-肥而不腻
-
-
-黄山烧饼 ⭐⭐⭐⭐⭐
-
-层层酥脆
-梅干菜馅料
-
-
-
-特色小吃:
-
-🥟 徽州饺子
-🍲 石耳炖鸡
-🥘 问政山笋
-🍵 黄山毛峰茶
-
-
-摄影攻略最佳拍摄时间西递:
-
-🌅 清晨6:00-7:30 - 晨雾缭绕，光影迷人
-🌇 傍晚5:00-6:30 - 夕阳西下，金色暖光
-
-宏村:
-
-🌄 日出前后 - 南湖倒影最美
-🌃 夜晚7:00-9:00 - 月沼灯光璀璨
-
-推荐机位西递:
-
-村口牌坊 - 标志性建筑
-观景台 - 俯瞰全村
-巷弄深处 - 捕捉生活气息
-
-宏村:
-
-南湖画桥 - 经典机位
-月沼北岸 - 对称构图
-承志堂内 - 建筑细节
-
-拍摄建议
-📷 设备: 广角镜头 + 标准镜头
-🎨 构图: 利用倒影、线条、框架
-⏰ 时间: 避开人流高峰
-🌦️ 天气: 雨后或薄雾天气最佳
-
-
-旅行贴士交通方式到达黄山:
-
-✈️ 飞机: 黄山屯溪国际机场
-🚄 高铁: 黄山北站
-🚌 汽车: 黄山汽车站
-
-景区交通:
-
-🚌 黄山市区 → 宏村/西递 (约1小时)
-🚗 包车或自驾更方便
-🚶 两村之间约8公里，可骑行
-
-住宿推荐西递:
-
-🏠 古宅民宿 - 体验徽派建筑
-💰 价格: 150-300元/晚
-
-宏村:
-
-🏘️ 村内客栈 - 近水楼台
-💰 价格: 200-400元/晚
-
-建议: 在宏村住一晚，方便拍摄日出日落
-游览建议时间安排:
-
-西递: 半天 (3-4小时)
-宏村: 1天 (含日出日落)
-总计: 1.5-2天
-
-门票信息:
-
-西递: 104元
-宏村: 104元
-联票: 190元 (有效期3天)
-
-最佳季节:
-
-🌸 春季(3-5月) - 油菜花开
-🍂 秋季(10-11月) - 红叶满山
-🌧️ 雨季 - 烟雨朦胧，别有韵味
-
-
-旅行感悟时光的印记走在西递宏村的青石板路上，仿佛穿越回了明清时代。这里的每一块砖瓦，每一道门楣，都承载着历史的记忆。
-生活的诗意最打动我的，不是那些精美的建筑，而是村民们悠然自得的生活状态。清晨在南湖边洗衣，傍晚在月沼旁闲聊，这种与自然和谐共处的生活方式，正是现代人所向往的。
-文化的传承徽州文化博大精深，从建筑到美食，从商道到家训，无不体现着中华传统文化的智慧。保护好这些古村落，就是保护我们的文化根脉。
-
-旅行清单必带物品
-📷 相机 + 备用电池
-🎒 轻便背包
-👟 舒适的鞋子
-🧥 外套（早晚温差大）
-☂️ 雨伞（山区多雨）
-🔋 充电宝
-💊 常用药品
-
-推荐APP
-🗺️ 高德地图 - 导航
-📸 美图秀秀 - 修图
-🏨 携程/美团 - 订房
-🌤️ 墨迹天气 - 查天气
-
-
-结语西递宏村之行，是一次与历史的对话，与文化的邂逅。在这里，我找到了内心的宁静，感受到了传统文化的魅力。
-如果你也向往诗意的生活，向往古朴的建筑，那么西递宏村一定不会让你失望。
-下次再见，徽州。
-
-精选照片[南湖晨曦] - 金色阳光洒在湖面[月沼倒影] - 白墙黛瓦映水中[马头墙] - 层层叠叠，错落有致[三雕艺术] - 精美绝伦的木雕[徽州人家] - 宁静祥和的生活
-
-
-🏘️ 愿你也能在徽州，找到属于自己的诗和远方 🏘️
-]]></content>
-      <categories>
-        <category>旅行游记</category>
-      </categories>
-      <tags>
-        <tag>旅行</tag>
-        <tag>徽州</tag>
-        <tag>古村落</tag>
-        <tag>摄影</tag>
       </tags>
   </entry>
 </search>
