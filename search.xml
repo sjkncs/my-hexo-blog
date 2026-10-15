@@ -359,6 +359,175 @@ import React, { useState, useEffect } from 'react';import Webcam from 'react-web
       </tags>
   </entry>
   <entry>
+    <title>旅忆悠然 (SmartTravel) 智慧旅游应用</title>
+    <url>/my-hexo-blog/2025/11/10/harmonyos-travel-app/</url>
+    <content><![CDATA[ 旅忆悠然 (SmartTravel) 智慧旅游应用
+项目时间: 2025年11月项目类型: 个人/团队项目 · HarmonyOS应用开发版本: 1.0.0GitHub: https://github.com/sjkncs/smarttravel
+
+ 项目概述开发平台
+操作系统: HarmonyOS
+开发语言: ArkTS
+UI框架: ArkUI
+版本号: 1.0.0
+
+项目定位基于HarmonyOS的一站式旅游服务应用，解决传统平台信息分散、流程繁琐等痛点，实现”边览边订”的无缝体验。
+
+ 核心痛点与解决方案痛点一：信息更新滞后问题: 传统平台信息更新不及时，用户获取的可能是过时信息
+解决方案:
+
+实时信息流更新
+UGC内容生态
+智能推送机制
+
+// 实时信息更新class InfoStream {  private updateInterval: number = 5000; // 5秒更新    startRealTimeUpdate() {    setInterval(() =&gt; {      this.fetchLatestInfo();      this.notifyUsers();    }, this.updateInterval);  }}
+
+痛点二：报名流程繁琐问题: 多步骤跳转，重复填写信息
+解决方案:
+
+“边览边报”浮层表单
+一键报名功能
+信息自动填充
+
+// 一键报名@Componentstruct QuickSignUp {  @State userInfo: UserInfo = getUserInfo();    build() {    Column() {      // 浮层表单      FloatingForm({        autoFill: true,        data: this.userInfo      })            Button('一键报名')        .onClick(() =&gt; {          this.submitWithAutoFill();        })    }  }}
+
+痛点三：定位不精准问题: 推荐内容与实际位置不符
+解决方案:
+
+HarmonyOS高精度定位
+智能周边算法
+实时位置更新
+
+
+ 核心功能模块1. 首页信息流功能特性:
+
+智能搜索引擎
+分类卡片展示
+8大快捷入口
+一站式信息获取
+
+@Entry@Componentstruct HomePage {  @State searchText: string = '';  @State categories: Category[] = [];    build() {    Column() {      // 搜索栏      SearchBar({        placeholder: '搜索景点、酒店、活动...',        onSearch: (text) =&gt; this.handleSearch(text)      })            // 分类卡片      Grid() {        ForEach(this.categories, (item: Category) =&gt; {          GridItem() {            CategoryCard({ data: item })          }        })      }            // 快捷入口      QuickEntrance()    }  }}
+
+2. 活动报名系统功能特性:
+
+详情页内嵌报名
+一键提交
+报名状态管理
+无缝体验
+
+@Componentstruct ActivitySignUp {  @State activity: Activity = null;  @State formData: FormData = {};    build() {    Column() {      // 活动详情      ActivityDetail({ data: this.activity })            // 内嵌报名表单      Form() {        FormItem({ label: '姓名' }) {          TextInput({ text: this.formData.name })        }        FormItem({ label: '手机' }) {          TextInput({ text: this.formData.phone })        }      }            // 一键提交      Button('立即报名')        .onClick(() =&gt; this.submitSignUp())    }  }}
+
+3. 智能地图导航功能特性:
+
+高精度定位
+AR实景导航
+地址动画切换
+精准导航服务
+
+@Componentstruct SmartMap {  @State currentLocation: Location = null;  @State destination: Location = null;    build() {    Stack() {      // 地图组件      Map({        center: this.currentLocation,        markers: this.getMarkers()      })            // AR导航层      ARNavigationLayer({        from: this.currentLocation,        to: this.destination      })            // 控制按钮      NavigationControls()    }  }    // 高精度定位  async getCurrentLocation() {    const location = await geoLocationManager.getCurrentLocation({      priority: LocationRequestPriority.ACCURACY    });    this.currentLocation = location;  }}
+
+4. 酒店预订系统功能特性:
+
+多维度筛选
+在线预订
+入住评价
+完整预订流程
+
+@Componentstruct HotelBooking {  @State hotels: Hotel[] = [];  @State filters: FilterOptions = {};    build() {    Column() {      // 筛选器      FilterBar({        options: ['价格', '评分', '距离', '设施'],        onChange: (filters) =&gt; this.applyFilters(filters)      })            // 酒店列表      List() {        ForEach(this.hotels, (hotel: Hotel) =&gt; {          ListItem() {            HotelCard({              data: hotel,              onBook: () =&gt; this.bookHotel(hotel)            })          }        })      }    }  }}
+
+5. 景点讲解服务功能特性:
+
+多语言语音讲解
+游览路线推荐
+增强旅游体验
+
+@Componentstruct ScenicGuide {  @State currentSpot: Spot = null;  @State language: string = 'zh-CN';    build() {    Column() {      // 景点信息      SpotInfo({ data: this.currentSpot })            // 语音讲解      AudioPlayer({        src: this.getAudioUrl(this.currentSpot, this.language),        autoPlay: true      })            // 路线推荐      RouteRecommendation({        spots: this.getNearbySpots()      })    }  }}
+
+6. 个人中心功能特性:
+
+账户管理
+订单管理
+收藏管理
+会员权益
+个性化服务支撑
+
+
+ 技术特色1. HarmonyOS生态集成// 分布式跨设备同步import distributedData from '@ohos.data.distributedData';class DataSync {  private kvStore: distributedData.SingleKVStore;    async syncData(key: string, value: string) {    await this.kvStore.put(key, value);    // 自动同步到其他设备  }}
+
+2. 华为服务集成
+Map Kit - 地图服务
+Location Kit - 定位服务
+Push Kit - 推送服务
+Account Kit - 账号服务
+
+3. ArkUI动画特效// animateTo地址交换动画animateTo({  duration: 300,  curve: Curve.EaseInOut}, () =&gt; {  this.fromAddress = this.toAddress;  this.toAddress = temp;})// 页面转场动画pageTransition() {  PageTransitionEnter({ duration: 500 })    .slide(SlideEffect.Right)  PageTransitionExit({ duration: 500 })    .slide(SlideEffect.Left)}
+
+
+ 项目成果功能完成度
+✅ 首页信息流 (100%)
+✅ 活动报名系统 (100%)
+✅ 智能地图导航 (100%)
+✅ 酒店预订系统 (100%)
+✅ 景点讲解服务 (100%)
+✅ 个人中心 (100%)
+
+性能指标
+
+
+指标
+数值
+
+
+
+应用启动时间
+&lt;1.5s
+
+
+页面切换流畅度
+60fps
+
+
+定位精度
+&lt;5m
+
+
+内存占用
+&lt;150MB
+
+
+
+ 项目收获技术能力
+HarmonyOS开发 - 掌握ArkTS和ArkUI
+移动端开发 - 熟悉移动应用开发流程
+UI/UX设计 - 提升用户体验设计能力
+系统集成 - 学会集成华为各类Kit
+
+团队协作
+需求分析 - 理解用户痛点
+任务分工 - 高效的团队协作
+代码review - 保证代码质量
+项目管理 - 按时交付成果
+
+
+ 未来规划
+ 增加社交功能
+ 接入更多第三方服务
+ 优化AI推荐算法
+ 开发平板版本
+ 支持更多语言
+
+
+🗺️ 智慧旅游，悠然出行 🗺️
+]]></content>
+      <categories>
+        <category>项目经历</category>
+      </categories>
+      <tags>
+        <tag>HarmonyOS</tag>
+        <tag>ArkTS</tag>
+        <tag>移动开发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>🎵 音乐空间 - 精选歌单推荐</title>
     <url>/my-hexo-blog/2025/01/08/music-recommend/</url>
     <content><![CDATA[
@@ -669,172 +838,34 @@ LightGBM官方文档
       </tags>
   </entry>
   <entry>
-    <title>旅忆悠然 (SmartTravel) 智慧旅游应用</title>
-    <url>/my-hexo-blog/2025/11/10/harmonyos-travel-app/</url>
-    <content><![CDATA[ 旅忆悠然 (SmartTravel) 智慧旅游应用
-项目时间: 2025年11月项目类型: 个人/团队项目 · HarmonyOS应用开发版本: 1.0.0GitHub: https://github.com/sjkncs/smarttravel
-
- 项目概述开发平台
-操作系统: HarmonyOS
-开发语言: ArkTS
-UI框架: ArkUI
-版本号: 1.0.0
-
-项目定位基于HarmonyOS的一站式旅游服务应用，解决传统平台信息分散、流程繁琐等痛点，实现”边览边订”的无缝体验。
-
- 核心痛点与解决方案痛点一：信息更新滞后问题: 传统平台信息更新不及时，用户获取的可能是过时信息
-解决方案:
-
-实时信息流更新
-UGC内容生态
-智能推送机制
-
-// 实时信息更新class InfoStream {  private updateInterval: number = 5000; // 5秒更新    startRealTimeUpdate() {    setInterval(() =&gt; {      this.fetchLatestInfo();      this.notifyUsers();    }, this.updateInterval);  }}
-
-痛点二：报名流程繁琐问题: 多步骤跳转，重复填写信息
-解决方案:
-
-“边览边报”浮层表单
-一键报名功能
-信息自动填充
-
-// 一键报名@Componentstruct QuickSignUp {  @State userInfo: UserInfo = getUserInfo();    build() {    Column() {      // 浮层表单      FloatingForm({        autoFill: true,        data: this.userInfo      })            Button('一键报名')        .onClick(() =&gt; {          this.submitWithAutoFill();        })    }  }}
-
-痛点三：定位不精准问题: 推荐内容与实际位置不符
-解决方案:
-
-HarmonyOS高精度定位
-智能周边算法
-实时位置更新
+    <title>深圳住宅更新：先把数据与研究边界讲清楚</title>
+    <url>/my-hexo-blog//2026/10/14/shenzhen-research-notes/</url>
+    <content><![CDATA[为什么先谈证据，而不是效果住宅拆除重建不仅改变建筑，还可能改变周边服务、交通和供应预期。想研究既有住宅价格如何响应，需要先区分三个层次：交易来源是否覆盖研究窗口、片区比较反映了什么，以及住宅能否被可靠地归属到具体项目周边。
+本文是 2026 年 10 月 14 日的研究进度记录，不是论文成果公告。代码、来源清单和后续更新以研究仓库为准。
 
 
- 核心功能模块1. 首页信息流功能特性:
+从全市覆盖到罗湖样本现有平台来源包含 139,514 条原始交易，规则清洗后为 132,774 条；罗湖清洗样本为 16,199 条、621 个小区。它们是平台样本，不是官方成交普查。现有小区级交易来源止于 2024 年 4 月 25 日，行政区日度成交量不能替代项目附近的住宅价格。
+全市覆盖摘要记录了数量、来源哈希和时间范围。缺失记录不直接填零，不用更大范围的数据量代表项目识别已经完成。
+片区诊断能告诉我们什么当前罗湖试算比较来源中的翠竹商圈与其他商圈。住房特征调整后，主模型使用 10,867 笔交易、607 个小区；事后交互系数为 0.1606，对应相对差异约 17.42%。
+但是，事件前联合检验已经显示明显差异。图中的事件前路径、单一处理商圈的共同冲击，以及尚未核定的空间边界，都限制了这个结果的解释。因此不能把这个数字称为木头龙项目的因果效应。
+图中为公开仓库封存的真实事件研究，参照期是 2019Q4，2021Q4 处理组缺失观测未插值。动态系数与运行摘要提供完整核查入口。
+下一步的关口当前重点是核定木头龙的坐标依据、拆除范围、分期事件和既有住宅身份，再构造比较样本。补充项目线索不等于已经接受的空间处理样本；测试通过也不等于平行趋势或识别成立。
+较新的区级市场统计仍需说明缺日、区名口径和统计粒度。它可以支持背景描述，不能自动补齐小区级长期价格面板。研究的每一层证据都需要保留自己的来源与边界。
+可复现入口
+研究设计
+复现指南
+数据来源与使用条件
 
-智能搜索引擎
-分类卡片展示
-8大快捷入口
-一站式信息获取
-
-@Entry@Componentstruct HomePage {  @State searchText: string = '';  @State categories: Category[] = [];    build() {    Column() {      // 搜索栏      SearchBar({        placeholder: '搜索景点、酒店、活动...',        onSearch: (text) =&gt; this.handleSearch(text)      })            // 分类卡片      Grid() {        ForEach(this.categories, (item: Category) =&gt; {          GridItem() {            CategoryCard({ data: item })          }        })      }            // 快捷入口      QuickEntrance()    }  }}
-
-2. 活动报名系统功能特性:
-
-详情页内嵌报名
-一键提交
-报名状态管理
-无缝体验
-
-@Componentstruct ActivitySignUp {  @State activity: Activity = null;  @State formData: FormData = {};    build() {    Column() {      // 活动详情      ActivityDetail({ data: this.activity })            // 内嵌报名表单      Form() {        FormItem({ label: '姓名' }) {          TextInput({ text: this.formData.name })        }        FormItem({ label: '手机' }) {          TextInput({ text: this.formData.phone })        }      }            // 一键提交      Button('立即报名')        .onClick(() =&gt; this.submitSignUp())    }  }}
-
-3. 智能地图导航功能特性:
-
-高精度定位
-AR实景导航
-地址动画切换
-精准导航服务
-
-@Componentstruct SmartMap {  @State currentLocation: Location = null;  @State destination: Location = null;    build() {    Stack() {      // 地图组件      Map({        center: this.currentLocation,        markers: this.getMarkers()      })            // AR导航层      ARNavigationLayer({        from: this.currentLocation,        to: this.destination      })            // 控制按钮      NavigationControls()    }  }    // 高精度定位  async getCurrentLocation() {    const location = await geoLocationManager.getCurrentLocation({      priority: LocationRequestPriority.ACCURACY    });    this.currentLocation = location;  }}
-
-4. 酒店预订系统功能特性:
-
-多维度筛选
-在线预订
-入住评价
-完整预订流程
-
-@Componentstruct HotelBooking {  @State hotels: Hotel[] = [];  @State filters: FilterOptions = {};    build() {    Column() {      // 筛选器      FilterBar({        options: ['价格', '评分', '距离', '设施'],        onChange: (filters) =&gt; this.applyFilters(filters)      })            // 酒店列表      List() {        ForEach(this.hotels, (hotel: Hotel) =&gt; {          ListItem() {            HotelCard({              data: hotel,              onBook: () =&gt; this.bookHotel(hotel)            })          }        })      }    }  }}
-
-5. 景点讲解服务功能特性:
-
-多语言语音讲解
-游览路线推荐
-增强旅游体验
-
-@Componentstruct ScenicGuide {  @State currentSpot: Spot = null;  @State language: string = 'zh-CN';    build() {    Column() {      // 景点信息      SpotInfo({ data: this.currentSpot })            // 语音讲解      AudioPlayer({        src: this.getAudioUrl(this.currentSpot, this.language),        autoPlay: true      })            // 路线推荐      RouteRecommendation({        spots: this.getNearbySpots()      })    }  }}
-
-6. 个人中心功能特性:
-
-账户管理
-订单管理
-收藏管理
-会员权益
-个性化服务支撑
-
-
- 技术特色1. HarmonyOS生态集成// 分布式跨设备同步import distributedData from '@ohos.data.distributedData';class DataSync {  private kvStore: distributedData.SingleKVStore;    async syncData(key: string, value: string) {    await this.kvStore.put(key, value);    // 自动同步到其他设备  }}
-
-2. 华为服务集成
-Map Kit - 地图服务
-Location Kit - 定位服务
-Push Kit - 推送服务
-Account Kit - 账号服务
-
-3. ArkUI动画特效// animateTo地址交换动画animateTo({  duration: 300,  curve: Curve.EaseInOut}, () =&gt; {  this.fromAddress = this.toAddress;  this.toAddress = temp;})// 页面转场动画pageTransition() {  PageTransitionEnter({ duration: 500 })    .slide(SlideEffect.Right)  PageTransitionExit({ duration: 500 })    .slide(SlideEffect.Left)}
-
-
- 项目成果功能完成度
-✅ 首页信息流 (100%)
-✅ 活动报名系统 (100%)
-✅ 智能地图导航 (100%)
-✅ 酒店预订系统 (100%)
-✅ 景点讲解服务 (100%)
-✅ 个人中心 (100%)
-
-性能指标
-
-
-指标
-数值
-
-
-
-应用启动时间
-&lt;1.5s
-
-
-页面切换流畅度
-60fps
-
-
-定位精度
-&lt;5m
-
-
-内存占用
-&lt;150MB
-
-
-
- 项目收获技术能力
-HarmonyOS开发 - 掌握ArkTS和ArkUI
-移动端开发 - 熟悉移动应用开发流程
-UI/UX设计 - 提升用户体验设计能力
-系统集成 - 学会集成华为各类Kit
-
-团队协作
-需求分析 - 理解用户痛点
-任务分工 - 高效的团队协作
-代码review - 保证代码质量
-项目管理 - 按时交付成果
-
-
- 未来规划
- 增加社交功能
- 接入更多第三方服务
- 优化AI推荐算法
- 开发平板版本
- 支持更多语言
-
-
-🗺️ 智慧旅游，悠然出行 🗺️
+原始输入、汇总诊断与正式因果证据是不同的产物。把它们分清楚，才有可能在后续工作中做出可解释、可核查的比较。
 ]]></content>
       <categories>
-        <category>项目经历</category>
+        <category>研究笔记</category>
       </categories>
       <tags>
-        <tag>HarmonyOS</tag>
-        <tag>ArkTS</tag>
-        <tag>移动开发</tag>
+        <tag>城市更新</tag>
+        <tag>深圳</tag>
+        <tag>空间数据</tag>
+        <tag>计量经济学</tag>
       </tags>
   </entry>
   <entry>
@@ -1589,37 +1620,6 @@ Powered by Hexo &amp; Butterfly Theme
         <tag>徽州</tag>
         <tag>古村落</tag>
         <tag>摄影</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>深圳住宅更新：先把数据与研究边界讲清楚</title>
-    <url>/my-hexo-blog//2026/10/14/shenzhen-research-notes/</url>
-    <content><![CDATA[为什么先谈证据，而不是效果住宅拆除重建不仅改变建筑，还可能改变周边服务、交通和供应预期。想研究既有住宅价格如何响应，需要先区分三个层次：交易来源是否覆盖研究窗口、片区比较反映了什么，以及住宅能否被可靠地归属到具体项目周边。
-本文是 2026 年 10 月 14 日的研究进度记录，不是论文成果公告。代码、来源清单和后续更新以研究仓库为准。
-
-
-从全市覆盖到罗湖样本现有平台来源包含 139,514 条原始交易，规则清洗后为 132,774 条；罗湖清洗样本为 16,199 条、621 个小区。它们是平台样本，不是官方成交普查。现有小区级交易来源止于 2024 年 4 月 25 日，行政区日度成交量不能替代项目附近的住宅价格。
-全市覆盖摘要记录了数量、来源哈希和时间范围。缺失记录不直接填零，不用更大范围的数据量代表项目识别已经完成。
-片区诊断能告诉我们什么当前罗湖试算比较来源中的翠竹商圈与其他商圈。住房特征调整后，主模型使用 10,867 笔交易、607 个小区；事后交互系数为 0.1606，对应相对差异约 17.42%。
-但是，事件前联合检验已经显示明显差异。图中的事件前路径、单一处理商圈的共同冲击，以及尚未核定的空间边界，都限制了这个结果的解释。因此不能把这个数字称为木头龙项目的因果效应。
-图中为公开仓库封存的真实事件研究，参照期是 2019Q4，2021Q4 处理组缺失观测未插值。动态系数与运行摘要提供完整核查入口。
-下一步的关口当前重点是核定木头龙的坐标依据、拆除范围、分期事件和既有住宅身份，再构造比较样本。补充项目线索不等于已经接受的空间处理样本；测试通过也不等于平行趋势或识别成立。
-较新的区级市场统计仍需说明缺日、区名口径和统计粒度。它可以支持背景描述，不能自动补齐小区级长期价格面板。研究的每一层证据都需要保留自己的来源与边界。
-可复现入口
-研究设计
-复现指南
-数据来源与使用条件
-
-原始输入、汇总诊断与正式因果证据是不同的产物。把它们分清楚，才有可能在后续工作中做出可解释、可核查的比较。
-]]></content>
-      <categories>
-        <category>研究笔记</category>
-      </categories>
-      <tags>
-        <tag>城市更新</tag>
-        <tag>深圳</tag>
-        <tag>空间数据</tag>
-        <tag>计量经济学</tag>
       </tags>
   </entry>
 </search>
