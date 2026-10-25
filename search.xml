@@ -838,37 +838,6 @@ LightGBM官方文档
       </tags>
   </entry>
   <entry>
-    <title>深圳住宅更新：先把数据与研究边界讲清楚</title>
-    <url>/my-hexo-blog//2026/10/14/shenzhen-research-notes/</url>
-    <content><![CDATA[为什么先谈证据，而不是效果住宅拆除重建不仅改变建筑，还可能改变周边服务、交通和供应预期。想研究既有住宅价格如何响应，需要先区分三个层次：交易来源是否覆盖研究窗口、片区比较反映了什么，以及住宅能否被可靠地归属到具体项目周边。
-本文是 2026 年 10 月 14 日的研究进度记录，不是论文成果公告。代码、来源清单和后续更新以研究仓库为准。
-
-
-从全市覆盖到罗湖样本现有平台来源包含 139,514 条原始交易，规则清洗后为 132,774 条；罗湖清洗样本为 16,199 条、621 个小区。它们是平台样本，不是官方成交普查。现有小区级交易来源止于 2024 年 4 月 25 日，行政区日度成交量不能替代项目附近的住宅价格。
-全市覆盖摘要记录了数量、来源哈希和时间范围。缺失记录不直接填零，不用更大范围的数据量代表项目识别已经完成。
-片区诊断能告诉我们什么当前罗湖试算比较来源中的翠竹商圈与其他商圈。住房特征调整后，主模型使用 10,867 笔交易、607 个小区；事后交互系数为 0.1606，对应相对差异约 17.42%。
-但是，事件前联合检验已经显示明显差异。图中的事件前路径、单一处理商圈的共同冲击，以及尚未核定的空间边界，都限制了这个结果的解释。因此不能把这个数字称为木头龙项目的因果效应。
-图中为公开仓库封存的真实事件研究，参照期是 2019Q4，2021Q4 处理组缺失观测未插值。动态系数与运行摘要提供完整核查入口。
-下一步的关口当前重点是核定木头龙的坐标依据、拆除范围、分期事件和既有住宅身份，再构造比较样本。补充项目线索不等于已经接受的空间处理样本；测试通过也不等于平行趋势或识别成立。
-较新的区级市场统计仍需说明缺日、区名口径和统计粒度。它可以支持背景描述，不能自动补齐小区级长期价格面板。研究的每一层证据都需要保留自己的来源与边界。
-可复现入口
-研究设计
-复现指南
-数据来源与使用条件
-
-原始输入、汇总诊断与正式因果证据是不同的产物。把它们分清楚，才有可能在后续工作中做出可解释、可核查的比较。
-]]></content>
-      <categories>
-        <category>研究笔记</category>
-      </categories>
-      <tags>
-        <tag>城市更新</tag>
-        <tag>深圳</tag>
-        <tag>空间数据</tag>
-        <tag>计量经济学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>许嵩音乐精选集 (APlayer版)</title>
     <url>/my-hexo-blog//2025/01/07/vae-music-aplayer/</url>
     <content><![CDATA[许嵩音乐精选集许嵩的音乐陪伴了我的成长。从早期作品的青涩感伤，到中国风作品的细腻意境，每首歌都连接着不同的生活片段。这里保留歌单入口与几首常听的作品，也记录播放器的使用方式。
@@ -906,297 +875,34 @@ LightGBM官方文档
       </tags>
   </entry>
   <entry>
-    <title>许嵩音乐精选集</title>
-    <url>/my-hexo-blog/2025/01/07/vae-music-collection/</url>
-    <content><![CDATA[ 许嵩音乐精选集许嵩，中国内地流行乐男歌手、词曲创作人、音乐制作人。以其独特的音乐风格和深刻的歌词内涵深受喜爱。
- 在线播放器
-
-  
-    
-      
-      
-        玫瑰花的葬礼
-        许嵩
-      
-    
-    
-    
-      
-        点击播放查看歌词...
-      
-    
-    
-    
-      0:00
-      
-        
-      
-      0:00
-    
-    
-    
-      ⏮
-      ▶
-      ⏭
-      🔊
-    
-    
-    
-  
-  
-  
-    播放列表
-    
-      
-        01
-        玫瑰花的葬礼
-        4:32
-      
-      
-        02
-        山水之间
-        4:18
-      
-      
-        03
-        清明雨上
-        5:02
-      
-      
-        04
-        断桥残雪
-        4:45
-      
-      
-        05
-        庐州月
-        4:28
-      
-    
-  
+    <title>深圳住宅更新：先把数据与研究边界讲清楚</title>
+    <url>/my-hexo-blog//2026/10/14/shenzhen-research-notes/</url>
+    <content><![CDATA[为什么先谈证据，而不是效果住宅拆除重建不仅改变建筑，还可能改变周边服务、交通和供应预期。想研究既有住宅价格如何响应，需要先区分三个层次：交易来源是否覆盖研究窗口、片区比较反映了什么，以及住宅能否被可靠地归属到具体项目周边。
+本文是 2026 年 10 月 14 日的研究进度记录，不是论文成果公告。代码、来源清单和后续更新以研究仓库为准。
 
 
+从全市覆盖到罗湖样本现有平台来源包含 139,514 条原始交易，规则清洗后为 132,774 条；罗湖清洗样本为 16,199 条、621 个小区。它们是平台样本，不是官方成交普查。现有小区级交易来源止于 2024 年 4 月 25 日，行政区日度成交量不能替代项目附近的住宅价格。
+全市覆盖摘要记录了数量、来源哈希和时间范围。缺失记录不直接填零，不用更大范围的数据量代表项目识别已经完成。
+片区诊断能告诉我们什么当前罗湖试算比较来源中的翠竹商圈与其他商圈。住房特征调整后，主模型使用 10,867 笔交易、607 个小区；事后交互系数为 0.1606，对应相对差异约 17.42%。
+但是，事件前联合检验已经显示明显差异。图中的事件前路径、单一处理商圈的共同冲击，以及尚未核定的空间边界，都限制了这个结果的解释。因此不能把这个数字称为木头龙项目的因果效应。
+图中为公开仓库封存的真实事件研究，参照期是 2019Q4，2021Q4 处理组缺失观测未插值。动态系数与运行摘要提供完整核查入口。
+下一步的关口当前重点是核定木头龙的坐标依据、拆除范围、分期事件和既有住宅身份，再构造比较样本。补充项目线索不等于已经接受的空间处理样本；测试通过也不等于平行趋势或识别成立。
+较新的区级市场统计仍需说明缺日、区名口径和统计粒度。它可以支持背景描述，不能自动补齐小区级长期价格面板。研究的每一层证据都需要保留自己的来源与边界。
+可复现入口
+研究设计
+复现指南
+数据来源与使用条件
 
-
-
-
-const songs = [
-  { 
-    title: '玫瑰花的葬礼', 
-    artist: '许嵩', 
-    src: 'https://music.163.com/song/media/outer/url?id=25906124.mp3',
-    lyrics: `离开你一百个星期\n我回到了这里\n寻找我们爱过的证据\n没有人愿意提起\n玫瑰花它的过去\n今天这里的主题\n我把它叫作 回忆\n我知道 爱情这东西\n他没什么道理\n过去我和你在一起\n是我太叛逆\n现在只剩我自己\n偷偷的想你\n\n玫瑰花的葬礼\n埋葬关于你的回忆\n感觉双手麻痹\n不能自已\n已拉不住你\n真的好美丽\n那天的烟花雨\n我说要娶穿碎花洋裙的你\n玫瑰花的葬礼\n埋葬深深爱着的你\n残朵停止呼吸\n渗入大地\n没人会注意\n一片小雨滴\n陪着我等天明\n我用这最后一分钟怀念你`
-  },
-  { 
-    title: '山水之间', 
-    artist: '许嵩', 
-    src: 'https://music.163.com/song/media/outer/url?id=25906121.mp3',
-    lyrics: `昨夜同门云集 推杯又换盏\n今朝茶凉酒寒 豪言成笑谈\n半生累 尽徒然 碑文完美有谁看\n隐居山水之间 誓与浮名散\n\n湖畔青石板上 一把油纸伞\n旅人停步折花 淋湿了绸缎\n满树玉瓣多傲然 江南烟雨却痴缠\n花飞雨追一如尘缘理还乱\n\n落花雨 你飘摇的美丽\n花香氤 把往日情勾起\n我愿意 化浮萍躺湖心\n只陪你 泛岁月的涟漪`
-  },
-  { 
-    title: '清明雨上', 
-    artist: '许嵩', 
-    src: 'https://music.163.com/song/media/outer/url?id=25906117.mp3',
-    lyrics: `窗外又飘起了雨\n我的思绪飞到了过去\n那时的我们多么甜蜜\n如今却已天各一方`
-  },
-  { 
-    title: '断桥残雪', 
-    artist: '许嵩', 
-    src: 'https://music.163.com/song/media/outer/url?id=25906118.mp3',
-    lyrics: `断桥是否下过雪\n我望着湖面\n水中寒月如雪\n指尖轻点融解`
-  },
-  { 
-    title: '庐州月', 
-    artist: '许嵩', 
-    src: 'https://music.163.com/song/media/outer/url?id=25906119.mp3',
-    lyrics: `庐州月光\n洒在心上\n月下的你\n不复当年模样`
-  }
-];
-
-let currentIndex = 0;
-let isPlaying = false;
-
-const audio = document.getElementById('audio-element');
-const playBtn = document.getElementById('btn-play');
-const prevBtn = document.getElementById('btn-prev');
-const nextBtn = document.getElementById('btn-next');
-const progressBar = document.getElementById('progress-bar');
-const currentTime = document.getElementById('time-current');
-const totalTime = document.getElementById('time-total');
-const currentSong = document.getElementById('current-song');
-const currentArtist = document.getElementById('current-artist');
-const lyricsScroll = document.getElementById('lyrics-scroll');
-
-function loadSong(index) {
-  const song = songs[index];
-  audio.src = song.src;
-  currentSong.textContent = song.title;
-  currentArtist.textContent = song.artist;
-  
-  // 显示歌词
-  if (song.lyrics) {
-    lyricsScroll.innerHTML = '' + song.lyrics.replace(/\n/g, '') + '';
-  } else {
-    lyricsScroll.innerHTML = '暂无歌词';
-  }
-  
-  document.querySelectorAll('.song-entry').forEach((entry, i) => {
-    entry.classList.toggle('active', i === index);
-  });
-}
-
-async function playAudio() {
-  try {
-    await audio.play();
-    playBtn.textContent = '⏸';
-    isPlaying = true;
-  } catch {
-    playBtn.textContent = '▶';
-    isPlaying = false;
-    lyricsScroll.textContent = '音频暂时无法播放，请使用音乐空间中的原站链接收听。';
-  }
-}
-
-function togglePlay() {
-  if (isPlaying) {
-    audio.pause();
-    playBtn.textContent = '▶';
-  } else {
-    playAudio();
-  }
-  if (audio.paused) isPlaying = false;
-}
-
-function prevSong() {
-  currentIndex = (currentIndex - 1 + songs.length) % songs.length;
-  loadSong(currentIndex);
-  if (isPlaying) playAudio();
-}
-
-function nextSong() {
-  currentIndex = (currentIndex + 1) % songs.length;
-  loadSong(currentIndex);
-  if (isPlaying) playAudio();
-}
-
-function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, '0')}`;
-}
-
-playBtn.addEventListener('click', togglePlay);
-prevBtn.addEventListener('click', prevSong);
-nextBtn.addEventListener('click', nextSong);
-
-audio.addEventListener('timeupdate', () => {
-  const percent = Number.isFinite(audio.duration) && audio.duration > 0 ? (audio.currentTime / audio.duration) * 100 : 0;
-  progressBar.style.width = `${percent}%`;
-  currentTime.textContent = formatTime(audio.currentTime);
-});
-
-audio.addEventListener('loadedmetadata', () => {
-  totalTime.textContent = formatTime(audio.duration);
-});
-
-document.querySelectorAll('.song-entry').forEach((entry, index) => {
-  entry.addEventListener('click', () => {
-    currentIndex = index;
-    loadSong(index);
-    playAudio();
-  });
-});
-
-loadSong(0);
-
-
-
- 玫瑰花的葬礼发行时间: 2006年专辑: 《自定义》作词/作曲: 许嵩
-歌曲简介《玫瑰花的葬礼》是许嵩的成名作之一，这首歌以其独特的旋律和深情的歌词打动了无数听众。歌曲讲述了一段凄美的爱情故事，用玫瑰花的凋零比喻爱情的逝去。
-经典歌词
-你说你不懂为何在这时牵手我晒干了沉默 悔恨当初的冲动就算这是做错 也只是怕错过在一起叫梦 分开了叫痛  
-
-音乐特色
-曲风: R&amp;B、流行
-情感: 忧伤、深情
-特点: 旋律优美，歌词意境深远
-
-
- 山水之间发行时间: 2010年专辑: 《寻雾启示》作词/作曲: 许嵩
-歌曲简介《山水之间》是一首充满中国风韵味的歌曲，将古典诗词的意境与现代流行音乐完美结合。歌曲描绘了一幅山水画卷，表达了对自然和人生的感悟。
-经典歌词
-我站在山水之间看云卷云舒 花开花谢人生如梦 转眼百年何必执着于眼前  
-
-音乐特色
-曲风: 中国风、古风
-情感: 淡然、洒脱
-特点: 古典与现代融合，意境悠远
-
-
- 其他推荐曲目1. 清明雨上专辑: 《寻雾启示》 (2010)
-一首充满古典韵味的歌曲，以清明时节为背景，表达对逝去之人的思念。歌词优美，旋律动人。
-推荐指数: ⭐⭐⭐⭐⭐
-2. 断桥残雪专辑: 《自定义》 (2009)
-以杭州西湖断桥为背景，讲述了一段凄美的爱情故事。歌曲融合了中国传统文化元素。
-推荐指数: ⭐⭐⭐⭐⭐
-3. 庐州月专辑: 《寻雾启示》 (2010)
-一首充满思乡之情的歌曲，以庐州（合肥）的月色为意象，表达游子对故乡的思念。
-推荐指数: ⭐⭐⭐⭐⭐
-4. 素颜专辑: 《苏格拉没有底》 (2011)
-一首温暖治愈的情歌，歌颂真实自然的爱情，不需要华丽的包装。
-推荐指数: ⭐⭐⭐⭐⭐
-5. 雅俗共赏专辑: 《苏格拉没有底》 (2011)
-一首轻快活泼的歌曲，展现了许嵩幽默风趣的一面。
-推荐指数: ⭐⭐⭐⭐
-
- 许嵩音乐风格创作特点
-词曲创作: 许嵩的歌曲大多由自己作词作曲，展现了全面的音乐才华
-中国风: 擅长将中国传统文化元素融入现代流行音乐
-歌词深度: 歌词富有诗意和哲理，引人深思
-旋律优美: 旋律朗朗上口，易于传唱
-
-音乐成就
-多张专辑销量破百万
-多首歌曲成为KTV必点曲目
-获得多项音乐奖项
-拥有庞大的粉丝群体
-
-
- 专辑推荐《自定义》(2009)
-玫瑰花的葬礼
-多余的解释
-城府
-
-《寻雾启示》(2010)
-清明雨上
-山水之间
-庐州月
-
-《苏格拉没有底》(2011)
-素颜
-雅俗共赏
-千百度
-
-《梦游计》(2012)
-山水之间（新版）
-弹指一挥间
-幻听
-
-
- 聆听建议最佳聆听时间: 夜深人静时推荐场景: 学习、工作、放松、思考情绪搭配: 适合各种心情，治愈系音乐
-
- 个人感悟许嵩的音乐陪伴了我的成长，每一首歌都有其独特的魅力。从《玫瑰花的葬礼》的青涩感伤，到《山水之间》的洒脱淡然，再到《素颜》的温暖治愈，他的音乐总能在不同的人生阶段给予我力量和慰藉。
-音乐是情感的载体，也是回忆的钥匙。每当听到这些熟悉的旋律，总能想起那些美好的时光。
-
-🎵 愿音乐常伴，岁月静好 🎵
+原始输入、汇总诊断与正式因果证据是不同的产物。把它们分清楚，才有可能在后续工作中做出可解释、可核查的比较。
 ]]></content>
       <categories>
-        <category>音乐分享</category>
+        <category>研究笔记</category>
       </categories>
       <tags>
-        <tag>音乐</tag>
-        <tag>许嵩</tag>
-        <tag>歌单</tag>
+        <tag>城市更新</tag>
+        <tag>深圳</tag>
+        <tag>空间数据</tag>
+        <tag>计量经济学</tag>
       </tags>
   </entry>
   <entry>
@@ -1620,6 +1326,300 @@ Powered by Hexo &amp; Butterfly Theme
         <tag>徽州</tag>
         <tag>古村落</tag>
         <tag>摄影</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>许嵩音乐精选集</title>
+    <url>/my-hexo-blog/2025/01/07/vae-music-collection/</url>
+    <content><![CDATA[ 许嵩音乐精选集许嵩，中国内地流行乐男歌手、词曲创作人、音乐制作人。以其独特的音乐风格和深刻的歌词内涵深受喜爱。
+ 在线播放器
+
+  
+    
+      
+      
+        玫瑰花的葬礼
+        许嵩
+      
+    
+    
+    
+      
+        点击播放查看歌词...
+      
+    
+    
+    
+      0:00
+      
+        
+      
+      0:00
+    
+    
+    
+      ⏮
+      ▶
+      ⏭
+      🔊
+    
+    
+    
+  
+  
+  
+    播放列表
+    
+      
+        01
+        玫瑰花的葬礼
+        4:32
+      
+      
+        02
+        山水之间
+        4:18
+      
+      
+        03
+        清明雨上
+        5:02
+      
+      
+        04
+        断桥残雪
+        4:45
+      
+      
+        05
+        庐州月
+        4:28
+      
+    
+  
+
+
+
+
+
+
+const songs = [
+  { 
+    title: '玫瑰花的葬礼', 
+    artist: '许嵩', 
+    src: 'https://music.163.com/song/media/outer/url?id=25906124.mp3',
+    lyrics: `离开你一百个星期\n我回到了这里\n寻找我们爱过的证据\n没有人愿意提起\n玫瑰花它的过去\n今天这里的主题\n我把它叫作 回忆\n我知道 爱情这东西\n他没什么道理\n过去我和你在一起\n是我太叛逆\n现在只剩我自己\n偷偷的想你\n\n玫瑰花的葬礼\n埋葬关于你的回忆\n感觉双手麻痹\n不能自已\n已拉不住你\n真的好美丽\n那天的烟花雨\n我说要娶穿碎花洋裙的你\n玫瑰花的葬礼\n埋葬深深爱着的你\n残朵停止呼吸\n渗入大地\n没人会注意\n一片小雨滴\n陪着我等天明\n我用这最后一分钟怀念你`
+  },
+  { 
+    title: '山水之间', 
+    artist: '许嵩', 
+    src: 'https://music.163.com/song/media/outer/url?id=25906121.mp3',
+    lyrics: `昨夜同门云集 推杯又换盏\n今朝茶凉酒寒 豪言成笑谈\n半生累 尽徒然 碑文完美有谁看\n隐居山水之间 誓与浮名散\n\n湖畔青石板上 一把油纸伞\n旅人停步折花 淋湿了绸缎\n满树玉瓣多傲然 江南烟雨却痴缠\n花飞雨追一如尘缘理还乱\n\n落花雨 你飘摇的美丽\n花香氤 把往日情勾起\n我愿意 化浮萍躺湖心\n只陪你 泛岁月的涟漪`
+  },
+  { 
+    title: '清明雨上', 
+    artist: '许嵩', 
+    src: 'https://music.163.com/song/media/outer/url?id=25906117.mp3',
+    lyrics: `窗外又飘起了雨\n我的思绪飞到了过去\n那时的我们多么甜蜜\n如今却已天各一方`
+  },
+  { 
+    title: '断桥残雪', 
+    artist: '许嵩', 
+    src: 'https://music.163.com/song/media/outer/url?id=25906118.mp3',
+    lyrics: `断桥是否下过雪\n我望着湖面\n水中寒月如雪\n指尖轻点融解`
+  },
+  { 
+    title: '庐州月', 
+    artist: '许嵩', 
+    src: 'https://music.163.com/song/media/outer/url?id=25906119.mp3',
+    lyrics: `庐州月光\n洒在心上\n月下的你\n不复当年模样`
+  }
+];
+
+let currentIndex = 0;
+let isPlaying = false;
+
+const audio = document.getElementById('audio-element');
+const playBtn = document.getElementById('btn-play');
+const prevBtn = document.getElementById('btn-prev');
+const nextBtn = document.getElementById('btn-next');
+const progressBar = document.getElementById('progress-bar');
+const currentTime = document.getElementById('time-current');
+const totalTime = document.getElementById('time-total');
+const currentSong = document.getElementById('current-song');
+const currentArtist = document.getElementById('current-artist');
+const lyricsScroll = document.getElementById('lyrics-scroll');
+
+function loadSong(index) {
+  const song = songs[index];
+  audio.src = song.src;
+  currentSong.textContent = song.title;
+  currentArtist.textContent = song.artist;
+  
+  // 显示歌词
+  if (song.lyrics) {
+    lyricsScroll.innerHTML = '' + song.lyrics.replace(/\n/g, '') + '';
+  } else {
+    lyricsScroll.innerHTML = '暂无歌词';
+  }
+  
+  document.querySelectorAll('.song-entry').forEach((entry, i) => {
+    entry.classList.toggle('active', i === index);
+  });
+}
+
+async function playAudio() {
+  try {
+    await audio.play();
+    playBtn.textContent = '⏸';
+    isPlaying = true;
+  } catch {
+    playBtn.textContent = '▶';
+    isPlaying = false;
+    lyricsScroll.textContent = '音频暂时无法播放，请使用音乐空间中的原站链接收听。';
+  }
+}
+
+function togglePlay() {
+  if (isPlaying) {
+    audio.pause();
+    playBtn.textContent = '▶';
+  } else {
+    playAudio();
+  }
+  if (audio.paused) isPlaying = false;
+}
+
+function prevSong() {
+  currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+  loadSong(currentIndex);
+  if (isPlaying) playAudio();
+}
+
+function nextSong() {
+  currentIndex = (currentIndex + 1) % songs.length;
+  loadSong(currentIndex);
+  if (isPlaying) playAudio();
+}
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+playBtn.addEventListener('click', togglePlay);
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+
+audio.addEventListener('timeupdate', () => {
+  const percent = Number.isFinite(audio.duration) && audio.duration > 0 ? (audio.currentTime / audio.duration) * 100 : 0;
+  progressBar.style.width = `${percent}%`;
+  currentTime.textContent = formatTime(audio.currentTime);
+});
+
+audio.addEventListener('loadedmetadata', () => {
+  totalTime.textContent = formatTime(audio.duration);
+});
+
+document.querySelectorAll('.song-entry').forEach((entry, index) => {
+  entry.addEventListener('click', () => {
+    currentIndex = index;
+    loadSong(index);
+    playAudio();
+  });
+});
+
+loadSong(0);
+
+
+
+ 玫瑰花的葬礼发行时间: 2006年专辑: 《自定义》作词/作曲: 许嵩
+歌曲简介《玫瑰花的葬礼》是许嵩的成名作之一，这首歌以其独特的旋律和深情的歌词打动了无数听众。歌曲讲述了一段凄美的爱情故事，用玫瑰花的凋零比喻爱情的逝去。
+经典歌词
+你说你不懂为何在这时牵手我晒干了沉默 悔恨当初的冲动就算这是做错 也只是怕错过在一起叫梦 分开了叫痛  
+
+音乐特色
+曲风: R&amp;B、流行
+情感: 忧伤、深情
+特点: 旋律优美，歌词意境深远
+
+
+ 山水之间发行时间: 2010年专辑: 《寻雾启示》作词/作曲: 许嵩
+歌曲简介《山水之间》是一首充满中国风韵味的歌曲，将古典诗词的意境与现代流行音乐完美结合。歌曲描绘了一幅山水画卷，表达了对自然和人生的感悟。
+经典歌词
+我站在山水之间看云卷云舒 花开花谢人生如梦 转眼百年何必执着于眼前  
+
+音乐特色
+曲风: 中国风、古风
+情感: 淡然、洒脱
+特点: 古典与现代融合，意境悠远
+
+
+ 其他推荐曲目1. 清明雨上专辑: 《寻雾启示》 (2010)
+一首充满古典韵味的歌曲，以清明时节为背景，表达对逝去之人的思念。歌词优美，旋律动人。
+推荐指数: ⭐⭐⭐⭐⭐
+2. 断桥残雪专辑: 《自定义》 (2009)
+以杭州西湖断桥为背景，讲述了一段凄美的爱情故事。歌曲融合了中国传统文化元素。
+推荐指数: ⭐⭐⭐⭐⭐
+3. 庐州月专辑: 《寻雾启示》 (2010)
+一首充满思乡之情的歌曲，以庐州（合肥）的月色为意象，表达游子对故乡的思念。
+推荐指数: ⭐⭐⭐⭐⭐
+4. 素颜专辑: 《苏格拉没有底》 (2011)
+一首温暖治愈的情歌，歌颂真实自然的爱情，不需要华丽的包装。
+推荐指数: ⭐⭐⭐⭐⭐
+5. 雅俗共赏专辑: 《苏格拉没有底》 (2011)
+一首轻快活泼的歌曲，展现了许嵩幽默风趣的一面。
+推荐指数: ⭐⭐⭐⭐
+
+ 许嵩音乐风格创作特点
+词曲创作: 许嵩的歌曲大多由自己作词作曲，展现了全面的音乐才华
+中国风: 擅长将中国传统文化元素融入现代流行音乐
+歌词深度: 歌词富有诗意和哲理，引人深思
+旋律优美: 旋律朗朗上口，易于传唱
+
+音乐成就
+多张专辑销量破百万
+多首歌曲成为KTV必点曲目
+获得多项音乐奖项
+拥有庞大的粉丝群体
+
+
+ 专辑推荐《自定义》(2009)
+玫瑰花的葬礼
+多余的解释
+城府
+
+《寻雾启示》(2010)
+清明雨上
+山水之间
+庐州月
+
+《苏格拉没有底》(2011)
+素颜
+雅俗共赏
+千百度
+
+《梦游计》(2012)
+山水之间（新版）
+弹指一挥间
+幻听
+
+
+ 聆听建议最佳聆听时间: 夜深人静时推荐场景: 学习、工作、放松、思考情绪搭配: 适合各种心情，治愈系音乐
+
+ 个人感悟许嵩的音乐陪伴了我的成长，每一首歌都有其独特的魅力。从《玫瑰花的葬礼》的青涩感伤，到《山水之间》的洒脱淡然，再到《素颜》的温暖治愈，他的音乐总能在不同的人生阶段给予我力量和慰藉。
+音乐是情感的载体，也是回忆的钥匙。每当听到这些熟悉的旋律，总能想起那些美好的时光。
+
+🎵 愿音乐常伴，岁月静好 🎵
+]]></content>
+      <categories>
+        <category>音乐分享</category>
+      </categories>
+      <tags>
+        <tag>音乐</tag>
+        <tag>许嵩</tag>
+        <tag>歌单</tag>
       </tags>
   </entry>
 </search>
