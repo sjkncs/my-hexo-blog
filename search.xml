@@ -125,6 +125,106 @@ AI集成 - 学会集成多种AI模型API
       </tags>
   </entry>
   <entry>
+    <title>2025计算机视觉课程项目</title>
+    <url>/my-hexo-blog/2025/07/15/computer-vision-2025/</url>
+    <content><![CDATA[ 2025计算机视觉课程项目
+项目时间: 2025年7月项目类型: 课程项目技术栈: Python, OpenCV, TensorFlow, PyTorchGitHub: https://github.com/sjkncs/2025-cs-vision
+
+ 项目概述本项目是2025年计算机视觉课程的综合实践项目，涵盖图像处理、目标检测、图像分割等多个计算机视觉核心技术。
+项目链接:
+
+🔗 GitHub仓库: https://github.com/sjkncs/2025-cs-vision
+📚 项目文档: 完整的实验报告和代码注释
+
+
+ 项目目标核心任务
+图像处理基础 - 滤波、边缘检测、形态学操作
+特征提取 - SIFT、SURF、ORB等特征点检测
+目标检测 - YOLO、Faster R-CNN等模型应用
+图像分割 - 语义分割、实例分割
+深度学习应用 - CNN、ResNet等网络架构
+
+
+ 技术实现1. 图像预处理功能实现:
+import cv2import numpy as npclass ImageProcessor:    def __init__(self):        self.filters = {            'gaussian': cv2.GaussianBlur,            'median': cv2.medianBlur,            'bilateral': cv2.bilateralFilter        }        def denoise(self, image, method='gaussian'):        """图像去噪"""        if method == 'gaussian':            return cv2.GaussianBlur(image, (5, 5), 0)        elif method == 'median':            return cv2.medianBlur(image, 5)        elif method == 'bilateral':            return cv2.bilateralFilter(image, 9, 75, 75)        def edge_detection(self, image, method='canny'):        """边缘检测"""        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)                if method == 'canny':            edges = cv2.Canny(gray, 50, 150)        elif method == 'sobel':            sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=5)            sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=5)            edges = np.sqrt(sobelx**2 + sobely**2)                return edges
+
+2. 特征点检测与匹配SIFT特征提取:
+class FeatureDetector:    def __init__(self):        self.sift = cv2.SIFT_create()        self.orb = cv2.ORB_create()        def detect_sift(self, image):        """SIFT特征检测"""        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)        keypoints, descriptors = self.sift.detectAndCompute(gray, None)        return keypoints, descriptors        def match_features(self, desc1, desc2):        """特征匹配"""        bf = cv2.BFMatcher()        matches = bf.knnMatch(desc1, desc2, k=2)                # 应用比率测试        good_matches = []        for m, n in matches:            if m.distance &lt; 0.75 * n.distance:                good_matches.append(m)                return good_matches
+
+3. 目标检测YOLO模型应用:
+import torchfrom torchvision.models.detection import fasterrcnn_resnet50_fpnclass ObjectDetector:    def __init__(self):        self.model = fasterrcnn_resnet50_fpn(pretrained=True)        self.model.eval()        def detect(self, image):        """目标检测"""        # 预处理        image_tensor = self.preprocess(image)                # 推理        with torch.no_grad():            predictions = self.model([image_tensor])                # 后处理        boxes = predictions[0]['boxes'].cpu().numpy()        labels = predictions[0]['labels'].cpu().numpy()        scores = predictions[0]['scores'].cpu().numpy()                return boxes, labels, scores        def preprocess(self, image):        """图像预处理"""        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)        image = torch.from_numpy(image).permute(2, 0, 1).float() / 255.0        return image
+
+4. 图像分割语义分割:
+from torchvision.models.segmentation import deeplabv3_resnet50class ImageSegmentation:    def __init__(self):        self.model = deeplabv3_resnet50(pretrained=True)        self.model.eval()        def segment(self, image):        """语义分割"""        input_tensor = self.preprocess(image)                with torch.no_grad():            output = self.model(input_tensor)['out'][0]                output_predictions = output.argmax(0).byte().cpu().numpy()        return output_predictions
+
+
+ 实验结果性能指标
+
+
+任务
+模型
+准确率
+速度(FPS)
+
+
+
+目标检测
+Faster R-CNN
+92.3%
+15
+
+
+图像分割
+DeepLabV3
+88.7%
+12
+
+
+特征匹配
+SIFT
+95.1%
+30
+
+
+实验数据集
+COCO数据集 - 目标检测
+Pascal VOC - 图像分割
+自建数据集 - 特征匹配
+
+
+ 项目收获技术能力
+图像处理 - 掌握OpenCV常用操作
+深度学习 - 熟悉PyTorch框架
+模型应用 - 能够应用预训练模型
+算法优化 - 提升模型性能和速度
+
+理论知识
+卷积神经网络 - CNN原理与应用
+目标检测算法 - R-CNN系列、YOLO系列
+图像分割方法 - FCN、U-Net、DeepLab
+特征工程 - 传统特征与深度特征
+
+
+ 未来改进
+ 实现实时视频处理
+ 优化模型推理速度
+ 添加更多数据增强方法
+ 尝试最新的Transformer架构
+
+
+👁️ 计算机视觉，让机器看懂世界 👁️
+]]></content>
+      <categories>
+        <category>项目经历</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>计算机视觉</tag>
+        <tag>OpenCV</tag>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>EmoBuy - 情绪消费平台</title>
     <url>/my-hexo-blog/2025/07/20/emobuy-platform/</url>
     <content><![CDATA[ EmoBuy - 情绪消费平台
@@ -256,106 +356,6 @@ import React, { useState, useEffect } from 'react';import Webcam from 'react-web
         <tag>Web开发</tag>
         <tag>情绪分析</tag>
         <tag>电商平台</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2025计算机视觉课程项目</title>
-    <url>/my-hexo-blog/2025/07/15/computer-vision-2025/</url>
-    <content><![CDATA[ 2025计算机视觉课程项目
-项目时间: 2025年7月项目类型: 课程项目技术栈: Python, OpenCV, TensorFlow, PyTorchGitHub: https://github.com/sjkncs/2025-cs-vision
-
- 项目概述本项目是2025年计算机视觉课程的综合实践项目，涵盖图像处理、目标检测、图像分割等多个计算机视觉核心技术。
-项目链接:
-
-🔗 GitHub仓库: https://github.com/sjkncs/2025-cs-vision
-📚 项目文档: 完整的实验报告和代码注释
-
-
- 项目目标核心任务
-图像处理基础 - 滤波、边缘检测、形态学操作
-特征提取 - SIFT、SURF、ORB等特征点检测
-目标检测 - YOLO、Faster R-CNN等模型应用
-图像分割 - 语义分割、实例分割
-深度学习应用 - CNN、ResNet等网络架构
-
-
- 技术实现1. 图像预处理功能实现:
-import cv2import numpy as npclass ImageProcessor:    def __init__(self):        self.filters = {            'gaussian': cv2.GaussianBlur,            'median': cv2.medianBlur,            'bilateral': cv2.bilateralFilter        }        def denoise(self, image, method='gaussian'):        """图像去噪"""        if method == 'gaussian':            return cv2.GaussianBlur(image, (5, 5), 0)        elif method == 'median':            return cv2.medianBlur(image, 5)        elif method == 'bilateral':            return cv2.bilateralFilter(image, 9, 75, 75)        def edge_detection(self, image, method='canny'):        """边缘检测"""        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)                if method == 'canny':            edges = cv2.Canny(gray, 50, 150)        elif method == 'sobel':            sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=5)            sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=5)            edges = np.sqrt(sobelx**2 + sobely**2)                return edges
-
-2. 特征点检测与匹配SIFT特征提取:
-class FeatureDetector:    def __init__(self):        self.sift = cv2.SIFT_create()        self.orb = cv2.ORB_create()        def detect_sift(self, image):        """SIFT特征检测"""        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)        keypoints, descriptors = self.sift.detectAndCompute(gray, None)        return keypoints, descriptors        def match_features(self, desc1, desc2):        """特征匹配"""        bf = cv2.BFMatcher()        matches = bf.knnMatch(desc1, desc2, k=2)                # 应用比率测试        good_matches = []        for m, n in matches:            if m.distance &lt; 0.75 * n.distance:                good_matches.append(m)                return good_matches
-
-3. 目标检测YOLO模型应用:
-import torchfrom torchvision.models.detection import fasterrcnn_resnet50_fpnclass ObjectDetector:    def __init__(self):        self.model = fasterrcnn_resnet50_fpn(pretrained=True)        self.model.eval()        def detect(self, image):        """目标检测"""        # 预处理        image_tensor = self.preprocess(image)                # 推理        with torch.no_grad():            predictions = self.model([image_tensor])                # 后处理        boxes = predictions[0]['boxes'].cpu().numpy()        labels = predictions[0]['labels'].cpu().numpy()        scores = predictions[0]['scores'].cpu().numpy()                return boxes, labels, scores        def preprocess(self, image):        """图像预处理"""        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)        image = torch.from_numpy(image).permute(2, 0, 1).float() / 255.0        return image
-
-4. 图像分割语义分割:
-from torchvision.models.segmentation import deeplabv3_resnet50class ImageSegmentation:    def __init__(self):        self.model = deeplabv3_resnet50(pretrained=True)        self.model.eval()        def segment(self, image):        """语义分割"""        input_tensor = self.preprocess(image)                with torch.no_grad():            output = self.model(input_tensor)['out'][0]                output_predictions = output.argmax(0).byte().cpu().numpy()        return output_predictions
-
-
- 实验结果性能指标
-
-
-任务
-模型
-准确率
-速度(FPS)
-
-
-
-目标检测
-Faster R-CNN
-92.3%
-15
-
-
-图像分割
-DeepLabV3
-88.7%
-12
-
-
-特征匹配
-SIFT
-95.1%
-30
-
-
-实验数据集
-COCO数据集 - 目标检测
-Pascal VOC - 图像分割
-自建数据集 - 特征匹配
-
-
- 项目收获技术能力
-图像处理 - 掌握OpenCV常用操作
-深度学习 - 熟悉PyTorch框架
-模型应用 - 能够应用预训练模型
-算法优化 - 提升模型性能和速度
-
-理论知识
-卷积神经网络 - CNN原理与应用
-目标检测算法 - R-CNN系列、YOLO系列
-图像分割方法 - FCN、U-Net、DeepLab
-特征工程 - 传统特征与深度特征
-
-
- 未来改进
- 实现实时视频处理
- 优化模型推理速度
- 添加更多数据增强方法
- 尝试最新的Transformer架构
-
-
-👁️ 计算机视觉，让机器看懂世界 👁️
-]]></content>
-      <categories>
-        <category>项目经历</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>计算机视觉</tag>
-        <tag>OpenCV</tag>
-        <tag>深度学习</tag>
       </tags>
   </entry>
   <entry>
@@ -622,89 +622,6 @@ UI/UX设计 - 提升用户体验设计能力
       </tags>
   </entry>
   <entry>
-    <title>欧美音乐精选</title>
-    <url>/my-hexo-blog/2025/01/06/my-playlist/</url>
-    <content><![CDATA[ 欧美音乐精选精选欧美流行、电音、摇滚等不同风格的经典歌曲，带你领略国际音乐的魅力。
- 在线播放器欧美热门歌单
-在线音乐
-点击加载后获取歌单，播放需要手动操作。
-加载歌单
-在网易云音乐打开
-
-
-
- 摇滚/民谣民谣清单
-赵雷 - 成都、南方姑娘
-宋冬野 - 董小姐、安和桥
-陈粒 - 奇妙能力歌、走马
-李志 - 天空之城、关于郑州的记忆
-
-摇滚精选
-Beyond - 海阔天空、光辉岁月
-五月天 - 倔强、突然好想你
-朴树 - 平凡之路、那些花儿
-
-
- 欧美金曲流行经典
-Ed Sheeran - Shape of You, Perfect
-Taylor Swift - Love Story, Shake It Off
-Adele - Someone Like You, Hello
-Maroon 5 - Sugar, Memories
-
-电音/舞曲
-Alan Walker - Faded, Alone
-The Chainsmokers - Closer, Don’t Let Me Down
-Marshmello - Happier, Alone
-
-
- 纯音乐钢琴曲
-久石让 - Summer、天空之城
-Yiruma - River Flows in You
-坂本龙一 - Merry Christmas Mr. Lawrence
-
-轻音乐
-班得瑞 - 初雪、安妮的仙境
-神秘园 - Song from a Secret Garden
-
-
- 影视原声
-《泰坦尼克号》 - My Heart Will Go On
-《狮子王》 - Can You Feel the Love Tonight
-《冰雪奇缘》 - Let It Go
-《爱乐之城》 - City of Stars
-
-
- 歌单使用场景 早晨醒来推荐: 稻香、晴天、平凡之路情绪: 积极向上，充满希望
- 学习工作推荐: 纯音乐、轻音乐情绪: 专注平静
- 运动健身推荐: 电音、摇滚情绪: 充满活力
- 夜深人静推荐: 许嵩、民谣、钢琴曲情绪: 放松治愈
- 失落时刻推荐: 消愁、演员、Someone Like You情绪: 共鸣疗愈
-
- 音乐对我的意义音乐是生活中不可或缺的一部分，它能：
-
-🎵 陪伴孤独 - 在独处时给予慰藉
-💪 激励前行 - 在低谷时给予力量
-😊 分享快乐 - 在欢乐时锦上添花
-🧘 平复心情 - 在烦躁时带来平静
-📖 记录回忆 - 每首歌都是一段故事
-
-
- 持续更新这个歌单会持续更新，记录我在不同时期喜欢的音乐。
-最后更新: 2025年1月7日
-
-🎵 音乐无界，情感共鸣 🎵
-]]></content>
-      <categories>
-        <category>音乐分享</category>
-      </categories>
-      <tags>
-        <tag>音乐</tag>
-        <tag>推荐</tag>
-        <tag>欧美</tag>
-        <tag>歌单</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基于深度学习的智能金融综合服务系统</title>
     <url>/my-hexo-blog/2025/11/15/quant-trading-system/</url>
     <content><![CDATA[ 基于深度学习的智能金融综合服务系统
@@ -835,6 +752,89 @@ LightGBM官方文档
         <tag>量化交易</tag>
         <tag>机器学习</tag>
         <tag>金融</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>欧美音乐精选</title>
+    <url>/my-hexo-blog/2025/01/06/my-playlist/</url>
+    <content><![CDATA[ 欧美音乐精选精选欧美流行、电音、摇滚等不同风格的经典歌曲，带你领略国际音乐的魅力。
+ 在线播放器欧美热门歌单
+在线音乐
+点击加载后获取歌单，播放需要手动操作。
+加载歌单
+在网易云音乐打开
+
+
+
+ 摇滚/民谣民谣清单
+赵雷 - 成都、南方姑娘
+宋冬野 - 董小姐、安和桥
+陈粒 - 奇妙能力歌、走马
+李志 - 天空之城、关于郑州的记忆
+
+摇滚精选
+Beyond - 海阔天空、光辉岁月
+五月天 - 倔强、突然好想你
+朴树 - 平凡之路、那些花儿
+
+
+ 欧美金曲流行经典
+Ed Sheeran - Shape of You, Perfect
+Taylor Swift - Love Story, Shake It Off
+Adele - Someone Like You, Hello
+Maroon 5 - Sugar, Memories
+
+电音/舞曲
+Alan Walker - Faded, Alone
+The Chainsmokers - Closer, Don’t Let Me Down
+Marshmello - Happier, Alone
+
+
+ 纯音乐钢琴曲
+久石让 - Summer、天空之城
+Yiruma - River Flows in You
+坂本龙一 - Merry Christmas Mr. Lawrence
+
+轻音乐
+班得瑞 - 初雪、安妮的仙境
+神秘园 - Song from a Secret Garden
+
+
+ 影视原声
+《泰坦尼克号》 - My Heart Will Go On
+《狮子王》 - Can You Feel the Love Tonight
+《冰雪奇缘》 - Let It Go
+《爱乐之城》 - City of Stars
+
+
+ 歌单使用场景 早晨醒来推荐: 稻香、晴天、平凡之路情绪: 积极向上，充满希望
+ 学习工作推荐: 纯音乐、轻音乐情绪: 专注平静
+ 运动健身推荐: 电音、摇滚情绪: 充满活力
+ 夜深人静推荐: 许嵩、民谣、钢琴曲情绪: 放松治愈
+ 失落时刻推荐: 消愁、演员、Someone Like You情绪: 共鸣疗愈
+
+ 音乐对我的意义音乐是生活中不可或缺的一部分，它能：
+
+🎵 陪伴孤独 - 在独处时给予慰藉
+💪 激励前行 - 在低谷时给予力量
+😊 分享快乐 - 在欢乐时锦上添花
+🧘 平复心情 - 在烦躁时带来平静
+📖 记录回忆 - 每首歌都是一段故事
+
+
+ 持续更新这个歌单会持续更新，记录我在不同时期喜欢的音乐。
+最后更新: 2025年1月7日
+
+🎵 音乐无界，情感共鸣 🎵
+]]></content>
+      <categories>
+        <category>音乐分享</category>
+      </categories>
+      <tags>
+        <tag>音乐</tag>
+        <tag>推荐</tag>
+        <tag>欧美</tag>
+        <tag>歌单</tag>
       </tags>
   </entry>
   <entry>
