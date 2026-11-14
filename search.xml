@@ -1,130 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>AI每日新闻聚合平台 - Insight Pro</title>
-    <url>/my-hexo-blog/2025/12/20/ai-news-platform/</url>
-    <content><![CDATA[ AI每日新闻聚合平台 - Insight Pro
-项目时间: 2025年12月项目类型: 个人项目 · 全栈开发GitHub: github.com/sjkncs
-
- 项目概述Insight Pro 是一个类似行业标杆的AI新闻聚合平台，旨在为用户提供全面、智能的新闻资讯服务。
-项目链接:
-
-🔗 GitHub仓库: https://github.com/sjkncs (私有仓库)
-🌐 在线演示: 部署在GitHub Pages
-
-核心功能
-📰 多源聚合 - 整合微博热搜、知乎热榜、36氪等多个数据源
-🤖 AI分析 - 集成DeepSeek、Claude、GPT、通义千问4种AI模型
-📊 智能推荐 - 基于用户兴趣的个性化推荐
-🔍 趋势预测 - 分析热点话题发展趋势
-
-
- 技术架构后端技术栈# 核心框架Flask              # Web框架BeautifulSoup      # 网页爬虫Requests           # HTTP请求# 数据处理Pandas             # 数据分析NumPy              # 数值计算# AI集成OpenAI API         # GPT模型Anthropic API      # Claude模型DeepSeek API       # DeepSeek模型Qwen API           # 通义千问模型
-
-前端技术栈// 原生技术JavaScript (ES6+)  // 核心逻辑CSS3               // 样式设计HTML5              // 页面结构// 特性- 响应式设计- 深色主题- 流畅动画- 懒加载优化
-
-
- 核心亮点1. 智能缓存机制实现了高效的缓存策略，性能优化达95%：
-class CacheManager:    def __init__(self, ttl=3600):        self.cache = {}        self.ttl = ttl        def get(self, key):        if key in self.cache:            data, timestamp = self.cache[key]            if time.time() - timestamp &lt; self.ttl:                return data        return None        def set(self, key, value):        self.cache[key] = (value, time.time())
-
-2. 多模型AI分析集成4种主流AI模型，提供多角度分析：
-
-DeepSeek - 深度语义理解
-Claude - 长文本分析
-GPT-4 - 综合智能分析
-通义千问 - 中文优化
-
-3. 现代化UI设计
-🎨 深色主题设计
-📱 完美适配移动端
-⚡ 流畅的交互动画
-🖼️ 优雅的卡片布局
-
-
- 项目成果性能指标
-
-
-指标
-数值
-
-
-
-缓存命中率
-95%
-
-
-页面加载时间
-&lt;2s
-
-
-API响应时间
-&lt;500ms
-
-
-数据更新频率
-15分钟
-
-
-功能覆盖
-✅ 微博热搜实时抓取
-✅ 知乎热榜数据整合
-✅ 36氪科技资讯
-✅ AI智能摘要
-✅ 趋势分析预测
-✅ 个性化推荐
-
-
- 部署方案GitHub Pages部署# 1. 构建静态文件python build.py# 2. 部署到GitHub Pagesgit add .git commit -m "Deploy to GitHub Pages"git push origin gh-pages
-
-CI/CD自动化配置GitHub Actions实现自动化部署：
-name: Deploy to GitHub Pageson:  push:    branches: [ main ]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - uses: actions/checkout@v2      - name: Build        run: python build.py      - name: Deploy        uses: peaceiris/actions-gh-pages@v3
-
-
- 核心代码示例新闻爬虫class NewsSpider:    def __init__(self):        self.session = requests.Session()        self.cache = CacheManager()        def fetch_weibo_hot(self):        """抓取微博热搜"""        url = "https://weibo.com/hot/search"        response = self.session.get(url)        soup = BeautifulSoup(response.text, 'html.parser')                hot_list = []        for item in soup.select('.hot-item'):            hot_list.append({                'title': item.select_one('.title').text,                'heat': item.select_one('.heat').text,                'url': item.get('href')            })                return hot_list
-
-AI分析接口class AIAnalyzer:    def analyze_news(self, news_list, model='gpt-4'):        """使用AI模型分析新闻"""        prompt = f"分析以下新闻热点:\n{news_list}"                if model == 'gpt-4':            return self.gpt_analyze(prompt)        elif model == 'claude':            return self.claude_analyze(prompt)        elif model == 'deepseek':            return self.deepseek_analyze(prompt)        else:            return self.qwen_analyze(prompt)
-
-
- 项目收获技术能力提升
-全栈开发 - 掌握前后端完整开发流程
-爬虫技术 - 熟练使用BeautifulSoup进行数据抓取
-AI集成 - 学会集成多种AI模型API
-性能优化 - 实现高效的缓存和优化策略
-
-项目管理经验
-📝 需求分析与设计
-🔄 敏捷开发迭代
-🐛 问题排查与调试
-📊 数据监控与优化
-
-
- 未来规划
- 增加更多数据源
- 实现用户系统
- 添加评论功能
- 开发移动APP
- 引入推荐算法
-
-
- 相关链接
-项目地址: GitHub Repository
-在线演示: Live Demo
-技术文档: Documentation
-
-
-🚀 持续迭代，不断创新 🚀
-]]></content>
-      <categories>
-        <category>项目经历</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-        <tag>Python</tag>
-        <tag>项目</tag>
-        <tag>Web开发</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2025计算机视觉课程项目</title>
     <url>/my-hexo-blog/2025/07/15/computer-vision-2025/</url>
     <content><![CDATA[ 2025计算机视觉课程项目
@@ -218,8 +94,8 @@ Pascal VOC - 图像分割
         <category>项目经历</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>计算机视觉</tag>
+        <tag>Python</tag>
         <tag>OpenCV</tag>
         <tag>深度学习</tag>
       </tags>
@@ -356,6 +232,130 @@ import React, { useState, useEffect } from 'react';import Webcam from 'react-web
         <tag>Web开发</tag>
         <tag>情绪分析</tag>
         <tag>电商平台</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI每日新闻聚合平台 - Insight Pro</title>
+    <url>/my-hexo-blog/2025/12/20/ai-news-platform/</url>
+    <content><![CDATA[ AI每日新闻聚合平台 - Insight Pro
+项目时间: 2025年12月项目类型: 个人项目 · 全栈开发GitHub: github.com/sjkncs
+
+ 项目概述Insight Pro 是一个类似行业标杆的AI新闻聚合平台，旨在为用户提供全面、智能的新闻资讯服务。
+项目链接:
+
+🔗 GitHub仓库: https://github.com/sjkncs (私有仓库)
+🌐 在线演示: 部署在GitHub Pages
+
+核心功能
+📰 多源聚合 - 整合微博热搜、知乎热榜、36氪等多个数据源
+🤖 AI分析 - 集成DeepSeek、Claude、GPT、通义千问4种AI模型
+📊 智能推荐 - 基于用户兴趣的个性化推荐
+🔍 趋势预测 - 分析热点话题发展趋势
+
+
+ 技术架构后端技术栈# 核心框架Flask              # Web框架BeautifulSoup      # 网页爬虫Requests           # HTTP请求# 数据处理Pandas             # 数据分析NumPy              # 数值计算# AI集成OpenAI API         # GPT模型Anthropic API      # Claude模型DeepSeek API       # DeepSeek模型Qwen API           # 通义千问模型
+
+前端技术栈// 原生技术JavaScript (ES6+)  // 核心逻辑CSS3               // 样式设计HTML5              // 页面结构// 特性- 响应式设计- 深色主题- 流畅动画- 懒加载优化
+
+
+ 核心亮点1. 智能缓存机制实现了高效的缓存策略，性能优化达95%：
+class CacheManager:    def __init__(self, ttl=3600):        self.cache = {}        self.ttl = ttl        def get(self, key):        if key in self.cache:            data, timestamp = self.cache[key]            if time.time() - timestamp &lt; self.ttl:                return data        return None        def set(self, key, value):        self.cache[key] = (value, time.time())
+
+2. 多模型AI分析集成4种主流AI模型，提供多角度分析：
+
+DeepSeek - 深度语义理解
+Claude - 长文本分析
+GPT-4 - 综合智能分析
+通义千问 - 中文优化
+
+3. 现代化UI设计
+🎨 深色主题设计
+📱 完美适配移动端
+⚡ 流畅的交互动画
+🖼️ 优雅的卡片布局
+
+
+ 项目成果性能指标
+
+
+指标
+数值
+
+
+
+缓存命中率
+95%
+
+
+页面加载时间
+&lt;2s
+
+
+API响应时间
+&lt;500ms
+
+
+数据更新频率
+15分钟
+
+
+功能覆盖
+✅ 微博热搜实时抓取
+✅ 知乎热榜数据整合
+✅ 36氪科技资讯
+✅ AI智能摘要
+✅ 趋势分析预测
+✅ 个性化推荐
+
+
+ 部署方案GitHub Pages部署# 1. 构建静态文件python build.py# 2. 部署到GitHub Pagesgit add .git commit -m "Deploy to GitHub Pages"git push origin gh-pages
+
+CI/CD自动化配置GitHub Actions实现自动化部署：
+name: Deploy to GitHub Pageson:  push:    branches: [ main ]jobs:  deploy:    runs-on: ubuntu-latest    steps:      - uses: actions/checkout@v2      - name: Build        run: python build.py      - name: Deploy        uses: peaceiris/actions-gh-pages@v3
+
+
+ 核心代码示例新闻爬虫class NewsSpider:    def __init__(self):        self.session = requests.Session()        self.cache = CacheManager()        def fetch_weibo_hot(self):        """抓取微博热搜"""        url = "https://weibo.com/hot/search"        response = self.session.get(url)        soup = BeautifulSoup(response.text, 'html.parser')                hot_list = []        for item in soup.select('.hot-item'):            hot_list.append({                'title': item.select_one('.title').text,                'heat': item.select_one('.heat').text,                'url': item.get('href')            })                return hot_list
+
+AI分析接口class AIAnalyzer:    def analyze_news(self, news_list, model='gpt-4'):        """使用AI模型分析新闻"""        prompt = f"分析以下新闻热点:\n{news_list}"                if model == 'gpt-4':            return self.gpt_analyze(prompt)        elif model == 'claude':            return self.claude_analyze(prompt)        elif model == 'deepseek':            return self.deepseek_analyze(prompt)        else:            return self.qwen_analyze(prompt)
+
+
+ 项目收获技术能力提升
+全栈开发 - 掌握前后端完整开发流程
+爬虫技术 - 熟练使用BeautifulSoup进行数据抓取
+AI集成 - 学会集成多种AI模型API
+性能优化 - 实现高效的缓存和优化策略
+
+项目管理经验
+📝 需求分析与设计
+🔄 敏捷开发迭代
+🐛 问题排查与调试
+📊 数据监控与优化
+
+
+ 未来规划
+ 增加更多数据源
+ 实现用户系统
+ 添加评论功能
+ 开发移动APP
+ 引入推荐算法
+
+
+ 相关链接
+项目地址: GitHub Repository
+在线演示: Live Demo
+技术文档: Documentation
+
+
+🚀 持续迭代，不断创新 🚀
+]]></content>
+      <categories>
+        <category>项目经历</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Web开发</tag>
+        <tag>AI</tag>
+        <tag>项目</tag>
       </tags>
   </entry>
   <entry>
@@ -622,6 +622,89 @@ UI/UX设计 - 提升用户体验设计能力
       </tags>
   </entry>
   <entry>
+    <title>欧美音乐精选</title>
+    <url>/my-hexo-blog/2025/01/06/my-playlist/</url>
+    <content><![CDATA[ 欧美音乐精选精选欧美流行、电音、摇滚等不同风格的经典歌曲，带你领略国际音乐的魅力。
+ 在线播放器欧美热门歌单
+在线音乐
+点击加载后获取歌单，播放需要手动操作。
+加载歌单
+在网易云音乐打开
+
+
+
+ 摇滚/民谣民谣清单
+赵雷 - 成都、南方姑娘
+宋冬野 - 董小姐、安和桥
+陈粒 - 奇妙能力歌、走马
+李志 - 天空之城、关于郑州的记忆
+
+摇滚精选
+Beyond - 海阔天空、光辉岁月
+五月天 - 倔强、突然好想你
+朴树 - 平凡之路、那些花儿
+
+
+ 欧美金曲流行经典
+Ed Sheeran - Shape of You, Perfect
+Taylor Swift - Love Story, Shake It Off
+Adele - Someone Like You, Hello
+Maroon 5 - Sugar, Memories
+
+电音/舞曲
+Alan Walker - Faded, Alone
+The Chainsmokers - Closer, Don’t Let Me Down
+Marshmello - Happier, Alone
+
+
+ 纯音乐钢琴曲
+久石让 - Summer、天空之城
+Yiruma - River Flows in You
+坂本龙一 - Merry Christmas Mr. Lawrence
+
+轻音乐
+班得瑞 - 初雪、安妮的仙境
+神秘园 - Song from a Secret Garden
+
+
+ 影视原声
+《泰坦尼克号》 - My Heart Will Go On
+《狮子王》 - Can You Feel the Love Tonight
+《冰雪奇缘》 - Let It Go
+《爱乐之城》 - City of Stars
+
+
+ 歌单使用场景 早晨醒来推荐: 稻香、晴天、平凡之路情绪: 积极向上，充满希望
+ 学习工作推荐: 纯音乐、轻音乐情绪: 专注平静
+ 运动健身推荐: 电音、摇滚情绪: 充满活力
+ 夜深人静推荐: 许嵩、民谣、钢琴曲情绪: 放松治愈
+ 失落时刻推荐: 消愁、演员、Someone Like You情绪: 共鸣疗愈
+
+ 音乐对我的意义音乐是生活中不可或缺的一部分，它能：
+
+🎵 陪伴孤独 - 在独处时给予慰藉
+💪 激励前行 - 在低谷时给予力量
+😊 分享快乐 - 在欢乐时锦上添花
+🧘 平复心情 - 在烦躁时带来平静
+📖 记录回忆 - 每首歌都是一段故事
+
+
+ 持续更新这个歌单会持续更新，记录我在不同时期喜欢的音乐。
+最后更新: 2025年1月7日
+
+🎵 音乐无界，情感共鸣 🎵
+]]></content>
+      <categories>
+        <category>音乐分享</category>
+      </categories>
+      <tags>
+        <tag>音乐</tag>
+        <tag>推荐</tag>
+        <tag>欧美</tag>
+        <tag>歌单</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基于深度学习的智能金融综合服务系统</title>
     <url>/my-hexo-blog/2025/11/15/quant-trading-system/</url>
     <content><![CDATA[ 基于深度学习的智能金融综合服务系统
@@ -752,89 +835,6 @@ LightGBM官方文档
         <tag>量化交易</tag>
         <tag>机器学习</tag>
         <tag>金融</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>欧美音乐精选</title>
-    <url>/my-hexo-blog/2025/01/06/my-playlist/</url>
-    <content><![CDATA[ 欧美音乐精选精选欧美流行、电音、摇滚等不同风格的经典歌曲，带你领略国际音乐的魅力。
- 在线播放器欧美热门歌单
-在线音乐
-点击加载后获取歌单，播放需要手动操作。
-加载歌单
-在网易云音乐打开
-
-
-
- 摇滚/民谣民谣清单
-赵雷 - 成都、南方姑娘
-宋冬野 - 董小姐、安和桥
-陈粒 - 奇妙能力歌、走马
-李志 - 天空之城、关于郑州的记忆
-
-摇滚精选
-Beyond - 海阔天空、光辉岁月
-五月天 - 倔强、突然好想你
-朴树 - 平凡之路、那些花儿
-
-
- 欧美金曲流行经典
-Ed Sheeran - Shape of You, Perfect
-Taylor Swift - Love Story, Shake It Off
-Adele - Someone Like You, Hello
-Maroon 5 - Sugar, Memories
-
-电音/舞曲
-Alan Walker - Faded, Alone
-The Chainsmokers - Closer, Don’t Let Me Down
-Marshmello - Happier, Alone
-
-
- 纯音乐钢琴曲
-久石让 - Summer、天空之城
-Yiruma - River Flows in You
-坂本龙一 - Merry Christmas Mr. Lawrence
-
-轻音乐
-班得瑞 - 初雪、安妮的仙境
-神秘园 - Song from a Secret Garden
-
-
- 影视原声
-《泰坦尼克号》 - My Heart Will Go On
-《狮子王》 - Can You Feel the Love Tonight
-《冰雪奇缘》 - Let It Go
-《爱乐之城》 - City of Stars
-
-
- 歌单使用场景 早晨醒来推荐: 稻香、晴天、平凡之路情绪: 积极向上，充满希望
- 学习工作推荐: 纯音乐、轻音乐情绪: 专注平静
- 运动健身推荐: 电音、摇滚情绪: 充满活力
- 夜深人静推荐: 许嵩、民谣、钢琴曲情绪: 放松治愈
- 失落时刻推荐: 消愁、演员、Someone Like You情绪: 共鸣疗愈
-
- 音乐对我的意义音乐是生活中不可或缺的一部分，它能：
-
-🎵 陪伴孤独 - 在独处时给予慰藉
-💪 激励前行 - 在低谷时给予力量
-😊 分享快乐 - 在欢乐时锦上添花
-🧘 平复心情 - 在烦躁时带来平静
-📖 记录回忆 - 每首歌都是一段故事
-
-
- 持续更新这个歌单会持续更新，记录我在不同时期喜欢的音乐。
-最后更新: 2025年1月7日
-
-🎵 音乐无界，情感共鸣 🎵
-]]></content>
-      <categories>
-        <category>音乐分享</category>
-      </categories>
-      <tags>
-        <tag>音乐</tag>
-        <tag>推荐</tag>
-        <tag>欧美</tag>
-        <tag>歌单</tag>
       </tags>
   </entry>
   <entry>
